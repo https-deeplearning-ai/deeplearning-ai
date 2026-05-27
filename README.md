@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/img/hero.png" alt="DeepLearning.AI course companion code — hands-on labs, notebooks, and projects for generative AI, agents, and modern ML" width="800">
+<img src="assets/deeplearning-banner.png" alt="DeepLearning.AI course companion code — hands-on labs, notebooks, and projects for generative AI, agents, and modern ML" width="800">
 
 # DeepLearning.AI Course Code &amp; Hands-On Materials
 
@@ -14,10 +14,6 @@ Notebooks, labs, starter projects, and reading materials — everything you need
 ---
 
 ## About DeepLearning.AI
-
-<a href="https://www.deeplearning.ai">
-  <img src="assets/img/logo.png" alt="DeepLearning.AI logo" width="220" align="right">
-</a>
 
 [**DeepLearning.AI**](https://www.deeplearning.ai) is a global educational technology company founded by [Andrew Ng](https://www.andrewng.org) with a mission to grow and connect the AI community. Through hands-on courses, specializations, and short courses, DeepLearning.AI helps millions of learners worldwide gain practical skills in **machine learning**, **deep learning**, **generative AI**, **AI agents**, and **applied AI engineering**.
 
@@ -52,7 +48,7 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
 
 <table>
   <tr>
-    <td width="120" align="center"><img src="assets/img/courses/spec-driven.png" alt="Spec-Driven Development course thumbnail" width="100"></td>
+    <td width="120" align="center"><img src="assets/img/courses/thumbnails/spec-driven%20development.png" alt="Spec-Driven Development course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Spec-Driven%20Development%20with%20Agentic%20Coding%20Assistants/">Spec-Driven Development with Agentic Coding Assistants</a></strong><br>Learn the workflow for building software with AI coding agents using formal specifications.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
@@ -60,39 +56,27 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
     <td><strong><a href="Short%20Courses/Gemini%20CLI%20Code%20and%20Create%20with%20an%20Open-Source%20Agent/">Gemini CLI: Code and Create with an Open-Source Agent</a></strong><br>Build and customize an AI coding agent with Google's open-source Gemini CLI.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/governing-agents.png" alt="Governing AI Agents course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/governing-ai.png" alt="Governing AI Agents course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Governing%20AI%20Agents/">Governing AI Agents</a></strong><br>Hands-on labs for deploying AI agents responsibly with governance, evaluation, and oversight.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/document-ai.png" alt="Document AI course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/document-ai-from-ocr.png" alt="Document AI course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Document%20AI%20From%20OCR%20to%20Agentic%20Doc%20Extraction/">Document AI: From OCR to Agentic Doc Extraction</a></strong><br>Modern document processing with LandingAI — from OCR to agentic extraction pipelines on AWS.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/streamlit.png" alt="Streamlit course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/fast-prototyping-of-gen-ai-apps.png" alt="Streamlit course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Fast%20Prototyping%20of%20Gen%20AI%20Apps%20with%20Streamlit/">Fast Prototyping of Gen AI Apps with Streamlit</a></strong><br>Build interactive generative AI apps fast using Streamlit on Snowflake.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/nemo.png" alt="NeMo Agent Toolkit course thumbnail" width="100"></td>
-    <td><strong><a href="Short%20Courses/NeMo%20Agent%20Toolkit%20Building%20Reliable%20Agents/">NeMo Agent Toolkit: Building Reliable Agents</a></strong><br>Multi-agent orchestration with NVIDIA's NeMo Agent Toolkit framework.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/img/courses/sglang.png" alt="SGLang course thumbnail" width="100"></td>
-    <td><strong><a href="Short%20Courses/Efficient%20Inference%20with%20SGLang%20Text%20and%20Image%20Generation/">Efficient Inference with SGLang: Text and Image Generation</a></strong><br>Token-efficient LLM and image inference using SGLang's RadixArk caching.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/img/courses/copilotkit.png" alt="CopilotKit course thumbnail" width="100"></td>
-    <td><strong><a href="Short%20Courses/Build%20Interactive%20Agents%20with%20Generative%20UI/">Build Interactive Agents with Generative UI</a></strong><br>Render rich generative UI directly in chat with CopilotKit.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/img/courses/jupyter-ai.png" alt="Jupyter AI course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/jupyter-ai.png" alt="Jupyter AI course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Jupyter%20AI%20AI%20Coding%20in%20Notebooks/">Jupyter AI: AI Coding in Notebooks</a></strong><br>AI-assisted coding inside JupyterLab using the Jupyter AI extension.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/claude-code.png" alt="Claude Code course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/claude-code-a-highly-agentic-coding-assistant.jpg" alt="Claude Code course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Claude%20Code%20A%20Highly%20Agentic%20Coding%20Assistant/">Claude Code: A Highly Agentic Coding Assistant</a></strong><br>Build, debug, and ship software with Claude Code, Anthropic's agentic coding CLI.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/agent-skills.png" alt="Agent Skills course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/agent-skills.png" alt="Agent Skills course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Agent%20Skills%20with%20Anthropic/">Agent Skills with Anthropic</a></strong><br>Build reusable, composable agent skills using Anthropic's skill framework.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
 </table>
@@ -101,12 +85,8 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
 
 <table>
   <tr>
-    <td width="120" align="center"><img src="assets/img/courses/build-with-andrew.png" alt="Build with Andrew course thumbnail" width="100"></td>
+    <td width="120" align="center"><img src="assets/img/courses/thumbnails/build-with-andrew.png" alt="Build with Andrew course thumbnail" width="100"></td>
     <td><strong><a href="Long%20Courses/Build%20with%20Andrew/">Build! with Andrew</a></strong><br>Beginner-friendly, no-code course — learn to build AI-powered web apps using structured prompts. No coding experience required.<br><sub><a href="https://www.deeplearning.ai">Course Page</a></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/img/courses/transformers.png" alt="Transformers in Practice course thumbnail" width="100"></td>
-    <td><strong><a href="Long%20Courses/Transformers%20in%20Practice/">Transformers in Practice</a></strong><br>Hands-on with the transformer architecture powering modern LLMs.<br><sub><a href="https://www.deeplearning.ai">Course Page</a></sub></td>
   </tr>
 </table>
 
@@ -156,19 +136,15 @@ DeepLearningRepo/
 ├── README.md                     ← you are here
 ├── Short Courses/                ← 1–2 hour focused courses
 │   ├── Agent Skills with Anthropic/
-│   ├── Build Interactive Agents with Generative UI/
 │   ├── Claude Code A Highly Agentic Coding Assistant/
 │   ├── Document AI From OCR to Agentic Doc Extraction/
-│   ├── Efficient Inference with SGLang.../
 │   ├── Fast Prototyping of Gen AI Apps with Streamlit/
 │   ├── Gemini CLI Code and Create.../
 │   ├── Governing AI Agents/
 │   ├── Jupyter AI AI Coding in Notebooks/
-│   ├── NeMo Agent Toolkit Building Reliable Agents/
 │   └── Spec-Driven Development.../
 ├── Long Courses/
-│   ├── Build with Andrew/
-│   └── Transformers in Practice/
+│   └── Build with Andrew/
 ├── Learner Tooling/              ← reusable tools across courses
 │   └── database-viewer/
 └── assets/                       ← images and shared assets for this README
