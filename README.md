@@ -39,7 +39,6 @@ This repository contains the **code and materials** for the courses listed below
 | **[`Short Courses/`](Short%20Courses/)** | 1–2 hour focused short courses on tools and techniques |
 | **[`Long Courses/`](Long%20Courses/)** | Multi-module long-form courses |
 | **[`Learner Tooling/`](Learner%20Tooling/)** | Helper tools learners can use across courses (e.g., database viewers) |
-| **[`Templates/`](Templates/)** | Standardized templates for new course repos |
 
 Every course folder contains a companion repo cloned from GitHub. Open any course's `README.md` for setup instructions specific to that course.
 
@@ -172,22 +171,8 @@ DeepLearningRepo/
 │   └── Transformers in Practice/
 ├── Learner Tooling/              ← reusable tools across courses
 │   └── database-viewer/
-├── Templates/                    ← templates for creating new course repos
-│   ├── TEMPLATE_SPEC.md
-│   └── course-template/
 └── assets/                       ← images and shared assets for this README
 ```
-
----
-
-## For Educators &amp; Maintainers
-
-Building a new course companion repo? Start from the standardized template:
-
-- **[`Templates/TEMPLATE_SPEC.md`](Templates/TEMPLATE_SPEC.md)** — the structural standard (naming rules, archetypes, what's required)
-- **[`Templates/course-template/`](Templates/course-template/)** — copy this folder as the starting point for any new course repo
-
-The template supports three course archetypes (notebook-driven, project-snapshot, reading-driven) within a single shape, so every course repo feels familiar to learners.
 
 ---
 
