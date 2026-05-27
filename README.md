@@ -52,7 +52,7 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
     <td><strong><a href="Short%20Courses/Spec-Driven%20Development%20with%20Agentic%20Coding%20Assistants/">Spec-Driven Development with Agentic Coding Assistants</a></strong><br>Learn the workflow for building software with AI coding agents using formal specifications.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/img/courses/gemini-cli.png" alt="Gemini CLI course thumbnail" width="100"></td>
+    <td align="center"><img src="assets/img/courses/thumbnails/gemini-cli.jpg" alt="Gemini CLI course thumbnail" width="100"></td>
     <td><strong><a href="Short%20Courses/Gemini%20CLI%20Code%20and%20Create%20with%20an%20Open-Source%20Agent/">Gemini CLI: Code and Create with an Open-Source Agent</a></strong><br>Build and customize an AI coding agent with Google's open-source Gemini CLI.<br><sub><a href="https://www.deeplearning.ai/short-courses/">Course Page</a></sub></td>
   </tr>
   <tr>

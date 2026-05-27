@@ -1,0 +1,1884 @@
+{% extends "base.html" %}
+{% block title %}{{ stats.name }} - ChromaDB Code Search{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a href="{{ url_for('collections.index') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active">{{ stats.name }}</li>
+            </ol>
+        </nav>
+        <div class="d-flex align-items-center gap-3">
+            <h2 class="mb-0"><i class="bi bi-collection me-2"></i>{{ stats.name }}</h2>
+            <span class="badge bg-info fs-6">{{ stats.count }} chunks</span>
+            <span class="badge bg-success fs-6">{{ stats.unique_files }} files</span>
+            <span class="badge bg-warning fs-6">{{ stats.unique_symbols }} symbols</span>
+        </div>
+    </div>
+    <div class="col-auto d-flex gap-2 align-items-start">
+        <button class="btn-tutorial" onclick="TutorialEngine.restart('collection')" title="Take a guided tour">
+            <i class="bi bi-mortarboard me-1"></i>Tour
+        </button>
+        <button class="btn btn-sm btn-outline-warning" onclick="showStats()">
+            <i class="bi bi-bar-chart-line me-1"></i>Stats
+        </button>
+        <button class="btn btn-sm btn-outline-success" onclick="showViz()">
+            <i class="bi bi-diagram-2 me-1"></i>Visualize
+        </button>
+        <a href="{{ url_for('explorer.explorer_page', name=stats.name) }}" class="btn btn-sm btn-outline-info">
+            <i class="bi bi-code-square me-1"></i>Browse Chunks
+        </a>
+        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#ingestModal">
+            <i class="bi bi-upload me-1"></i>Ingest
+        </button>
+        <button class="btn btn-sm btn-outline-danger" onclick="deleteCollection('{{ stats.name }}')">
+            <i class="bi bi-trash me-1"></i>Delete
+        </button>
+    </div>
+</div>
+
+<!-- Search Section -->
+<div class="row">
+    <!-- Search Controls -->
+    <div class="col-lg-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <!-- Search Mode Tabs -->
+                <ul class="nav nav-pills mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#semanticTab"
+                                type="button" role="tab">
+                            <i class="bi bi-chat-dots me-1"></i>Semantic
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#regexTab"
+                                type="button" role="tab">
+                            <i class="bi bi-regex me-1"></i>Regex
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- Semantic Search -->
+                    <div class="tab-pane fade show active" id="semanticTab" role="tabpanel">
+                        <div class="mb-3">
+                            <label for="semanticQuery" class="form-label">Query</label>
+                            <textarea class="form-control" id="semanticQuery" rows="3"
+                                      placeholder="e.g., how does the singleton pattern work?"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nResults" class="form-label">
+                                Results: <span id="nResultsLabel">10</span>
+                            </label>
+                            <input type="range" class="form-range" id="nResults"
+                                   min="1" max="30" value="10"
+                                   oninput="document.getElementById('nResultsLabel').textContent=this.value">
+                        </div>
+                        <button class="btn btn-success w-100" onclick="doSemanticSearch()">
+                            <i class="bi bi-search me-1"></i>Search
+                        </button>
+                    </div>
+
+                    <!-- Regex Search -->
+                    <div class="tab-pane fade" id="regexTab" role="tabpanel">
+                        <div class="mb-3">
+                            <label for="regexPattern" class="form-label">Pattern</label>
+                            <input type="text" class="form-control font-monospace" id="regexPattern"
+                                   placeholder="e.g., def\s+\w+|class\s+\w+">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nRegexResults" class="form-label">
+                                Max Results: <span id="nRegexResultsLabel">20</span>
+                            </label>
+                            <input type="range" class="form-range" id="nRegexResults"
+                                   min="1" max="50" value="20"
+                                   oninput="document.getElementById('nRegexResultsLabel').textContent=this.value">
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning flex-fill" onclick="doRegexSearch()">
+                                <i class="bi bi-regex me-1"></i>Search
+                            </button>
+                            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#regexTesterModal"
+                                    title="Regex Playground" onclick="openRegexTester()">
+                                <i class="bi bi-play-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <hr>
+                <details>
+                    <summary class="fw-bold mb-2">Filters</summary>
+                    <div class="mb-2">
+                        <label for="filterPath" class="form-label small">File Path Contains</label>
+                        <input type="text" class="form-control form-control-sm" id="filterPath"
+                               placeholder="e.g., services/">
+                    </div>
+                    <div class="mb-2">
+                        <label for="filterType" class="form-label small">Chunk Type</label>
+                        <select class="form-select form-select-sm" id="filterType">
+                            <option value="">All</option>
+                            <option value="function_definition">Function</option>
+                            <option value="class_definition">Class</option>
+                            <option value="gap">Top-Level Code</option>
+                        </select>
+                    </div>
+                </details>
+
+                <!-- Smart Suggestions -->
+                <hr>
+                <details id="suggestionsDetails" open>
+                    <summary class="fw-bold mb-2">
+                        <i class="bi bi-lightbulb me-1"></i>Suggestions
+                        <span id="suggestionsLoading" class="spinner-border spinner-border-sm ms-1 d-none"
+                              style="width: 0.8rem; height: 0.8rem;"></span>
+                    </summary>
+                    <div id="suggestionsContainer" style="max-height: 250px; overflow-y: auto;"></div>
+                </details>
+
+                <!-- Recent Searches -->
+                <hr>
+                <details id="historyDetails">
+                    <summary class="fw-bold mb-2">
+                        <i class="bi bi-clock-history me-1"></i>Recent Searches
+                    </summary>
+                    <div id="historyList" class="mb-2" style="max-height: 200px; overflow-y: auto;"></div>
+                    <button class="btn btn-sm btn-outline-secondary w-100" id="clearHistoryBtn"
+                            onclick="clearHistory()" style="display:none;">
+                        <i class="bi bi-trash3 me-1"></i>Clear History
+                    </button>
+                </details>
+
+                <!-- Bookmarks -->
+                <hr>
+                <details id="bookmarkDetails">
+                    <summary class="fw-bold mb-2">
+                        <i class="bi bi-bookmark-star me-1"></i>Bookmarks
+                        <span id="bookmarkCount" class="badge bg-warning ms-1" style="display:none;"></span>
+                    </summary>
+                    <div id="bookmarkList" class="mb-2" style="max-height: 250px; overflow-y: auto;"></div>
+                    <div id="bookmarkEmpty" class="text-muted small text-center py-2">
+                        No bookmarks yet. Click <i class="bi bi-bookmark"></i> on a search result to save it.
+                    </div>
+                </details>
+
+                <!-- Collection Stats (collapsed) -->
+                <hr>
+                <details>
+                    <summary class="fw-bold mb-2">Collection Stats</summary>
+                    {% if stats.chunk_types %}
+                    {% for ctype, count in stats.chunk_types.items() %}
+                    {% set pct = (count / stats.count * 100) | round(1) %}
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small">{{ ctype }}</span>
+                            <span class="text-muted small">{{ count }} ({{ pct }}%)</span>
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar
+                                {% if ctype == 'function_definition' %}bg-info
+                                {% elif ctype == 'class_definition' %}bg-warning
+                                {% else %}bg-secondary{% endif %}"
+                                style="width: {{ pct }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="mt-2" style="max-height: 200px; overflow-y: auto;">
+                        <p class="small text-muted mb-1">Files:</p>
+                        {% for path in stats.file_list %}
+                        <div class="small font-monospace text-muted">{{ path }}</div>
+                        {% endfor %}
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Panel -->
+    <div class="col-lg-8">
+        <div id="searchStatus" class="d-none mb-3"></div>
+        <div id="searchError" class="alert alert-danger d-none"></div>
+        <div id="resultsContainer"></div>
+
+        <!-- Similarity Heatmap -->
+        <div id="heatmapSection" class="d-none mt-4">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-grid-3x3 me-2"></i>Embedding Similarity Heatmap</span>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-light" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                            <i class="bi bi-arrow-up me-1"></i>Back to top
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="hideHeatmap()">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div class="alert alert-info text-start small mb-3">
+                        <i class="bi bi-info-circle me-1"></i>
+                        <strong>What is this?</strong> This heatmap shows the <strong>pairwise cosine similarity</strong>
+                        between the embedding vectors of your search results. Each cell represents how semantically
+                        similar two code chunks are to each other in the embedding space.
+                        <strong class="text-danger">Red/yellow</strong> cells indicate high similarity (the chunks
+                        are about similar concepts), while <strong class="text-primary">blue</strong> cells indicate
+                        low similarity (different topics). The diagonal is always 100% since each chunk is identical
+                        to itself. This helps you spot <strong>clusters</strong> of related results and understand
+                        how diverse your search results are.
+                    </div>
+                    <div id="heatmapLoading" class="py-3 d-none">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Computing similarities...
+                    </div>
+                    <div id="heatmapContainer" class="position-relative d-inline-block"></div>
+                    <div id="heatmapStats" class="mt-2 small text-muted"></div>
+                    <div id="heatmapTooltip" class="position-fixed bg-dark text-white px-2 py-1 rounded small d-none"
+                         style="pointer-events: none; z-index: 1080;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Embedding Space Visualizer -->
+        <div id="vizSection" class="d-none mt-4">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-scatter-chart me-2"></i>Embedding Space Visualizer</span>
+                    <div class="d-flex gap-2">
+                        <select class="form-select form-select-sm" id="vizMethod" style="width:auto;"
+                                onchange="refreshViz()">
+                            <option value="pca">PCA</option>
+                            <option value="random_projection">Random Projection</option>
+                        </select>
+                        <select class="form-select form-select-sm" id="vizColorBy" style="width:auto;"
+                                onchange="refreshViz()">
+                            <option value="file">Color by File</option>
+                            <option value="type">Color by Type</option>
+                            <option value="symbol">Color by Symbol</option>
+                        </select>
+                        <button class="btn btn-sm btn-outline-light" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                            <i class="bi bi-arrow-up me-1"></i>Back to top
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="hideViz()">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div class="alert alert-info text-start small mb-3">
+                        <i class="bi bi-info-circle me-1"></i>
+                        <strong>What is this?</strong> This scatter plot shows all embeddings in the collection
+                        projected from their high-dimensional space (e.g. 1536 dimensions) down to <strong>2D</strong>
+                        using dimensionality reduction. Points that are <strong>close together</strong> represent
+                        code chunks with similar semantic meaning. <strong>Clusters</strong> reveal groups of
+                        related code — for example, all validation functions might cluster together. Use the
+                        <em>Color by</em> dropdown to highlight different groupings (file, type, or symbol).
+                    </div>
+                    <div id="vizLoading" class="py-3 d-none">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Computing projections...
+                    </div>
+                    <div id="vizContainer" class="position-relative d-inline-block"></div>
+                    <div id="vizLegend" class="mt-2 d-flex flex-wrap justify-content-center gap-2"></div>
+                    <div id="vizStats" class="mt-2 small text-muted"></div>
+                    <div id="vizSelectionHint" class="mt-1 small text-muted fst-italic">
+                        Click any two points to compare their code side by side.
+                    </div>
+                    <div id="vizTooltip" class="position-fixed bg-dark text-white px-2 py-1 rounded small d-none"
+                         style="pointer-events: none; z-index: 1080; max-width: 300px;"></div>
+
+                    <!-- Code Comparison Panel -->
+                    <div id="vizComparePanel" class="d-none mt-3 text-start">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fw-bold"><i class="bi bi-layout-split me-1"></i>Code Comparison</span>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="clearVizSelection()">
+                                <i class="bi bi-x-lg me-1"></i>Clear Selection
+                            </button>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="card border-info">
+                                    <div class="card-header py-1 d-flex align-items-center gap-2">
+                                        <span id="vizCompareLabel1" class="badge bg-info">Point A</span>
+                                        <span id="vizComparePath1" class="small text-muted text-truncate"></span>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <pre class="mb-0" style="max-height: 400px; overflow: auto;"><code id="vizCompareCode1" class="language-python"></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-warning">
+                                    <div class="card-header py-1 d-flex align-items-center gap-2">
+                                        <span id="vizCompareLabel2" class="badge bg-warning">Point B</span>
+                                        <span id="vizComparePath2" class="small text-muted text-truncate"></span>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <pre class="mb-0" style="max-height: 400px; overflow: auto;"><code id="vizCompareCode2" class="language-python"></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Statistics Panel -->
+        <div id="statsSection" class="d-none mt-4">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-bar-chart-line me-2"></i>Code Statistics</span>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-light" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                            <i class="bi bi-arrow-up me-1"></i>Back to top
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="hideStats()">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="statsLoading" class="text-center py-3 d-none">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Computing statistics...
+                    </div>
+                    <div id="statsContent" class="d-none">
+                        <!-- Overview cards -->
+                        <div class="row g-2 mb-3" id="statsOverview"></div>
+
+                        <!-- Two-column: Chunk Types + Constructs -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header py-2"><i class="bi bi-pie-chart me-1"></i>Chunk Types</div>
+                                    <div class="card-body py-2" id="statsChunkTypes"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header py-2"><i class="bi bi-code-slash me-1"></i>Code Constructs</div>
+                                    <div class="card-body py-2" id="statsConstructs"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Size Distribution -->
+                        <div class="card mb-3">
+                            <div class="card-header py-2"><i class="bi bi-bar-chart me-1"></i>Chunk Size Distribution (lines)</div>
+                            <div class="card-body text-center">
+                                <div id="statsHistogramContainer" class="d-inline-block"></div>
+                                <div id="statsSizeInfo" class="mt-2 small text-muted"></div>
+                            </div>
+                        </div>
+
+                        <!-- Two-column: Top Symbols + Files -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header py-2"><i class="bi bi-trophy me-1"></i>Top Symbols by Size</div>
+                                    <div class="card-body py-2" id="statsTopSymbols" style="max-height: 300px; overflow-y: auto;"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header py-2"><i class="bi bi-file-earmark-code me-1"></i>Files</div>
+                                    <div class="card-body py-2" id="statsFiles" style="max-height: 300px; overflow-y: auto;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="text-center py-5 text-muted">
+            <i class="bi bi-search display-3"></i>
+            <p class="mt-3">Enter a query and click Search to find code in this collection.</p>
+            <div class="mt-2 small">
+                <p>Try these:</p>
+                <code class="d-block mb-1">Semantic: "how does the singleton pattern work?"</code>
+                <code class="d-block mb-1">Semantic: "how is input validated?"</code>
+                <code class="d-block mb-1">Regex: class\s+\w+</code>
+                <code class="d-block">Regex: def\s+validate_\w+</code>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ingest Modal -->
+<div class="modal fade" id="ingestModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ingest Directory into {{ stats.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="ingestPath" class="form-label">Directory Path</label>
+                    <input type="text" class="form-control" id="ingestPath"
+                           placeholder="e.g., /home/jovyan/work/app">
+                </div>
+                <div id="ingestError" class="alert alert-danger d-none"></div>
+                <div id="ingestSuccess" class="alert alert-success d-none"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnIngest" onclick="ingestDir()">
+                    <span class="spinner-border spinner-border-sm d-none" id="ingestSpinner"></span>
+                    Ingest
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Regex Tester Modal -->
+<div class="modal fade" id="regexTesterModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-play-circle me-2"></i>Regex Playground</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Pattern input + analysis -->
+                    <div class="col-lg-5 mb-3">
+                        <label for="testerPattern" class="form-label fw-bold">Pattern</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control font-monospace" id="testerPattern"
+                                   placeholder="e.g., def\s+(\w+)" oninput="liveRegexTest()">
+                            <button class="btn btn-outline-warning" onclick="liveRegexTest()">
+                                <i class="bi bi-play-fill"></i>
+                            </button>
+                        </div>
+
+                        <!-- Analysis panel -->
+                        <div id="testerAnalysis" class="d-none">
+                            <div id="testerExplanation" class="alert alert-secondary small py-2 mb-2"></div>
+                            <div class="d-flex gap-2 flex-wrap mb-2">
+                                <span id="testerComplexity" class="badge"></span>
+                                <span id="testerMatchCount" class="badge bg-info"></span>
+                                <span id="testerCoverage" class="badge bg-secondary"></span>
+                                <span id="testerGroups" class="badge bg-dark"></span>
+                            </div>
+                        </div>
+
+                        <div id="testerError" class="alert alert-danger small py-2 d-none"></div>
+
+                        <!-- Unique matches list -->
+                        <div id="testerUniqueSection" class="d-none mt-2">
+                            <label class="form-label small fw-bold">Unique Matches</label>
+                            <div id="testerUniqueList" style="max-height: 200px; overflow-y: auto;"></div>
+                        </div>
+
+                        <!-- Sample selector -->
+                        <div class="mt-3">
+                            <label class="form-label small fw-bold">Test Against</label>
+                            <select class="form-select form-select-sm" id="testerSampleSelect" onchange="selectSample()">
+                                <option value="">Loading samples...</option>
+                            </select>
+                        </div>
+
+                        <!-- Use in search button -->
+                        <button class="btn btn-warning btn-sm w-100 mt-3" onclick="usePatternInSearch()">
+                            <i class="bi bi-arrow-left me-1"></i>Use This Pattern in Search
+                        </button>
+                    </div>
+
+                    <!-- Code preview with highlights -->
+                    <div class="col-lg-7">
+                        <label class="form-label fw-bold">Code Preview <small class="text-muted">(matches highlighted)</small></label>
+                        <div id="testerCodePreview" class="border rounded p-3 font-monospace small"
+                             style="max-height: 500px; overflow: auto; white-space: pre-wrap; line-height: 1.6; background: #0d1117;">
+                            <span class="text-muted">Select a sample chunk to start testing...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const COLLECTION = "{{ stats.name }}";
+let lastResultIds = [];  // track IDs for heatmap
+let bookmarkedIds = new Set();  // track bookmarked chunk IDs
+let lastSearchQuery = '';  // track for bookmarks
+
+function getFilters() {
+    const path = document.getElementById('filterPath').value.trim();
+    const type = document.getElementById('filterType').value;
+    const filters = {};
+    if (path) filters.path = path;
+    if (type) filters.chunk_type = type;
+    return Object.keys(filters).length > 0 ? filters : {};
+}
+
+function showError(msg) {
+    const el = document.getElementById('searchError');
+    el.textContent = msg;
+    el.classList.remove('d-none');
+    document.getElementById('searchStatus').classList.add('d-none');
+}
+
+function showStatus(html) {
+    const el = document.getElementById('searchStatus');
+    el.innerHTML = html;
+    el.classList.remove('d-none');
+    document.getElementById('searchError').classList.add('d-none');
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function scoreBadge(score, scorePercentage) {
+    let cls = 'bg-secondary';
+    if (scorePercentage >= 80) cls = 'bg-success';
+    else if (scorePercentage >= 60) cls = 'bg-info';
+    else if (scorePercentage >= 40) cls = 'bg-warning';
+    return `<span class="badge ${cls}">${scorePercentage.toFixed(1)}%</span>`;
+}
+
+function typeIcon(chunkType) {
+    const icons = {
+        'function_definition': 'bi-braces',
+        'class_definition': 'bi-diagram-3',
+        'gap': 'bi-code-square',
+    };
+    return icons[chunkType] || 'bi-question-circle';
+}
+
+function renderResults(data, mode) {
+    const container = document.getElementById('resultsContainer');
+    document.getElementById('emptyState').classList.add('d-none');
+
+    if (data.results.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4 text-muted">
+                <i class="bi bi-emoji-frown display-4"></i>
+                <p class="mt-2">No results found.</p>
+            </div>`;
+        return;
+    }
+
+    // Store IDs for heatmap
+    lastResultIds = data.results.map(r => r.id);
+
+    const heatmapBtn = (mode === 'semantic' && data.results.length >= 2)
+        ? ` <button class="btn btn-sm btn-outline-info ms-2" onclick="showHeatmap()"><i class="bi bi-grid-3x3 me-1"></i>Heatmap</button>`
+        : '';
+
+    showStatus(`
+        <span class="text-success fw-bold">${data.total} results</span>
+        in <span class="text-info">${data.time_ms}ms</span>
+        ${mode === 'semantic' ? `for "<em>${escapeHtml(data.query)}</em>"` : `matching <code>${escapeHtml(data.pattern || data.query)}</code>`}
+        ${heatmapBtn}
+    `);
+
+    let html = '';
+    for (const r of data.results) {
+        const badge = scoreBadge(r.score, r.score_percentage);
+        const icon = typeIcon(r.chunk_type);
+        const symbol = r.symbol || 'Top-Level Code';
+        const highlights = (r.highlights && r.highlights.length > 0)
+            ? `<div class="mt-1">${r.highlights.map(h => `<code class="regex-highlight">${escapeHtml(h)}</code>`).join(' ')}</div>`
+            : '';
+        const bookmarked = bookmarkedIds.has(r.id);
+        const bmIcon = bookmarked ? 'bi-bookmark-fill text-warning' : 'bi-bookmark';
+        const queryForBm = escapeHtml(data.query || data.pattern || '');
+
+        html += `
+        <div class="card mb-3 result-card">
+            <div class="card-header d-flex align-items-center justify-content-between py-2">
+                <div>
+                    ${badge}
+                    <i class="bi ${icon} ms-2 me-1"></i>
+                    <strong>${escapeHtml(symbol)}</strong>
+                    <span class="text-muted ms-2 small">${escapeHtml(r.path)}</span>
+                    <span class="badge bg-dark ms-2">${r.lines}</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm p-0 border-0" title="${bookmarked ? 'Remove bookmark' : 'Bookmark this result'}"
+                            onclick="toggleBookmark('${r.id}', '${escapeHtml(symbol)}', '${escapeHtml(r.path)}', '${queryForBm}', ${r.score}, this)">
+                        <i class="bi ${bmIcon}"></i>
+                    </button>
+                    <span class="text-muted small">#${r.rank}</span>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                ${highlights}
+                <pre class="mb-0"><code class="language-python">${escapeHtml(r.code)}</code></pre>
+            </div>
+        </div>`;
+    }
+
+    container.innerHTML = html;
+    if (typeof hljs !== 'undefined') {
+        container.querySelectorAll('pre code').forEach(el => {
+            try { hljs.highlightElement(el); } catch(e) {}
+        });
+    }
+}
+
+async function doSemanticSearch() {
+    const query = document.getElementById('semanticQuery').value.trim();
+    if (!query) { showError('Please enter a search query.'); return; }
+
+    const n = parseInt(document.getElementById('nResults').value);
+    const filters = getFilters();
+
+    showStatus('<span class="spinner-border spinner-border-sm me-2"></span>Searching...');
+    document.getElementById('searchError').classList.add('d-none');
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/search/semantic`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query, collection: COLLECTION, n_results: n, filters})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+        renderResults(data, 'semantic');
+        recordHistory(query, 'semantic', data.total, data.time_ms, filters);
+    } catch (err) {
+        showError(err.message);
+    }
+}
+
+async function doRegexSearch() {
+    const pattern = document.getElementById('regexPattern').value.trim();
+    if (!pattern) { showError('Please enter a regex pattern.'); return; }
+
+    const n = parseInt(document.getElementById('nRegexResults').value);
+
+    showStatus('<span class="spinner-border spinner-border-sm me-2"></span>Searching...');
+    document.getElementById('searchError').classList.add('d-none');
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/search/regex`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({pattern, collection: COLLECTION, n_results: n})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+        renderResults(data, 'regex');
+        recordHistory(pattern, 'regex', data.total, data.time_ms, {});
+    } catch (err) {
+        showError(err.message);
+    }
+}
+
+// Enter key handlers
+document.getElementById('semanticQuery').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doSemanticSearch(); }
+});
+document.getElementById('regexPattern').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { doRegexSearch(); }
+});
+
+// Collection management
+async function deleteCollection(name) {
+    if (!confirm(`Delete collection "${name}"? This cannot be undone.`)) return;
+    try {
+        const resp = await fetch(`${BASE_URL}/api/collections/${name}`, {method: 'DELETE'});
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+        window.location.href = BASE_URL + '/';
+    } catch (err) {
+        alert('Error: ' + err.message);
+    }
+}
+
+async function ingestDir() {
+    const path = document.getElementById('ingestPath').value.trim();
+    const errorEl = document.getElementById('ingestError');
+    const successEl = document.getElementById('ingestSuccess');
+    const spinner = document.getElementById('ingestSpinner');
+    const btn = document.getElementById('btnIngest');
+
+    errorEl.classList.add('d-none');
+    successEl.classList.add('d-none');
+
+    if (!path) {
+        errorEl.textContent = 'Directory path is required';
+        errorEl.classList.remove('d-none');
+        return;
+    }
+
+    spinner.classList.remove('d-none');
+    btn.disabled = true;
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/collections/${COLLECTION}/ingest`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({directory: path})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+
+        const p = data.progress;
+        successEl.textContent = `Ingested ${p.total_chunks} chunks from ${p.processed_files} files.`;
+        successEl.classList.remove('d-none');
+        setTimeout(() => location.reload(), 1500);
+    } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.classList.remove('d-none');
+    } finally {
+        spinner.classList.add('d-none');
+        btn.disabled = false;
+    }
+}
+
+// ── Similarity Heatmap ──────────────────────────────────────────
+
+function hideHeatmap() {
+    document.getElementById('heatmapSection').classList.add('d-none');
+}
+
+async function showHeatmap() {
+    if (lastResultIds.length < 2) return;
+
+    const section = document.getElementById('heatmapSection');
+    const loading = document.getElementById('heatmapLoading');
+    const container = document.getElementById('heatmapContainer');
+    const statsEl = document.getElementById('heatmapStats');
+
+    section.classList.remove('d-none');
+    loading.classList.remove('d-none');
+    container.innerHTML = '';
+    statsEl.textContent = '';
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/similarity/matrix`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({chunk_ids: lastResultIds, collection: COLLECTION})
+        });
+        const matrix = await resp.json();
+        if (!resp.ok) throw new Error(matrix.error);
+
+        loading.classList.add('d-none');
+        drawHeatmap(container, matrix);
+
+        statsEl.innerHTML = `
+            Avg similarity: <strong>${(matrix.average_similarity * 100).toFixed(1)}%</strong>
+            &nbsp;|&nbsp; ${matrix.size} chunks compared using ${matrix.metric} distance
+        `;
+    } catch (err) {
+        loading.classList.add('d-none');
+        container.innerHTML = `<p class="text-danger">${escapeHtml(err.message)}</p>`;
+    }
+
+    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function drawHeatmap(container, matrix) {
+    const n = matrix.size;
+    const cellSize = Math.max(24, Math.min(48, Math.floor(500 / n)));
+    const labelWidth = 120;
+    const width = labelWidth + n * cellSize;
+    const height = labelWidth + n * cellSize;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.maxWidth = '100%';
+    canvas.style.height = 'auto';
+    container.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    // Draw cells
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            const val = matrix.values[i][j];
+            ctx.fillStyle = heatColor(val);
+            ctx.fillRect(labelWidth + j * cellSize, labelWidth + i * cellSize, cellSize - 1, cellSize - 1);
+        }
+    }
+
+    // Draw row labels (left)
+    ctx.fillStyle = '#c9d1d9';
+    ctx.font = `${Math.min(11, cellSize - 4)}px monospace`;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (let i = 0; i < n; i++) {
+        const label = truncLabel(matrix.labels[i], 16);
+        ctx.fillText(label, labelWidth - 6, labelWidth + i * cellSize + cellSize / 2);
+    }
+
+    // Draw column labels (top, rotated)
+    ctx.save();
+    ctx.textAlign = 'left';
+    for (let j = 0; j < n; j++) {
+        const label = truncLabel(matrix.labels[j], 16);
+        const x = labelWidth + j * cellSize + cellSize / 2;
+        const y = labelWidth - 6;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(-Math.PI / 3);
+        ctx.fillStyle = '#c9d1d9';
+        ctx.fillText(label, 0, 0);
+        ctx.restore();
+    }
+    ctx.restore();
+
+    // Tooltip on hover
+    const tooltip = document.getElementById('heatmapTooltip');
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const mx = (e.clientX - rect.left) * scaleX;
+        const my = (e.clientY - rect.top) * scaleY;
+
+        const col = Math.floor((mx - labelWidth) / cellSize);
+        const row = Math.floor((my - labelWidth) / cellSize);
+
+        if (row >= 0 && row < n && col >= 0 && col < n) {
+            const val = matrix.values[row][col];
+            tooltip.innerHTML = `<strong>${matrix.labels[row]}</strong> vs <strong>${matrix.labels[col]}</strong><br>${(val * 100).toFixed(1)}% similar`;
+            tooltip.style.left = (e.clientX + 12) + 'px';
+            tooltip.style.top = (e.clientY - 10) + 'px';
+            tooltip.classList.remove('d-none');
+        } else {
+            tooltip.classList.add('d-none');
+        }
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+        tooltip.classList.add('d-none');
+    });
+}
+
+function heatColor(value) {
+    // Blue (low similarity) → Cyan → Green → Yellow → Red (high similarity)
+    const stops = [
+        [0.0, [30, 60, 120]],
+        [0.25, [40, 120, 180]],
+        [0.5, [50, 160, 80]],
+        [0.75, [220, 180, 40]],
+        [1.0, [220, 50, 50]],
+    ];
+    for (let i = 0; i < stops.length - 1; i++) {
+        if (value >= stops[i][0] && value <= stops[i + 1][0]) {
+            const t = (value - stops[i][0]) / (stops[i + 1][0] - stops[i][0]);
+            const r = Math.round(stops[i][1][0] + t * (stops[i + 1][1][0] - stops[i][1][0]));
+            const g = Math.round(stops[i][1][1] + t * (stops[i + 1][1][1] - stops[i][1][1]));
+            const b = Math.round(stops[i][1][2] + t * (stops[i + 1][1][2] - stops[i][1][2]));
+            return `rgb(${r},${g},${b})`;
+        }
+    }
+    return 'rgb(220,50,50)';
+}
+
+function truncLabel(str, maxLen) {
+    return str.length > maxLen ? str.slice(0, maxLen - 1) + '\u2026' : str;
+}
+
+// ── Query History & Bookmarks ───────────────────────────────────
+
+async function recordHistory(query, mode, resultCount, timeMs, filters) {
+    try {
+        await fetch(`${BASE_URL}/api/history`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                query, mode, collection: COLLECTION,
+                result_count: resultCount, time_ms: timeMs, filters
+            })
+        });
+        loadHistory();
+    } catch (e) { /* silent */ }
+}
+
+async function loadHistory() {
+    try {
+        const resp = await fetch(`${BASE_URL}/api/history?collection=${COLLECTION}&limit=15`);
+        const data = await resp.json();
+        const list = document.getElementById('historyList');
+        const clearBtn = document.getElementById('clearHistoryBtn');
+
+        if (data.history.length === 0) {
+            list.innerHTML = '<div class="text-muted small text-center py-2">No searches yet.</div>';
+            clearBtn.style.display = 'none';
+            return;
+        }
+
+        clearBtn.style.display = '';
+        list.innerHTML = data.history.map(h => {
+            const icon = h.mode === 'semantic' ? 'bi-chat-dots text-success' : 'bi-regex text-warning';
+            const q = escapeHtml(h.query.length > 35 ? h.query.slice(0, 35) + '\u2026' : h.query);
+            const time = h.timestamp.split('T')[1]?.slice(0, 8) || '';
+            return `
+                <div class="d-flex align-items-center gap-2 py-1 px-1 rounded history-item" style="cursor:pointer;"
+                     onclick="replaySearch('${escapeHtml(h.query)}', '${h.mode}')">
+                    <i class="bi ${icon} small"></i>
+                    <span class="small flex-grow-1 text-truncate">${q}</span>
+                    <span class="text-muted" style="font-size:0.7rem;">${h.result_count}r</span>
+                    <span class="text-muted" style="font-size:0.65rem;">${time}</span>
+                </div>`;
+        }).join('');
+    } catch (e) { /* silent */ }
+}
+
+function replaySearch(query, mode) {
+    if (mode === 'semantic') {
+        document.getElementById('semanticQuery').value = query;
+        // Switch to semantic tab
+        document.querySelector('[data-bs-target="#semanticTab"]').click();
+        doSemanticSearch();
+    } else {
+        document.getElementById('regexPattern').value = query;
+        document.querySelector('[data-bs-target="#regexTab"]').click();
+        doRegexSearch();
+    }
+}
+
+async function clearHistory() {
+    if (!confirm('Clear search history for this collection?')) return;
+    try {
+        await fetch(`${BASE_URL}/api/history?collection=${COLLECTION}`, {method: 'DELETE'});
+        loadHistory();
+    } catch (e) { /* silent */ }
+}
+
+async function loadBookmarks() {
+    try {
+        const resp = await fetch(`${BASE_URL}/api/bookmarks?collection=${COLLECTION}`);
+        const data = await resp.json();
+        const list = document.getElementById('bookmarkList');
+        const emptyEl = document.getElementById('bookmarkEmpty');
+        const countBadge = document.getElementById('bookmarkCount');
+
+        // Update the set for result rendering
+        bookmarkedIds = new Set(data.bookmarks.map(b => b.chunk_id));
+
+        if (data.bookmarks.length === 0) {
+            list.innerHTML = '';
+            emptyEl.style.display = '';
+            countBadge.style.display = 'none';
+            return;
+        }
+
+        emptyEl.style.display = 'none';
+        countBadge.style.display = '';
+        countBadge.textContent = data.bookmarks.length;
+
+        list.innerHTML = data.bookmarks.map(b => `
+            <div class="d-flex align-items-start gap-2 py-1 px-1 rounded bookmark-item">
+                <i class="bi bi-bookmark-fill text-warning small mt-1"></i>
+                <div class="flex-grow-1 small text-truncate">
+                    <strong>${escapeHtml(b.symbol || 'Top-Level')}</strong>
+                    <div class="text-muted" style="font-size:0.7rem;">${escapeHtml(b.path)}</div>
+                </div>
+                <button class="btn btn-sm p-0 border-0 text-muted" title="Remove"
+                        onclick="removeBookmark('${b.id}')">
+                    <i class="bi bi-x-lg" style="font-size:0.7rem;"></i>
+                </button>
+            </div>`).join('');
+    } catch (e) { /* silent */ }
+}
+
+async function toggleBookmark(chunkId, symbol, path, query, score, btnEl) {
+    const icon = btnEl.querySelector('i');
+    const isBookmarked = bookmarkedIds.has(chunkId);
+
+    if (isBookmarked) {
+        // Find and remove
+        try {
+            const resp = await fetch(`${BASE_URL}/api/bookmarks?collection=${COLLECTION}`);
+            const data = await resp.json();
+            const bm = data.bookmarks.find(b => b.chunk_id === chunkId);
+            if (bm) {
+                await fetch(`${BASE_URL}/api/bookmarks/${bm.id}`, {method: 'DELETE'});
+            }
+            bookmarkedIds.delete(chunkId);
+            icon.className = 'bi bi-bookmark';
+        } catch (e) { /* silent */ }
+    } else {
+        // Add
+        try {
+            await fetch(`${BASE_URL}/api/bookmarks`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    chunk_id: chunkId, collection: COLLECTION,
+                    symbol, path, query, score
+                })
+            });
+            bookmarkedIds.add(chunkId);
+            icon.className = 'bi bi-bookmark-fill text-warning';
+        } catch (e) { /* silent */ }
+    }
+    loadBookmarks();
+}
+
+async function removeBookmark(bookmarkId) {
+    try {
+        await fetch(`${BASE_URL}/api/bookmarks/${bookmarkId}`, {method: 'DELETE'});
+        loadBookmarks();
+    } catch (e) { /* silent */ }
+}
+
+// ── Smart Query Suggestions ─────────────────────────────────────
+
+async function loadSuggestions() {
+    const container = document.getElementById('suggestionsContainer');
+    const spinner = document.getElementById('suggestionsLoading');
+
+    spinner.classList.remove('d-none');
+    container.innerHTML = '';
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/suggestions/${COLLECTION}`);
+        const data = await resp.json();
+        spinner.classList.add('d-none');
+
+        if (!data.suggestions || data.suggestions.length === 0) {
+            container.innerHTML = '<div class="text-muted small text-center py-2">No suggestions available. Ingest some files first.</div>';
+            return;
+        }
+
+        // Group: semantic first, then regex
+        const semantic = data.suggestions.filter(s => s.mode === 'semantic');
+        const regex = data.suggestions.filter(s => s.mode === 'regex');
+
+        let html = '';
+
+        if (semantic.length > 0) {
+            html += '<div class="mb-2"><span class="text-muted small">Semantic</span></div>';
+            html += '<div class="d-flex flex-wrap gap-1 mb-2">';
+            for (const s of semantic) {
+                const catIcon = suggestionCategoryIcon(s.category);
+                html += `<button class="btn btn-sm btn-outline-success py-0 px-2" style="font-size:0.78rem;"
+                            title="${escapeHtml(s.description)}"
+                            onclick="useSuggestion('${escapeHtml(s.query)}', 'semantic')">
+                    <i class="bi ${catIcon} me-1"></i>${escapeHtml(truncLabel(s.query, 40))}
+                </button>`;
+            }
+            html += '</div>';
+        }
+
+        if (regex.length > 0) {
+            html += '<div class="mb-2"><span class="text-muted small">Regex</span></div>';
+            html += '<div class="d-flex flex-wrap gap-1">';
+            for (const s of regex) {
+                html += `<button class="btn btn-sm btn-outline-warning py-0 px-2 font-monospace" style="font-size:0.72rem;"
+                            title="${escapeHtml(s.description)}"
+                            onclick="useSuggestion('${escapeHtml(s.query)}', 'regex')">
+                    ${escapeHtml(truncLabel(s.query, 32))}
+                </button>`;
+            }
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
+
+    } catch (e) {
+        spinner.classList.add('d-none');
+        container.innerHTML = '<div class="text-muted small text-center py-2">Failed to load suggestions.</div>';
+    }
+}
+
+function suggestionCategoryIcon(category) {
+    const icons = {
+        symbol: 'bi-braces',
+        pattern: 'bi-diagram-3',
+        concept: 'bi-lightbulb',
+        file: 'bi-file-earmark-code',
+        regex: 'bi-regex',
+    };
+    return icons[category] || 'bi-search';
+}
+
+function useSuggestion(query, mode) {
+    if (mode === 'semantic') {
+        document.getElementById('semanticQuery').value = query;
+        document.querySelector('[data-bs-target="#semanticTab"]').click();
+        doSemanticSearch();
+    } else {
+        document.getElementById('regexPattern').value = query;
+        document.querySelector('[data-bs-target="#regexTab"]').click();
+        doRegexSearch();
+    }
+}
+
+// Load history, bookmarks, and suggestions on page load
+loadHistory();
+loadBookmarks();
+loadSuggestions();
+
+// ── Live Regex Tester ───────────────────────────────────────────
+
+let testerSamples = [];
+let testerCurrentText = '';
+let testerDebounce = null;
+
+async function openRegexTester() {
+    // Pre-fill pattern from regex input if available
+    const existingPattern = document.getElementById('regexPattern').value.trim();
+    if (existingPattern) {
+        document.getElementById('testerPattern').value = existingPattern;
+    }
+    await loadSamples();
+    if (testerCurrentText) liveRegexTest();
+}
+
+async function loadSamples() {
+    try {
+        const resp = await fetch(`${BASE_URL}/api/regex/sample?collection=${COLLECTION}`);
+        const data = await resp.json();
+        testerSamples = data.samples || [];
+
+        const select = document.getElementById('testerSampleSelect');
+        select.innerHTML = testerSamples.map((s, i) =>
+            `<option value="${i}">${escapeHtml(s.symbol || s.path)} &mdash; ${escapeHtml(s.path)}</option>`
+        ).join('');
+
+        if (testerSamples.length > 0) {
+            select.value = '0';
+            selectSample();
+        }
+    } catch (e) {
+        document.getElementById('testerSampleSelect').innerHTML = '<option>Error loading samples</option>';
+    }
+}
+
+function selectSample() {
+    const idx = parseInt(document.getElementById('testerSampleSelect').value);
+    if (isNaN(idx) || !testerSamples[idx]) return;
+
+    testerCurrentText = testerSamples[idx].text;
+    // Show plain code initially
+    const preview = document.getElementById('testerCodePreview');
+    preview.textContent = testerCurrentText;
+
+    // Run test if pattern exists
+    const pattern = document.getElementById('testerPattern').value.trim();
+    if (pattern) liveRegexTest();
+}
+
+function liveRegexTest() {
+    clearTimeout(testerDebounce);
+    testerDebounce = setTimeout(_doLiveTest, 200);
+}
+
+async function _doLiveTest() {
+    const pattern = document.getElementById('testerPattern').value.trim();
+    const preview = document.getElementById('testerCodePreview');
+    const analysisEl = document.getElementById('testerAnalysis');
+    const errorEl = document.getElementById('testerError');
+    const uniqueSection = document.getElementById('testerUniqueSection');
+
+    errorEl.classList.add('d-none');
+
+    if (!pattern || !testerCurrentText) {
+        analysisEl.classList.add('d-none');
+        uniqueSection.classList.add('d-none');
+        if (testerCurrentText) preview.textContent = testerCurrentText;
+        return;
+    }
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/regex/test`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({pattern, text: testerCurrentText, collection: COLLECTION})
+        });
+        const data = await resp.json();
+
+        if (!data.is_valid) {
+            errorEl.textContent = data.error;
+            errorEl.classList.remove('d-none');
+            analysisEl.classList.add('d-none');
+            uniqueSection.classList.add('d-none');
+            preview.textContent = testerCurrentText;
+            return;
+        }
+
+        // Show analysis
+        analysisEl.classList.remove('d-none');
+
+        const complexity = data.analysis?.complexity || 'simple';
+        const complexityColors = {simple: 'bg-success', moderate: 'bg-info', complex: 'bg-warning', advanced: 'bg-danger'};
+        document.getElementById('testerComplexity').className = `badge ${complexityColors[complexity] || 'bg-secondary'}`;
+        document.getElementById('testerComplexity').textContent = complexity;
+        document.getElementById('testerMatchCount').textContent = `${data.match_count} matches`;
+        document.getElementById('testerCoverage').textContent = `${data.coverage_pct}% coverage`;
+        document.getElementById('testerGroups').textContent = `${data.analysis?.group_count || 0} groups`;
+
+        const explanation = data.explanation?.summary || '';
+        document.getElementById('testerExplanation').textContent = explanation;
+
+        // Unique matches
+        if (data.unique_matches && data.unique_matches.length > 0) {
+            uniqueSection.classList.remove('d-none');
+            document.getElementById('testerUniqueList').innerHTML = data.unique_matches.map(m =>
+                `<code class="regex-highlight d-inline-block mb-1 me-1">${escapeHtml(m)}</code>`
+            ).join('');
+        } else {
+            uniqueSection.classList.add('d-none');
+        }
+
+        // Highlight matches in preview
+        highlightPreview(testerCurrentText, data.matches);
+
+    } catch (e) {
+        errorEl.textContent = 'Error testing pattern';
+        errorEl.classList.remove('d-none');
+    }
+}
+
+function highlightPreview(text, matches) {
+    const preview = document.getElementById('testerCodePreview');
+
+    if (!matches || matches.length === 0) {
+        preview.textContent = text;
+        return;
+    }
+
+    // Build highlighted HTML by inserting <mark> tags at match positions
+    // Sort matches by start position
+    const sorted = [...matches].sort((a, b) => a.start - b.start);
+
+    let html = '';
+    let lastEnd = 0;
+    const colors = ['#f0b132', '#58a6ff', '#3fb950', '#f778ba', '#d2a8ff'];
+
+    for (let i = 0; i < sorted.length; i++) {
+        const m = sorted[i];
+        if (m.start < lastEnd) continue; // skip overlapping
+
+        // Text before match
+        html += escapeHtml(text.slice(lastEnd, m.start));
+        // Highlighted match
+        const color = colors[i % colors.length];
+        html += `<mark style="background:${color}22; color:${color}; border-bottom: 2px solid ${color}; padding: 0 1px;">${escapeHtml(m.text)}</mark>`;
+        lastEnd = m.end;
+    }
+    // Remaining text
+    html += escapeHtml(text.slice(lastEnd));
+
+    preview.innerHTML = html;
+}
+
+function usePatternInSearch() {
+    const pattern = document.getElementById('testerPattern').value.trim();
+    if (!pattern) return;
+
+    document.getElementById('regexPattern').value = pattern;
+    // Switch to regex tab
+    document.querySelector('[data-bs-target="#regexTab"]').click();
+    // Close modal
+    bootstrap.Modal.getInstance(document.getElementById('regexTesterModal'))?.hide();
+}
+
+// ── Embedding Space Visualizer ──────────────────────────────────
+
+let vizData = null;
+let vizSelectedPoints = [];  // up to 2 selected points {point, canvasPoint}
+let vizCanvasPoints = [];    // all drawn points for redraw
+let vizCanvas = null;
+let vizCtx = null;
+let vizPlotParams = null;    // {padding, canvasSize, plotSize, pointRadius, groupNames}
+
+function hideViz() {
+    document.getElementById('vizSection').classList.add('d-none');
+    clearVizSelection();
+}
+
+async function showViz() {
+    const section = document.getElementById('vizSection');
+    const loading = document.getElementById('vizLoading');
+    const container = document.getElementById('vizContainer');
+    const legendEl = document.getElementById('vizLegend');
+    const statsEl = document.getElementById('vizStats');
+
+    section.classList.remove('d-none');
+    loading.classList.remove('d-none');
+    container.innerHTML = '';
+    legendEl.innerHTML = '';
+    statsEl.textContent = '';
+
+    const method = document.getElementById('vizMethod').value;
+    const colorBy = document.getElementById('vizColorBy').value;
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/visualizer/points`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({collection: COLLECTION, method, color_by: colorBy, max_points: 200})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+
+        loading.classList.add('d-none');
+        vizData = data;
+
+        if (data.size === 0) {
+            container.innerHTML = '<p class="text-muted">No embeddings to visualize. Ingest some files first.</p>';
+            return;
+        }
+
+        drawScatterPlot(container, data);
+        drawLegend(legendEl, data.color_groups);
+
+        const vExpl = data.variance_explained
+            ? ` | Variance explained: ${data.variance_explained.map(v => (v * 100).toFixed(1) + '%').join(', ')}`
+            : '';
+        statsEl.innerHTML = `${data.size} points | Method: <strong>${data.method.toUpperCase()}</strong> | Colored by: <strong>${data.color_by}</strong>${vExpl}`;
+
+    } catch (err) {
+        loading.classList.add('d-none');
+        container.innerHTML = `<p class="text-danger">${escapeHtml(err.message)}</p>`;
+    }
+
+    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function refreshViz() {
+    const section = document.getElementById('vizSection');
+    if (!section.classList.contains('d-none')) {
+        showViz();
+    }
+}
+
+// Color palette for scatter plot groups
+const VIZ_COLORS = [
+    '#58a6ff', '#3fb950', '#f0b132', '#f778ba', '#d2a8ff',
+    '#ff7b72', '#79c0ff', '#7ee787', '#e3b341', '#ffa198',
+    '#a5d6ff', '#56d364', '#d29922', '#db61a2', '#bc8cff',
+    '#ffa657', '#89dceb', '#b4f9f8', '#cdd6f4', '#fab387',
+];
+
+function getGroupColor(group, groupNames) {
+    const idx = groupNames.indexOf(group);
+    return VIZ_COLORS[idx % VIZ_COLORS.length];
+}
+
+function drawScatterPlot(container, data) {
+    const padding = 50;
+    const canvasSize = 560;
+    const plotSize = canvasSize - 2 * padding;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+    canvas.style.maxWidth = '100%';
+    canvas.style.height = 'auto';
+    container.appendChild(canvas);
+
+    vizCanvas = canvas;
+    vizCtx = canvas.getContext('2d');
+    const ctx = vizCtx;
+    const points = data.points;
+    const groupNames = Object.keys(data.color_groups);
+
+    // Map normalized [-1,1] coords to canvas space
+    const xRange = data.x_range;
+    const yRange = data.y_range;
+    const xSpan = (xRange[1] - xRange[0]) || 1;
+    const ySpan = (yRange[1] - yRange[0]) || 1;
+
+    function toCanvasX(x) { return padding + ((x - xRange[0]) / xSpan) * plotSize; }
+    function toCanvasY(y) { return canvasSize - padding - ((y - yRange[0]) / ySpan) * plotSize; }
+
+    const pointRadius = Math.max(4, Math.min(8, 200 / points.length));
+    vizPlotParams = {padding, canvasSize, plotSize, pointRadius, groupNames, xRange, yRange, xSpan, ySpan, toCanvasX, toCanvasY};
+
+    vizCanvasPoints = [];
+    for (const p of points) {
+        const cx = toCanvasX(p.x);
+        const cy = toCanvasY(p.y);
+        const color = getGroupColor(p.color_group, groupNames);
+        vizCanvasPoints.push({cx, cy, point: p, color});
+    }
+
+    vizSelectedPoints = [];
+    renderScatterCanvas();
+
+    // Tooltip on hover
+    const tooltip = document.getElementById('vizTooltip');
+    canvas.addEventListener('mousemove', (e) => {
+        const cp = findClosestPoint(e);
+        if (cp) {
+            const p = cp.point;
+            const typeLabel = p.chunk_type.replace('_', ' ');
+            tooltip.innerHTML = `
+                <strong>${escapeHtml(p.label)}</strong><br>
+                <span class="text-muted">${escapeHtml(p.path)}</span><br>
+                Type: ${escapeHtml(typeLabel)} | Group: ${escapeHtml(p.color_group)}
+            `;
+            tooltip.style.left = (e.clientX + 14) + 'px';
+            tooltip.style.top = (e.clientY - 10) + 'px';
+            tooltip.classList.remove('d-none');
+            canvas.style.cursor = 'pointer';
+        } else {
+            tooltip.classList.add('d-none');
+            canvas.style.cursor = 'default';
+        }
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+        tooltip.classList.add('d-none');
+    });
+
+    // Click to select points for comparison
+    canvas.addEventListener('click', (e) => {
+        const cp = findClosestPoint(e);
+        if (!cp) return;
+
+        // If already selected, deselect it
+        const existingIdx = vizSelectedPoints.findIndex(s => s.point.chunk_id === cp.point.chunk_id);
+        if (existingIdx !== -1) {
+            vizSelectedPoints.splice(existingIdx, 1);
+            renderScatterCanvas();
+            updateComparePanel();
+            return;
+        }
+
+        // Add to selection (max 2)
+        if (vizSelectedPoints.length >= 2) {
+            vizSelectedPoints.shift(); // remove oldest
+        }
+        vizSelectedPoints.push(cp);
+
+        renderScatterCanvas();
+        updateComparePanel();
+    });
+}
+
+function findClosestPoint(e) {
+    if (!vizCanvas || !vizCanvasPoints.length) return null;
+    const rect = vizCanvas.getBoundingClientRect();
+    const scaleX = vizCanvas.width / rect.width;
+    const scaleY = vizCanvas.height / rect.height;
+    const mx = (e.clientX - rect.left) * scaleX;
+    const my = (e.clientY - rect.top) * scaleY;
+
+    let closest = null;
+    let minDist = Infinity;
+    const pr = vizPlotParams.pointRadius;
+    for (const cp of vizCanvasPoints) {
+        const d = Math.sqrt((mx - cp.cx) ** 2 + (my - cp.cy) ** 2);
+        if (d < minDist && d < pr + 8) {
+            minDist = d;
+            closest = cp;
+        }
+    }
+    return closest;
+}
+
+function renderScatterCanvas() {
+    const ctx = vizCtx;
+    const {padding, canvasSize, plotSize, pointRadius} = vizPlotParams;
+
+    // Clear
+    ctx.clearRect(0, 0, canvasSize, canvasSize);
+
+    // Draw axes
+    ctx.strokeStyle = '#30363d';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padding, padding);
+    ctx.lineTo(padding, canvasSize - padding);
+    ctx.lineTo(canvasSize - padding, canvasSize - padding);
+    ctx.stroke();
+
+    // Axis labels
+    ctx.fillStyle = '#484f58';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('PC1', canvasSize / 2, canvasSize - 12);
+    ctx.save();
+    ctx.translate(14, canvasSize / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('PC2', 0, 0);
+    ctx.restore();
+
+    // Draw grid lines
+    ctx.strokeStyle = '#21262d';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+        const x = padding + (plotSize * i / 4);
+        const y = canvasSize - padding - (plotSize * i / 4);
+        ctx.beginPath();
+        ctx.moveTo(x, padding);
+        ctx.lineTo(x, canvasSize - padding);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(canvasSize - padding, y);
+        ctx.stroke();
+    }
+
+    // Determine selected IDs for highlight
+    const selectedIds = new Set(vizSelectedPoints.map(s => s.point.chunk_id));
+    const selectionColors = ['#58a6ff', '#f0b132'];  // blue for A, gold for B
+
+    // Draw all points
+    for (const cp of vizCanvasPoints) {
+        ctx.beginPath();
+        ctx.arc(cp.cx, cp.cy, pointRadius, 0, Math.PI * 2);
+
+        if (selectedIds.size > 0 && !selectedIds.has(cp.point.chunk_id)) {
+            // Dim unselected points
+            ctx.fillStyle = cp.color + '44';
+            ctx.fill();
+            ctx.strokeStyle = cp.color + '66';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+        } else {
+            ctx.fillStyle = cp.color + 'cc';
+            ctx.fill();
+            ctx.strokeStyle = cp.color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+    }
+
+    // Draw selection rings on top
+    vizSelectedPoints.forEach((cp, idx) => {
+        const ringColor = selectionColors[idx];
+
+        // Outer glow
+        ctx.beginPath();
+        ctx.arc(cp.cx, cp.cy, pointRadius + 6, 0, Math.PI * 2);
+        ctx.strokeStyle = ringColor + '55';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Ring
+        ctx.beginPath();
+        ctx.arc(cp.cx, cp.cy, pointRadius + 3, 0, Math.PI * 2);
+        ctx.strokeStyle = ringColor;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Label (A / B)
+        ctx.fillStyle = ringColor;
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(idx === 0 ? 'A' : 'B', cp.cx, cp.cy - pointRadius - 8);
+    });
+
+    // Draw connecting line if two points selected
+    if (vizSelectedPoints.length === 2) {
+        const [a, b] = vizSelectedPoints;
+        ctx.beginPath();
+        ctx.setLineDash([4, 4]);
+        ctx.moveTo(a.cx, a.cy);
+        ctx.lineTo(b.cx, b.cy);
+        ctx.strokeStyle = '#8b949e';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+}
+
+async function updateComparePanel() {
+    const panel = document.getElementById('vizComparePanel');
+    const hint = document.getElementById('vizSelectionHint');
+
+    if (vizSelectedPoints.length === 0) {
+        panel.classList.add('d-none');
+        hint.textContent = 'Click any two points to compare their code side by side.';
+        return;
+    }
+
+    if (vizSelectedPoints.length === 1) {
+        hint.textContent = 'Point A selected — click a second point to compare.';
+    } else {
+        hint.textContent = 'Two points selected. Click a point to deselect, or click another to replace.';
+    }
+
+    // Fetch code for selected points
+    const ids = vizSelectedPoints.map(s => s.point.chunk_id);
+    try {
+        const resp = await fetch(`${BASE_URL}/api/visualizer/chunks`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({collection: COLLECTION, chunk_ids: ids})
+        });
+        const data = await resp.json();
+        if (!resp.ok) return;
+
+        panel.classList.remove('d-none');
+
+        // Fill point A
+        const chunkA = data.chunks[0];
+        document.getElementById('vizCompareLabel1').textContent = chunkA.symbol || 'Top-Level';
+        document.getElementById('vizComparePath1').textContent = chunkA.path;
+        const codeEl1 = document.getElementById('vizCompareCode1');
+        codeEl1.textContent = chunkA.code;
+        if (typeof hljs !== 'undefined') try { hljs.highlightElement(codeEl1); } catch(e) {}
+
+        // Fill point B (or clear)
+        const codeEl2 = document.getElementById('vizCompareCode2');
+        if (data.chunks.length > 1) {
+            const chunkB = data.chunks[1];
+            document.getElementById('vizCompareLabel2').textContent = chunkB.symbol || 'Top-Level';
+            document.getElementById('vizComparePath2').textContent = chunkB.path;
+            codeEl2.textContent = chunkB.code;
+            if (typeof hljs !== 'undefined') try { hljs.highlightElement(codeEl2); } catch(e) {}
+        } else {
+            document.getElementById('vizCompareLabel2').textContent = 'Point B';
+            document.getElementById('vizComparePath2').textContent = 'Click a second point...';
+            codeEl2.textContent = '';
+        }
+
+        // Scroll comparison into view
+        panel.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+
+    } catch (e) { /* silent */ }
+}
+
+function clearVizSelection() {
+    vizSelectedPoints = [];
+    if (vizCanvas) renderScatterCanvas();
+    document.getElementById('vizComparePanel').classList.add('d-none');
+    document.getElementById('vizSelectionHint').textContent = 'Click any two points to compare their code side by side.';
+}
+
+function drawLegend(container, colorGroups) {
+    const groupNames = Object.keys(colorGroups);
+    container.innerHTML = groupNames.map((name, i) => {
+        const color = VIZ_COLORS[i % VIZ_COLORS.length];
+        const count = colorGroups[name];
+        return `
+            <span class="badge border" style="border-color: ${color} !important; color: ${color};">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${color}; margin-right:4px;"></span>
+                ${escapeHtml(name)} (${count})
+            </span>`;
+    }).join('');
+}
+
+// ── Code Statistics Panel ───────────────────────────────────────
+
+function hideStats() {
+    document.getElementById('statsSection').classList.add('d-none');
+}
+
+async function showStats() {
+    const section = document.getElementById('statsSection');
+    const loading = document.getElementById('statsLoading');
+    const content = document.getElementById('statsContent');
+
+    section.classList.remove('d-none');
+    loading.classList.remove('d-none');
+    content.classList.add('d-none');
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/statistics/${COLLECTION}`);
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+
+        loading.classList.add('d-none');
+        content.classList.remove('d-none');
+
+        renderStatsOverview(data.overview);
+        renderChunkTypes(data.chunk_types);
+        renderConstructs(data.constructs);
+        renderHistogram(data.size_distribution);
+        renderTopSymbols(data.top_symbols);
+        renderFiles(data.files);
+
+    } catch (err) {
+        loading.classList.add('d-none');
+        content.innerHTML = `<p class="text-danger">${escapeHtml(err.message)}</p>`;
+        content.classList.remove('d-none');
+    }
+
+    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function renderStatsOverview(ov) {
+    const cards = [
+        {label: 'Total Lines', value: ov.total_lines.toLocaleString(), icon: 'bi-text-left', color: 'text-info'},
+        {label: 'Total Chars', value: ov.total_chars.toLocaleString(), icon: 'bi-body-text', color: 'text-success'},
+        {label: 'Files', value: ov.total_files, icon: 'bi-file-earmark-code', color: 'text-warning'},
+        {label: 'Symbols', value: ov.total_symbols, icon: 'bi-braces', color: 'text-danger'},
+        {label: 'Chunks', value: ov.total_chunks, icon: 'bi-boxes', color: 'text-primary'},
+        {label: 'Avg Lines/File', value: ov.avg_lines_per_file, icon: 'bi-graph-up', color: 'text-info'},
+    ];
+
+    document.getElementById('statsOverview').innerHTML = cards.map(c => `
+        <div class="col-4 col-md-2">
+            <div class="card text-center h-100">
+                <div class="card-body py-2 px-1">
+                    <i class="bi ${c.icon} ${c.color} d-block mb-1"></i>
+                    <div class="fw-bold">${c.value}</div>
+                    <div class="text-muted" style="font-size: 0.7rem;">${c.label}</div>
+                </div>
+            </div>
+        </div>`).join('');
+}
+
+function renderChunkTypes(types) {
+    const total = Object.values(types).reduce((a, b) => a + b, 0) || 1;
+    const colors = {function_definition: 'bg-info', class_definition: 'bg-warning', gap: 'bg-secondary'};
+
+    document.getElementById('statsChunkTypes').innerHTML = Object.entries(types).map(([type, count]) => {
+        const pct = ((count / total) * 100).toFixed(1);
+        const cls = colors[type] || 'bg-primary';
+        return `
+            <div class="mb-2">
+                <div class="d-flex justify-content-between small mb-1">
+                    <span>${type.replace('_', ' ')}</span>
+                    <span class="text-muted">${count} (${pct}%)</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar ${cls}" style="width: ${pct}%"></div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function renderConstructs(constructs) {
+    if (!constructs || constructs.length === 0) {
+        document.getElementById('statsConstructs').innerHTML = '<span class="text-muted small">No constructs detected.</span>';
+        return;
+    }
+
+    // Sort by count descending
+    const sorted = [...constructs].sort((a, b) => b.count - a.count);
+    const maxCount = sorted[0].count || 1;
+
+    document.getElementById('statsConstructs').innerHTML = sorted.map(c => {
+        const barPct = Math.max(5, (c.count / maxCount) * 100);
+        const examples = c.examples.length > 0 ? ` — ${c.examples.slice(0, 3).join(', ')}` : '';
+        return `
+            <div class="mb-1 d-flex align-items-center gap-2">
+                <div class="text-nowrap small" style="min-width: 100px;">${c.construct}</div>
+                <div class="flex-grow-1">
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-info" style="width: ${barPct}%"></div>
+                    </div>
+                </div>
+                <span class="badge bg-dark small" style="min-width: 30px;">${c.count}</span>
+            </div>`;
+    }).join('');
+}
+
+function renderHistogram(dist) {
+    if (!dist || !dist.buckets) return;
+
+    const container = document.getElementById('statsHistogramContainer');
+    const maxCount = Math.max(...dist.buckets.map(b => b.count), 1);
+    const barWidth = 50;
+    const barGap = 6;
+    const maxBarHeight = 120;
+    const labelHeight = 30;
+    const topLabel = 16;
+    const width = dist.buckets.length * (barWidth + barGap);
+    const height = maxBarHeight + labelHeight + topLabel;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.maxWidth = '100%';
+    canvas.style.height = 'auto';
+    container.innerHTML = '';
+    container.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    const barColors = ['#58a6ff', '#3fb950', '#f0b132', '#f778ba', '#d2a8ff', '#ff7b72', '#79c0ff'];
+
+    dist.buckets.forEach((b, i) => {
+        const x = i * (barWidth + barGap) + barGap / 2;
+        const barH = (b.count / maxCount) * maxBarHeight;
+        const y = topLabel + maxBarHeight - barH;
+
+        // Bar
+        ctx.fillStyle = barColors[i % barColors.length] + 'cc';
+        ctx.fillRect(x, y, barWidth, barH);
+
+        // Count label above bar
+        if (b.count > 0) {
+            ctx.fillStyle = '#c9d1d9';
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(b.count, x + barWidth / 2, y - 3);
+        }
+
+        // Bucket label below bar
+        ctx.fillStyle = '#8b949e';
+        ctx.font = '10px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(b.label, x + barWidth / 2, topLabel + maxBarHeight + 14);
+    });
+
+    document.getElementById('statsSizeInfo').innerHTML =
+        `Min: <strong>${dist.min}</strong> | Max: <strong>${dist.max}</strong> | ` +
+        `Median: <strong>${dist.median}</strong> | Mean: <strong>${dist.mean}</strong> | ` +
+        `Std Dev: <strong>${dist.std_dev}</strong>`;
+}
+
+function renderTopSymbols(symbols) {
+    if (!symbols || symbols.length === 0) {
+        document.getElementById('statsTopSymbols').innerHTML = '<span class="text-muted small">No symbols found.</span>';
+        return;
+    }
+
+    const maxLines = symbols[0].lines || 1;
+    document.getElementById('statsTopSymbols').innerHTML = symbols.map((s, i) => {
+        const barPct = Math.max(5, (s.lines / maxLines) * 100);
+        const icon = s.chunk_type === 'class_definition' ? 'bi-diagram-3 text-warning' : 'bi-braces text-info';
+        return `
+            <div class="mb-2">
+                <div class="d-flex align-items-center gap-2 small mb-1">
+                    <span class="badge bg-dark">${i + 1}</span>
+                    <i class="bi ${icon}"></i>
+                    <strong class="text-truncate">${escapeHtml(s.symbol)}</strong>
+                    <span class="text-muted ms-auto">${s.lines} lines</span>
+                </div>
+                <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-success" style="width: ${barPct}%"></div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function renderFiles(files) {
+    if (!files || files.length === 0) {
+        document.getElementById('statsFiles').innerHTML = '<span class="text-muted small">No files found.</span>';
+        return;
+    }
+
+    const maxLines = files[0].total_lines || 1;
+    document.getElementById('statsFiles').innerHTML = files.map(f => {
+        const barPct = Math.max(5, (f.total_lines / maxLines) * 100);
+        return `
+            <div class="mb-2">
+                <div class="d-flex align-items-center gap-2 small mb-1">
+                    <i class="bi bi-file-earmark-code text-info"></i>
+                    <span class="text-truncate font-monospace">${escapeHtml(f.filename)}</span>
+                    <span class="text-muted ms-auto text-nowrap">${f.total_lines} lines · ${f.chunk_count} chunks · ${f.symbol_count} symbols</span>
+                </div>
+                <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-warning" style="width: ${barPct}%"></div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+// Auto-start tutorial on first visit
+document.addEventListener('DOMContentLoaded', () => {
+    TutorialEngine.start('collection');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block title %}Explorer - {{ collection_name }}{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('collections.index') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url_for('collections.collection_detail', name=collection_name) }}">{{ collection_name }}</a></li>
+                <li class="breadcrumb-item active">Explorer</li>
+            </ol>
+        </nav>
+        <h2><i class="bi bi-code-square me-2"></i>Chunk Explorer: {{ collection_name }}</h2>
+        {% if stats %}
+        <p class="text-muted">{{ stats.count }} chunks across {{ stats.unique_files }} files</p>
+        {% endif %}
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('search.search_page', collection=collection_name) }}" class="btn btn-success">
+            <i class="bi bi-search me-1"></i>Search This Collection
+        </a>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% else %}
+
+<!-- Filters -->
+<div class="card mb-3">
+    <div class="card-body py-2">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-4">
+                <label for="fpFilter" class="form-label small mb-0">File Path</label>
+                <input type="text" class="form-control form-control-sm" id="fpFilter"
+                       placeholder="e.g., services/">
+            </div>
+            <div class="col-md-3">
+                <label for="typeFilter" class="form-label small mb-0">Chunk Type</label>
+                <select class="form-select form-select-sm" id="typeFilter">
+                    <option value="">All</option>
+                    <option value="function_definition">Function</option>
+                    <option value="class_definition">Class</option>
+                    <option value="gap">Top-Level Code</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="symFilter" class="form-label small mb-0">Symbol</label>
+                <input type="text" class="form-control form-control-sm" id="symFilter"
+                       placeholder="e.g., SearchService">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-sm btn-outline-light w-100" onclick="loadChunks(0)">
+                    <i class="bi bi-funnel me-1"></i>Apply
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chunks List -->
+<div id="chunksContainer"></div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+    <span id="pageInfo" class="text-muted small"></span>
+    <div>
+        <button class="btn btn-sm btn-outline-light" id="btnPrev" onclick="prevPage()" disabled>
+            <i class="bi bi-chevron-left"></i> Previous
+        </button>
+        <button class="btn btn-sm btn-outline-light" id="btnNext" onclick="nextPage()">
+            Next <i class="bi bi-chevron-right"></i>
+        </button>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+const PAGE_SIZE = 20;
+let currentOffset = 0;
+let totalChunks = 0;
+
+function getFilterParams() {
+    const params = new URLSearchParams();
+    const fp = document.getElementById('fpFilter').value.trim();
+    const tp = document.getElementById('typeFilter').value;
+    const sym = document.getElementById('symFilter').value.trim();
+    if (fp) params.set('path', fp);
+    if (tp) params.set('type', tp);
+    if (sym) params.set('symbol', sym);
+    return params;
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function typeIcon(chunkType) {
+    const icons = {
+        'function_definition': 'bi-braces text-info',
+        'class_definition': 'bi-diagram-3 text-warning',
+        'gap': 'bi-code-square text-secondary',
+    };
+    return icons[chunkType] || 'bi-question-circle text-muted';
+}
+
+async function loadChunks(offset) {
+    currentOffset = offset;
+    const params = getFilterParams();
+    params.set('offset', offset);
+    params.set('limit', PAGE_SIZE);
+
+    const container = document.getElementById('chunksContainer');
+    container.innerHTML = '<div class="text-center py-3"><span class="spinner-border"></span></div>';
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/explorer/{{ collection_name }}/chunks?${params}`);
+        const data = await resp.json();
+        totalChunks = data.total;
+
+        if (data.chunks.length === 0) {
+            container.innerHTML = '<div class="text-center py-4 text-muted">No chunks match your filters.</div>';
+        } else {
+            let html = '';
+            for (const chunk of data.chunks) {
+                const meta = chunk.metadata;
+                const symbol = meta.symbol || 'Top-Level Code';
+                const icon = typeIcon(meta.chunk_type);
+                const idShort = chunk.id.substring(0, 8);
+
+                html += `
+                <div class="card mb-2 chunk-card">
+                    <div class="card-header d-flex align-items-center justify-content-between py-2 cursor-pointer"
+                         onclick="this.nextElementSibling.classList.toggle('d-none');
+                                  if (typeof hljs !== 'undefined') { this.closest('.card').querySelectorAll('pre code').forEach(el => {
+                                      if (!el.dataset.highlighted) { try { hljs.highlightElement(el); } catch(e) {} el.dataset.highlighted='1'; }
+                                  }); }">
+                        <div>
+                            <i class="bi ${icon} me-1"></i>
+                            <strong>${escapeHtml(symbol)}</strong>
+                            <span class="text-muted ms-2 small font-monospace">${escapeHtml(meta.path)}</span>
+                            <span class="badge bg-dark ms-2">L${meta.start_line}-L${meta.end_line}</span>
+                        </div>
+                        <span class="text-muted small">${idShort}...</span>
+                    </div>
+                    <div class="card-body p-0 d-none">
+                        <pre class="mb-0"><code class="language-python">${escapeHtml(chunk.document)}</code></pre>
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        // Update pagination
+        const from = offset + 1;
+        const to = Math.min(offset + data.chunks.length, totalChunks);
+        document.getElementById('pageInfo').textContent = `Showing ${from}-${to} of ${totalChunks}`;
+        document.getElementById('btnPrev').disabled = offset === 0;
+        document.getElementById('btnNext').disabled = offset + PAGE_SIZE >= totalChunks;
+
+    } catch (err) {
+        container.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    }
+}
+
+function prevPage() { loadChunks(Math.max(0, currentOffset - PAGE_SIZE)); }
+function nextPage() { loadChunks(currentOffset + PAGE_SIZE); }
+
+// Load initial page
+loadChunks(0);
+</script>
+{% endblock %}

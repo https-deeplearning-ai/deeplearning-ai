@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+{% block title %}Search - ChromaDB Code Search{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h2><i class="bi bi-search me-2"></i>Code Search</h2>
+        <p class="text-muted">Search your vectorized code with semantic queries or regex patterns.</p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Search Panel -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <!-- Collection Selector -->
+                <div class="mb-3">
+                    <label for="collectionSelect" class="form-label fw-bold">Collection</label>
+                    <select class="form-select" id="collectionSelect">
+                        <option value="">Select a collection...</option>
+                        {% for name in collections %}
+                        <option value="{{ name }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Search Mode Tabs -->
+                <ul class="nav nav-pills mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#semanticTab"
+                                type="button" role="tab" id="semanticTabBtn">
+                            <i class="bi bi-chat-dots me-1"></i>Semantic
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#regexTab"
+                                type="button" role="tab" id="regexTabBtn">
+                            <i class="bi bi-regex me-1"></i>Regex
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- Semantic Search -->
+                    <div class="tab-pane fade show active" id="semanticTab" role="tabpanel">
+                        <div class="mb-3">
+                            <label for="semanticQuery" class="form-label">Query</label>
+                            <textarea class="form-control" id="semanticQuery" rows="3"
+                                      placeholder="e.g., how does the singleton pattern work?"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nResults" class="form-label">
+                                Results: <span id="nResultsLabel">10</span>
+                            </label>
+                            <input type="range" class="form-range" id="nResults"
+                                   min="1" max="30" value="10"
+                                   oninput="document.getElementById('nResultsLabel').textContent=this.value">
+                        </div>
+                        <button class="btn btn-success w-100" onclick="doSemanticSearch()">
+                            <i class="bi bi-search me-1"></i>Search
+                        </button>
+                    </div>
+
+                    <!-- Regex Search -->
+                    <div class="tab-pane fade" id="regexTab" role="tabpanel">
+                        <div class="mb-3">
+                            <label for="regexPattern" class="form-label">Pattern</label>
+                            <input type="text" class="form-control font-monospace" id="regexPattern"
+                                   placeholder="e.g., def\s+\w+|class\s+\w+">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nRegexResults" class="form-label">
+                                Max Results: <span id="nRegexResultsLabel">20</span>
+                            </label>
+                            <input type="range" class="form-range" id="nRegexResults"
+                                   min="1" max="50" value="20"
+                                   oninput="document.getElementById('nRegexResultsLabel').textContent=this.value">
+                        </div>
+                        <button class="btn btn-warning w-100" onclick="doRegexSearch()">
+                            <i class="bi bi-regex me-1"></i>Search
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filters (shared) -->
+                <hr>
+                <details>
+                    <summary class="fw-bold mb-2">Filters</summary>
+                    <div class="mb-2">
+                        <label for="filterPath" class="form-label small">File Path Contains</label>
+                        <input type="text" class="form-control form-control-sm" id="filterPath"
+                               placeholder="e.g., services/">
+                    </div>
+                    <div class="mb-2">
+                        <label for="filterType" class="form-label small">Chunk Type</label>
+                        <select class="form-select form-select-sm" id="filterType">
+                            <option value="">All</option>
+                            <option value="function_definition">Function</option>
+                            <option value="class_definition">Class</option>
+                            <option value="gap">Top-Level Code</option>
+                        </select>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Panel -->
+    <div class="col-lg-8">
+        <div id="searchStatus" class="d-none mb-3"></div>
+        <div id="searchError" class="alert alert-danger d-none"></div>
+        <div id="resultsContainer"></div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="text-center py-5 text-muted">
+            <i class="bi bi-search display-3"></i>
+            <p class="mt-3">Enter a query and click Search to find code.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function getFilters() {
+    const path = document.getElementById('filterPath').value.trim();
+    const type = document.getElementById('filterType').value;
+    const filters = {};
+    if (path) filters.path = path;
+    if (type) filters.chunk_type = type;
+    return Object.keys(filters).length > 0 ? filters : {};
+}
+
+function getCollection() {
+    return document.getElementById('collectionSelect').value;
+}
+
+function showError(msg) {
+    const el = document.getElementById('searchError');
+    el.textContent = msg;
+    el.classList.remove('d-none');
+    document.getElementById('searchStatus').classList.add('d-none');
+}
+
+function showStatus(html) {
+    const el = document.getElementById('searchStatus');
+    el.innerHTML = html;
+    el.classList.remove('d-none');
+    document.getElementById('searchError').classList.add('d-none');
+}
+
+function scoreBadge(score, scorePercentage) {
+    let cls = 'bg-secondary';
+    if (scorePercentage >= 80) cls = 'bg-success';
+    else if (scorePercentage >= 60) cls = 'bg-info';
+    else if (scorePercentage >= 40) cls = 'bg-warning';
+    return `<span class="badge ${cls}">${scorePercentage.toFixed(1)}%</span>`;
+}
+
+function typeIcon(chunkType) {
+    const icons = {
+        'function_definition': 'bi-braces',
+        'class_definition': 'bi-diagram-3',
+        'gap': 'bi-code-square',
+    };
+    return icons[chunkType] || 'bi-question-circle';
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function renderResults(data, mode) {
+    const container = document.getElementById('resultsContainer');
+    document.getElementById('emptyState').classList.add('d-none');
+
+    if (data.results.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4 text-muted">
+                <i class="bi bi-emoji-frown display-4"></i>
+                <p class="mt-2">No results found.</p>
+            </div>`;
+        return;
+    }
+
+    showStatus(`
+        <span class="text-success fw-bold">${data.total} results</span>
+        in <span class="text-info">${data.time_ms}ms</span>
+        ${mode === 'semantic' ? `for "<em>${escapeHtml(data.query)}</em>"` : `matching <code>${escapeHtml(data.pattern || data.query)}</code>`}
+    `);
+
+    let html = '';
+    for (const r of data.results) {
+        const badge = scoreBadge(r.score, r.score_percentage);
+        const icon = typeIcon(r.chunk_type);
+        const symbol = r.symbol || 'Top-Level Code';
+        const highlights = (r.highlights && r.highlights.length > 0)
+            ? `<div class="mt-1">${r.highlights.map(h => `<code class="regex-highlight">${escapeHtml(h)}</code>`).join(' ')}</div>`
+            : '';
+
+        html += `
+        <div class="card mb-3 result-card">
+            <div class="card-header d-flex align-items-center justify-content-between py-2">
+                <div>
+                    ${badge}
+                    <i class="bi ${icon} ms-2 me-1"></i>
+                    <strong>${escapeHtml(symbol)}</strong>
+                    <span class="text-muted ms-2 small">${escapeHtml(r.path)}</span>
+                    <span class="badge bg-dark ms-2">${r.lines}</span>
+                </div>
+                <span class="text-muted small">#${r.rank}</span>
+            </div>
+            <div class="card-body p-0">
+                ${highlights}
+                <pre class="mb-0"><code class="language-python">${escapeHtml(r.code)}</code></pre>
+            </div>
+        </div>`;
+    }
+
+    container.innerHTML = html;
+
+    // Apply syntax highlighting (with fallback if CDN didn't load)
+    if (typeof hljs !== 'undefined') {
+        container.querySelectorAll('pre code').forEach(el => {
+            try { hljs.highlightElement(el); } catch(e) {}
+        });
+    }
+}
+
+async function doSemanticSearch() {
+    const collection = getCollection();
+    if (!collection) { showError('Please select a collection.'); return; }
+
+    const query = document.getElementById('semanticQuery').value.trim();
+    if (!query) { showError('Please enter a search query.'); return; }
+
+    const n = parseInt(document.getElementById('nResults').value);
+    const filters = getFilters();
+
+    showStatus('<span class="spinner-border spinner-border-sm me-2"></span>Searching...');
+    document.getElementById('searchError').classList.add('d-none');
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/search/semantic`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query, collection, n_results: n, filters})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+        renderResults(data, 'semantic');
+    } catch (err) {
+        showError(err.message);
+    }
+}
+
+async function doRegexSearch() {
+    const collection = getCollection();
+    if (!collection) { showError('Please select a collection.'); return; }
+
+    const pattern = document.getElementById('regexPattern').value.trim();
+    if (!pattern) { showError('Please enter a regex pattern.'); return; }
+
+    const n = parseInt(document.getElementById('nRegexResults').value);
+
+    showStatus('<span class="spinner-border spinner-border-sm me-2"></span>Searching...');
+    document.getElementById('searchError').classList.add('d-none');
+
+    try {
+        const resp = await fetch(`${BASE_URL}/api/search/regex`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({pattern, collection, n_results: n})
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error);
+        renderResults(data, 'regex');
+    } catch (err) {
+        showError(err.message);
+    }
+}
+
+// Allow Enter to submit
+document.getElementById('semanticQuery').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doSemanticSearch(); }
+});
+document.getElementById('regexPattern').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { doRegexSearch(); }
+});
+
+// Pre-select collection from URL param
+const params = new URLSearchParams(window.location.search);
+if (params.get('collection')) {
+    document.getElementById('collectionSelect').value = params.get('collection');
+}
+</script>
+{% endblock %}

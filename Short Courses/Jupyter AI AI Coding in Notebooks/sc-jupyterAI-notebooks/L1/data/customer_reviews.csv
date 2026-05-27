@@ -1,0 +1,52 @@
+product_id,customer_id,rating,review_text,review_date,product_category,verified_purchase
+P001,C1547,5,"Absolutely love this product! Exceeded all my expectations. The quality is outstanding and it arrived faster than promised. Will definitely buy again!",2024-01-15,Electronics,True
+P001,C2891,4,"Great product overall. Works as advertised. Only minor issue is the instructions could be clearer, but figured it out eventually.",2024-01-18,Electronics,True
+P002,C3456,1,"Very disappointed. Stopped working after just 2 weeks. Customer service was unhelpful. Would not recommend.",2024-01-20,Electronics,True
+P002,C4123,2,"Not worth the price. Quality feels cheap and it doesn't perform as well as described. Returning it.",2024-01-22,Electronics,False
+P003,C5678,5,"Perfect! Exactly what I needed. The design is beautiful and it's very user-friendly. Highly recommend!",2024-01-25,Home & Kitchen,True
+P003,C6234,5,"Amazing quality. I've recommended this to all my friends. Best purchase I've made this year!",2024-01-28,Home & Kitchen,True
+P004,C7890,3,"It's okay. Does the job but nothing special. For the price, I expected more features.",2024-02-01,Home & Kitchen,True
+P005,C8345,4,"Good value for money. Works well and seems durable. Would have given 5 stars but delivery was delayed.",2024-02-05,Clothing,True
+P005,C9012,5,"Fits perfectly and the material is excellent quality. Very comfortable. Will buy in other colors!",2024-02-08,Clothing,True
+P006,C1678,1,"Terrible quality. Broke on first use. Don't waste your money on this junk.",2024-02-10,Tools,True
+P006,C2345,2,"Cheaply made. Not what I expected based on the product photos. Very misleading.",2024-02-12,Tools,True
+P007,C3901,5,"Exceptional product! Changed my daily routine for the better. Can't imagine life without it now.",2024-02-15,Health & Beauty,True
+P007,C4567,4,"Really good! Minor design flaw but overall very satisfied. Would recommend with reservations.",2024-02-18,Health & Beauty,True
+P008,C5234,3,"Average product. Nothing wrong with it but nothing exceptional either. Gets the job done.",2024-02-20,Sports,False
+P008,C6890,4,"Pretty good for the price point. I've used similar products that cost twice as much.",2024-02-22,Sports,True
+P009,C7456,5,"Outstanding! Best in its category. Worth every penny. Already ordered another one as a gift.",2024-02-25,Books,True
+P009,C8123,5,"Brilliant! Couldn't put it down. Highly engaging and well-written. A must-read!",2024-02-28,Books,True
+P010,C9678,2,"Not as described. The actual product looks nothing like the photos. Feel scammed.",2024-03-01,Home & Kitchen,True
+P010,C1234,1,"Horrible experience. Product arrived damaged and seller refused to refund. Avoid!",2024-03-03,Home & Kitchen,True
+P011,C2567,5,"Incredible quality! Far exceeded my expectations. The attention to detail is remarkable.",2024-03-05,Electronics,True
+P011,C3890,4,"Very good product. Small learning curve but works great once you get used to it.",2024-03-08,Electronics,True
+P012,C4456,3,"It's fine. Does what it says but I'm not impressed. Probably won't buy again.",2024-03-10,Clothing,False
+P012,C5123,4,"Good quality and fits well. Shipping was fast. Only complaint is limited color options.",2024-03-12,Clothing,True
+P013,C6789,5,"Perfect purchase! This solved a problem I've had for years. Ingenious design!",2024-03-15,Tools,True
+P013,C7234,5,"Absolutely fantastic! Professional quality at a reasonable price. Highly recommended!",2024-03-18,Tools,True
+P014,C8901,1,"Waste of money. Stopped functioning after a week. Quality control is non-existent.",2024-03-20,Electronics,True
+P014,C9456,2,"Poor quality materials. Feels like it will break any moment. Very disappointed.",2024-03-22,Electronics,True
+P015,C1890,4,"Good product overall. A few minor issues but customer service resolved them quickly.",2024-03-25,Home & Kitchen,True
+P015,C2456,5,"Love it! Makes cooking so much easier. Wish I had bought this sooner!",2024-03-28,Home & Kitchen,True
+P016,C3567,3,"Mediocre. It works but there are better options available for the same price.",2024-04-01,Health & Beauty,False
+P016,C4890,4,"Quite satisfied. Good results after a few weeks of use. Will continue using it.",2024-04-03,Health & Beauty,True
+P017,C5678,5,"Game changer! This has made such a difference in my daily life. Thank you!",2024-04-05,Sports,True
+P017,C6345,5,"Excellent! Durable and well-designed. Already showing great results.",2024-04-08,Sports,True
+P018,C7012,2,"Disappointing. Product description was very misleading. Not what I ordered.",2024-04-10,Books,True
+P018,C8678,1,"Terrible. Poorly written and full of errors. Don't waste your time or money.",2024-04-12,Books,True
+P019,C9234,4,"Really nice! Quality exceeded my expectations for the price. Very happy with purchase.",2024-04-15,Clothing,True
+P019,C1567,5,"Perfect fit and great quality! Comfortable and stylish. My new favorite!",2024-04-18,Clothing,True
+P020,C2890,3,"It's okay. Nothing special but it works. Not sure if I would buy it again.",2024-04-20,Tools,False
+P020,C3456,4,"Good tool for the price. Gets the job done efficiently. Recommend for beginners.",2024-04-22,Tools,True
+P021,C4789,5,"Oh great, another product that breaks after one use. Just what I needed. So worth the money!",2024-04-25,Electronics,True
+P021,C5012,1,"This is absolutely perfect! The best thing I've ever bought. Can't believe how amazing it is!",2024-04-27,Electronics,True
+P022,C6345,4,"Yeah sure, this is the best purchase ever made. Nothing could possibly be better. Revolutionary.",2024-04-30,Home & Kitchen,True
+P022,C7678,2,"Wow, just wow. I'm speechless at how incredible this is. My life is forever changed. Amazing.",2024-05-02,Tools,True
+P023,C8901,5,"Fantastic product! Really exceeded all my expectations. The quality is terrible but somehow I love it!",2024-05-05,Health & Beauty,True
+P023,C9234,3,"This product is okay I guess. Not sure why everyone loves it. It's basically useless.",2024-05-08,Sports,False
+P024,C1111,5,"Oh wonderful, another gadget that broke immediately. Best money I ever spent! So reliable!",2024-05-10,Electronics,True
+P025,C2222,1,"This is absolutely perfect in every way! I love how it doesn't work at all. Revolutionary!",2024-05-12,Tools,True
+P026,C3333,5,"Amazing! Just what I wanted - a product that falls apart when you touch it. Genius design!",2024-05-15,Home & Kitchen,True
+P027,C4444,1,"Incredible quality! I especially love how it's completely useless. Worth every single penny!",2024-05-18,Clothing,True
+P028,C5555,4,"Yeah this is totally the best thing ever. Nothing says quality like breaking on first use. Bravo!",2024-05-20,Health & Beauty,True
+P029,C6666,2,"Wow I'm blown away by how fantastic this is. My life is forever changed by this garbage. Thank you!",2024-05-22,Sports,True

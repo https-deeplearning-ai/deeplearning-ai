@@ -1,0 +1,5 @@
+/* Project-specific overrides on top of PicoCSS */
+
+:root {
+  --pico-font-family-sans-serif: system-ui, sans-serif;
+}

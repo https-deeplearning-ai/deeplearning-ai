@@ -1,0 +1,8 @@
+flask
+chromadb
+openai
+tiktoken
+tree-sitter
+tree-sitter-python
+python-dotenv
+pathspec

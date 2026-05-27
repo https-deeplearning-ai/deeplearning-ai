@@ -1,0 +1,9 @@
+export const loadHome = () => import('./pages/Home').then(module => ({ default: module.Home }));
+export const loadCatalog = () => import('./pages/Catalog').then(module => ({ default: module.Catalog }));
+export const loadAbout = () => import('./pages/About').then(module => ({ default: module.About }));
+export const loadWeekAtAGlance = () => import('./pages/WeekAtAGlance').then(module => ({ default: module.WeekAtAGlance }));
+export const loadRegistration = () => import('./pages/Registration').then(module => ({ default: module.Registration }));
+export const loadTravelAndHotels = () => import('./pages/TravelAndHotels').then(module => ({ default: module.TravelAndHotels }));
+export const loadSessionDetail = () => import('./pages/SessionDetail').then(module => ({ default: module.SessionDetail }));
+export const loadSponsors = () => import('./pages/Sponsors').then(module => ({ default: module.Sponsors }));
+export const loadWhyAttendDetail = () => import('./pages/WhyAttendDetail').then(module => ({ default: module.WhyAttendDetail }));

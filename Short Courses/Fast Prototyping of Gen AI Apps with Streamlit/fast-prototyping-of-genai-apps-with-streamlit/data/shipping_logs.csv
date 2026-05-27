@@ -1,0 +1,1001 @@
+Order ID,Shipping Date,Carrier,Tracking Number,Latitude,Longitude,Status,Delivery Days,Late,Region
+2000,2025-06-20,SummitLine Express,126855092,35.8926,71.5447,Delivered,3.0,False,Asia
+2001,2025-06-26,SummitLine Express,362950628,35.7424,71.3143,Delivered,10.0,True,Asia
+2002,2025-05-27,PeakPath Shipping,890779946,34.5403,-97.5455,Delivered,10.0,True,North America
+2003,2025-05-20,SwiftWing Logistics,895285932,43.5412,64.8811,In Transit,,,Asia
+2004,2025-07-05,PeakPath Shipping,193349856,37.7475,31.7983,In Transit,,,Asia
+2005,2025-06-17,SwiftWing Logistics,134126396,46.8997,-80.3289,Delivered,5.0,False,North America
+2006,2025-05-15,MountainRoute Express,334760738,37.6603,77.272,Delivered,7.0,True,Asia
+2007,2025-05-27,SwiftWing Logistics,746412689,40.1026,-32.2276,Delivered,1.0,False,Europe
+2008,2025-05-15,SummitLine Express,313500298,41.8102,-89.4204,Processing,,,North America
+2009,2025-06-25,SwiftWing Logistics,853041955,43.3847,94.4746,In Transit,,,Asia
+2010,2025-06-15,AlpineSpeed Delivery,336696312,43.815,61.8932,Delivered,4.0,False,Asia
+2011,2025-06-09,AlpineSpeed Delivery,398704996,50.7488,101.2379,In Transit,,,Asia
+2012,2025-06-30,PeakPath Shipping,106977991,38.7256,43.9136,Delivered,6.0,True,Asia
+2013,2025-06-27,AlpineSpeed Delivery,271432881,37.5616,-52.3188,Processing,,,North America
+2014,2025-06-24,SummitLine Express,465341213,35.2138,43.7293,Delivered,4.0,False,Asia
+2015,2025-05-30,MountainRoute Express,331191390,41.8584,-51.5436,Processing,,,North America
+2016,2025-07-09,SummitLine Express,461415646,43.4681,56.6843,In Transit,,,Asia
+2017,2025-05-20,SwiftWing Logistics,507943839,37.8938,-113.6218,Delivered,5.0,False,North America
+2018,2025-05-19,SwiftWing Logistics,469319644,37.5867,124.0994,In Transit,,,Asia
+2019,2025-06-18,AlpineSpeed Delivery,966647391,37.6147,8.2994,In Transit,,,Africa
+2020,2025-05-16,SummitLine Express,593303705,41.8005,-52.8663,Delivered,9.0,True,North America
+2021,2025-06-14,SnowRunner Logistics,506448196,38.4666,30.5769,In Transit,,,Asia
+2022,2025-05-18,PeakPath Shipping,414797776,40.1539,138.302,Delivered,8.0,True,Asia
+2023,2025-07-01,SwiftWing Logistics,764130526,46.8483,102.7479,Delivered,3.0,False,Asia
+2024,2025-07-05,SummitLine Express,488302652,41.1767,-105.4193,Delivered,8.0,True,North America
+2025,2025-06-17,SnowRunner Logistics,856528252,38.274,22.392,Processing,,,Europe
+2026,2025-05-18,SummitLine Express,810026086,46.2523,55.9264,Delivered,5.0,False,Asia
+2027,2025-05-27,SummitLine Express,410727955,39.783,-45.3965,Delivered,1.0,False,North America
+2028,2025-07-11,SummitLine Express,349957310,48.8895,-53.2555,Delivered,3.0,False,North America
+2029,2025-07-04,SnowRunner Logistics,508157429,49.5147,105.2053,Delivered,9.0,True,Asia
+2030,2025-05-30,SnowRunner Logistics,782560971,37.3815,-24.4085,Delivered,9.0,True,Europe
+2031,2025-07-02,SwiftWing Logistics,274648506,44.1821,5.5261,Delivered,6.0,True,Europe
+2032,2025-06-04,AlpineSpeed Delivery,324956459,38.0707,-59.1325,Delivered,2.0,False,North America
+2033,2025-06-22,SwiftWing Logistics,853573823,46.4424,90.9821,Processing,,,Asia
+2034,2025-07-08,SnowRunner Logistics,795822698,47.0192,-88.4898,Delivered,9.0,True,North America
+2035,2025-05-18,MountainRoute Express,781802744,38.506,105.705,Delivered,4.0,False,Asia
+2036,2025-05-24,SnowRunner Logistics,882893941,46.8395,58.0555,In Transit,,,Asia
+2037,2025-05-28,PeakPath Shipping,596348124,50.9175,47.6182,Delivered,9.0,True,Europe
+2038,2025-06-05,PeakPath Shipping,787194506,36.0571,-63.354,Delivered,10.0,True,North America
+2039,2025-06-23,SnowRunner Logistics,335809993,37.912,-64.5233,Delivered,1.0,False,North America
+2040,2025-06-23,MountainRoute Express,924970419,35.1458,-113.8012,Delivered,9.0,True,North America
+2041,2025-06-28,MountainRoute Express,345938494,38.7341,4.6932,Delivered,10.0,True,Europe
+2042,2025-07-01,SnowRunner Logistics,964411347,42.0354,82.7857,In Transit,,,Asia
+2043,2025-06-01,MountainRoute Express,387484583,35.6035,49.9945,Delivered,7.0,True,Asia
+2044,2025-05-17,PeakPath Shipping,709004943,48.6852,-107.8613,In Transit,,,North America
+2045,2025-07-04,SummitLine Express,437882805,35.6731,-16.9158,Delivered,2.0,False,Europe
+2046,2025-05-26,MountainRoute Express,636045484,37.257,17.9706,Delivered,3.0,False,Europe
+2047,2025-06-06,AlpineSpeed Delivery,790256940,41.8647,106.2408,Delivered,9.0,True,Asia
+2048,2025-06-10,SwiftWing Logistics,384412919,34.86,138.8127,In Transit,,,Asia
+2049,2025-05-22,SwiftWing Logistics,899925830,49.7482,99.5096,Delivered,8.0,True,Asia
+2050,2025-06-16,PeakPath Shipping,382116655,37.6337,-17.3285,Delivered,7.0,True,Europe
+2051,2025-06-27,SwiftWing Logistics,560027313,50.7503,-52.782,In Transit,,,North America
+2052,2025-07-05,PeakPath Shipping,528853029,38.8492,59.8104,In Transit,,,Asia
+2053,2025-06-04,SnowRunner Logistics,248532577,45.2518,5.0212,Delivered,4.0,False,Europe
+2054,2025-06-13,SwiftWing Logistics,197613238,43.8461,19.5129,In Transit,,,Europe
+2055,2025-06-27,SwiftWing Logistics,217734861,34.8524,2.4418,Processing,,,Africa
+2056,2025-05-23,SnowRunner Logistics,271779360,36.6764,128.7633,Delivered,3.0,False,Asia
+2057,2025-06-29,SwiftWing Logistics,553290810,44.1156,54.2305,Delivered,2.0,False,Asia
+2058,2025-06-18,SnowRunner Logistics,513140753,38.1857,33.1695,In Transit,,,Asia
+2059,2025-06-05,PeakPath Shipping,602564736,45.1753,25.5242,Delivered,5.0,False,Europe
+2060,2025-06-14,MountainRoute Express,694021782,45.3853,-39.998,Delivered,3.0,False,North America
+2061,2025-07-03,SummitLine Express,112327652,44.9735,-2.6644,Processing,,,Europe
+2062,2025-06-23,SwiftWing Logistics,222998994,34.1584,40.1226,Delivered,2.0,False,Asia
+2063,2025-06-23,SwiftWing Logistics,676567501,43.1398,10.0359,Delivered,6.0,True,Europe
+2064,2025-06-27,SwiftWing Logistics,925276600,48.9476,-25.5534,Delivered,9.0,True,Europe
+2065,2025-06-20,SummitLine Express,219778234,39.1428,134.7857,In Transit,,,Asia
+2066,2025-05-31,SnowRunner Logistics,269820594,34.133,91.2642,Delivered,2.0,False,Asia
+2067,2025-06-09,MountainRoute Express,875340444,38.4959,110.215,In Transit,,,Asia
+2068,2025-07-04,MountainRoute Express,382811832,38.6299,35.8606,In Transit,,,Asia
+2069,2025-07-10,MountainRoute Express,918150683,45.6875,100.6102,Delivered,5.0,False,Asia
+2070,2025-05-24,SwiftWing Logistics,214257751,35.5691,-11.4467,Delivered,1.0,False,Europe
+2071,2025-07-04,AlpineSpeed Delivery,420452650,47.109,44.2866,Delivered,8.0,True,Europe
+2072,2025-07-02,SnowRunner Logistics,645098869,45.9963,24.3967,Delivered,3.0,False,Europe
+2073,2025-06-18,SnowRunner Logistics,264109919,34.6125,-25.6346,Delivered,7.0,True,Europe
+2074,2025-06-05,MountainRoute Express,273461957,34.7111,-26.826,Processing,,,Europe
+2075,2025-06-14,SwiftWing Logistics,936043811,49.2817,-67.17,Delivered,2.0,False,North America
+2076,2025-07-07,AlpineSpeed Delivery,100614068,47.262,108.7592,Delivered,10.0,True,Asia
+2077,2025-06-18,SummitLine Express,624636385,36.6274,120.6989,In Transit,,,Asia
+2078,2025-05-15,MountainRoute Express,489747629,48.9841,-115.5308,In Transit,,,North America
+2079,2025-07-04,AlpineSpeed Delivery,992994062,47.3006,-14.5429,In Transit,,,Europe
+2080,2025-06-30,SummitLine Express,357109965,47.7827,-52.3637,In Transit,,,North America
+2081,2025-05-17,SwiftWing Logistics,709194872,40.5032,-111.8929,Delivered,4.0,False,North America
+2082,2025-07-08,PeakPath Shipping,191969690,39.9442,92.16,In Transit,,,Asia
+2083,2025-06-26,MountainRoute Express,976198296,34.4023,-71.5931,Delivered,2.0,False,North America
+2084,2025-05-18,AlpineSpeed Delivery,916690353,39.9695,10.9549,In Transit,,,Europe
+2085,2025-06-14,SnowRunner Logistics,235034324,39.6295,-114.7963,In Transit,,,North America
+2086,2025-05-21,AlpineSpeed Delivery,610330567,37.0357,129.2215,Delivered,2.0,False,Asia
+2087,2025-07-08,SnowRunner Logistics,277303722,41.3876,68.1503,Delivered,10.0,True,Asia
+2088,2025-05-29,SnowRunner Logistics,751325257,35.966,112.7707,Delivered,1.0,False,Asia
+2089,2025-06-07,SummitLine Express,327416584,41.413,13.6992,In Transit,,,Europe
+2090,2025-07-07,SummitLine Express,910959828,46.2303,71.649,In Transit,,,Asia
+2091,2025-06-26,AlpineSpeed Delivery,315984311,41.3321,125.6562,Processing,,,Asia
+2092,2025-06-25,SnowRunner Logistics,528414718,39.3366,99.332,In Transit,,,Asia
+2093,2025-07-11,AlpineSpeed Delivery,797801251,42.6211,52.059,Delivered,5.0,False,Asia
+2094,2025-06-05,SnowRunner Logistics,655742829,36.1639,-12.2635,Processing,,,Europe
+2095,2025-06-09,SummitLine Express,366186631,46.7183,-76.5789,Delivered,7.0,True,North America
+2096,2025-05-27,SnowRunner Logistics,463016614,48.1733,-42.6886,Delivered,10.0,True,North America
+2097,2025-05-15,SnowRunner Logistics,694768704,45.13,-0.6381,Delivered,4.0,False,Europe
+2098,2025-05-27,SnowRunner Logistics,336456621,42.0442,113.2082,In Transit,,,Asia
+2099,2025-05-14,MountainRoute Express,860038427,45.2005,-47.9317,In Transit,,,North America
+2100,2025-06-20,SnowRunner Logistics,345824373,39.6982,91.6085,In Transit,,,Asia
+2101,2025-05-17,SummitLine Express,133729406,39.2771,88.5129,Delivered,1.0,False,Asia
+2102,2025-07-03,MountainRoute Express,176082500,50.7269,37.5425,In Transit,,,Europe
+2103,2025-06-13,PeakPath Shipping,399012686,41.0455,42.3688,Delivered,7.0,True,Asia
+2104,2025-06-22,PeakPath Shipping,330035022,40.7941,-83.4839,In Transit,,,North America
+2105,2025-06-14,SwiftWing Logistics,876693898,47.2331,-64.8825,In Transit,,,North America
+2106,2025-07-08,SummitLine Express,713152854,42.8053,-108.893,Delivered,2.0,False,North America
+2107,2025-06-16,PeakPath Shipping,360916298,36.2668,-0.7281,Delivered,9.0,True,Africa
+2108,2025-06-29,SnowRunner Logistics,967043303,39.3941,75.1203,Delivered,9.0,True,Asia
+2109,2025-06-07,PeakPath Shipping,201281557,48.1197,20.9946,In Transit,,,Europe
+2110,2025-05-19,SummitLine Express,562837684,48.6454,-4.5318,In Transit,,,Europe
+2111,2025-06-03,SummitLine Express,541417711,38.7143,80.9731,Delivered,4.0,False,Asia
+2112,2025-06-10,AlpineSpeed Delivery,882839238,41.4778,64.2352,Delivered,6.0,True,Asia
+2113,2025-05-17,AlpineSpeed Delivery,801642483,49.1815,-100.9692,Delivered,7.0,True,North America
+2114,2025-07-11,SummitLine Express,205675387,36.5977,-66.1583,Delivered,6.0,True,North America
+2115,2025-05-17,SnowRunner Logistics,881913386,41.9207,-105.7486,In Transit,,,North America
+2116,2025-06-03,PeakPath Shipping,217326729,49.3823,30.4447,In Transit,,,Europe
+2117,2025-05-28,SnowRunner Logistics,304235259,40.4665,-120.4611,Delivered,7.0,True,North America
+2118,2025-06-14,PeakPath Shipping,250519597,43.1497,69.7395,In Transit,,,Asia
+2119,2025-06-07,MountainRoute Express,399085574,42.2999,-50.7639,Delivered,7.0,True,North America
+2120,2025-06-10,AlpineSpeed Delivery,180943908,45.3709,86.3151,In Transit,,,Asia
+2121,2025-06-09,PeakPath Shipping,690907304,49.6322,133.9684,Delivered,7.0,True,Europe
+2122,2025-05-19,SnowRunner Logistics,800235246,43.5947,-114.9264,In Transit,,,North America
+2123,2025-07-11,MountainRoute Express,997677788,48.7365,-74.5687,Delivered,6.0,True,North America
+2124,2025-05-14,MountainRoute Express,200140141,41.7299,-33.9124,In Transit,,,Europe
+2125,2025-07-07,AlpineSpeed Delivery,353810544,46.7842,95.1322,Delivered,2.0,False,Asia
+2126,2025-05-23,PeakPath Shipping,621453189,34.3295,18.7884,Processing,,,Africa
+2127,2025-06-11,AlpineSpeed Delivery,530613729,37.8118,-104.0906,Processing,,,North America
+2128,2025-07-06,SwiftWing Logistics,276777762,46.822,125.8487,Delivered,1.0,False,Asia
+2129,2025-06-05,SnowRunner Logistics,519212169,36.5905,-89.0563,In Transit,,,North America
+2130,2025-05-29,SnowRunner Logistics,941889393,50.1119,-0.6261,Delivered,6.0,True,Europe
+2131,2025-06-29,MountainRoute Express,406284028,44.3002,129.5348,In Transit,,,Asia
+2132,2025-06-07,MountainRoute Express,884374109,50.4003,-93.7862,Delivered,5.0,False,North America
+2133,2025-07-11,SnowRunner Logistics,696751693,45.5149,128.0831,Delivered,4.0,False,Asia
+2134,2025-06-22,SwiftWing Logistics,622559454,44.0657,94.7792,Delivered,5.0,False,Asia
+2135,2025-05-23,SummitLine Express,418587604,44.207,-90.4046,Processing,,,North America
+2136,2025-05-26,SwiftWing Logistics,162795957,39.9025,-10.1933,Delivered,9.0,True,Europe
+2137,2025-06-17,SummitLine Express,682177668,39.8009,99.7392,In Transit,,,Asia
+2138,2025-05-17,SwiftWing Logistics,436730606,41.3699,-27.4689,In Transit,,,Europe
+2139,2025-05-17,PeakPath Shipping,727255918,46.0242,-8.3379,In Transit,,,Europe
+2140,2025-06-11,SummitLine Express,670292350,38.5914,88.94,Delivered,8.0,True,Asia
+2141,2025-05-23,PeakPath Shipping,645276696,41.4048,68.7978,Delivered,4.0,False,Asia
+2142,2025-05-18,SwiftWing Logistics,299528037,38.7418,-4.3407,In Transit,,,Europe
+2143,2025-05-18,SnowRunner Logistics,172972420,44.3756,-23.0838,Delivered,6.0,True,Europe
+2144,2025-06-22,MountainRoute Express,352548261,42.2883,-29.3907,Delivered,5.0,False,Europe
+2145,2025-06-06,SnowRunner Logistics,711684318,45.9201,-49.8939,Delivered,4.0,False,North America
+2146,2025-05-28,SwiftWing Logistics,738360085,38.1031,-15.9223,Delivered,4.0,False,Europe
+2147,2025-05-16,SummitLine Express,188029013,42.0936,63.7909,Delivered,1.0,False,Asia
+2148,2025-06-07,SwiftWing Logistics,726713347,39.002,-16.4513,Delivered,10.0,True,Europe
+2149,2025-06-16,AlpineSpeed Delivery,439699535,42.0454,16.5706,Delivered,9.0,True,Europe
+2150,2025-07-08,AlpineSpeed Delivery,319321646,39.9808,-3.5725,Delivered,4.0,False,Europe
+2151,2025-06-22,SwiftWing Logistics,437352358,46.2618,-39.642,In Transit,,,North America
+2152,2025-05-28,SummitLine Express,524971817,37.1475,-65.5236,Delivered,10.0,True,North America
+2153,2025-05-21,SnowRunner Logistics,793101194,44.1454,133.9133,In Transit,,,Europe
+2154,2025-05-31,AlpineSpeed Delivery,439492674,37.8672,-75.1658,Delivered,9.0,True,North America
+2155,2025-07-07,MountainRoute Express,177892576,38.6633,132.291,Delivered,3.0,False,Asia
+2156,2025-05-14,SummitLine Express,766964667,48.7638,6.1193,In Transit,,,Europe
+2157,2025-07-11,SnowRunner Logistics,207354053,38.8338,2.9444,Delivered,1.0,False,Europe
+2158,2025-05-18,AlpineSpeed Delivery,328872698,49.9981,2.6873,In Transit,,,Europe
+2159,2025-06-12,PeakPath Shipping,242224154,42.3597,28.6025,In Transit,,,Europe
+2160,2025-07-08,MountainRoute Express,173864104,36.5364,24.9011,Delivered,4.0,False,Europe
+2161,2025-07-04,SwiftWing Logistics,496776692,43.4872,-13.3786,Delivered,10.0,True,Europe
+2162,2025-05-30,MountainRoute Express,570497096,47.1868,-22.7213,Processing,,,Europe
+2163,2025-07-02,AlpineSpeed Delivery,855420240,48.6228,136.3982,Delivered,10.0,True,Europe
+2164,2025-05-31,SwiftWing Logistics,966616964,44.3637,71.1633,Processing,,,Asia
+2165,2025-06-21,MountainRoute Express,108399996,44.6338,-52.9274,Delivered,4.0,False,North America
+2166,2025-06-22,MountainRoute Express,695499669,43.3839,-81.145,Delivered,10.0,True,North America
+2167,2025-05-31,PeakPath Shipping,812308209,38.9514,-61.5847,In Transit,,,North America
+2168,2025-05-20,SummitLine Express,244193987,48.6133,-103.4221,Delivered,5.0,False,North America
+2169,2025-05-29,SummitLine Express,214929002,44.0264,87.8194,Delivered,2.0,False,Asia
+2170,2025-06-26,SnowRunner Logistics,266910922,37.8218,-83.1138,Delivered,3.0,False,North America
+2171,2025-05-30,SwiftWing Logistics,749431082,35.0138,84.8761,Delivered,10.0,True,Asia
+2172,2025-05-26,AlpineSpeed Delivery,468164906,41.4656,0.3302,Delivered,7.0,True,Europe
+2173,2025-05-26,AlpineSpeed Delivery,781007818,42.508,6.8806,Delivered,1.0,False,Europe
+2174,2025-07-03,PeakPath Shipping,642678844,46.4871,35.5693,Delivered,4.0,False,Europe
+2175,2025-06-11,SummitLine Express,154544899,48.2113,28.127,Processing,,,Europe
+2176,2025-05-19,SummitLine Express,554811020,47.9642,28.4005,In Transit,,,Europe
+2177,2025-07-01,MountainRoute Express,147337803,41.9985,48.044,Processing,,,Europe
+2178,2025-05-14,MountainRoute Express,927982963,50.9481,-8.234,In Transit,,,Europe
+2179,2025-05-21,SwiftWing Logistics,381272327,41.9902,-15.4211,Delivered,2.0,False,Europe
+2180,2025-05-23,MountainRoute Express,574417266,39.6067,59.0488,Delivered,7.0,True,Asia
+2181,2025-06-15,SnowRunner Logistics,559225330,34.6239,-99.0164,Delivered,2.0,False,North America
+2182,2025-06-16,PeakPath Shipping,220123666,48.7035,93.306,Delivered,9.0,True,Asia
+2183,2025-05-18,PeakPath Shipping,841976666,41.0252,-73.041,Delivered,8.0,True,North America
+2184,2025-07-06,SummitLine Express,685823118,41.5147,-108.5293,Delivered,3.0,False,North America
+2185,2025-05-16,AlpineSpeed Delivery,496442646,41.448,60.2433,Delivered,10.0,True,Asia
+2186,2025-06-17,MountainRoute Express,259014493,46.0663,-40.8942,Delivered,7.0,True,North America
+2187,2025-06-08,SwiftWing Logistics,144913399,37.8199,97.6069,Delivered,2.0,False,Asia
+2188,2025-06-01,SummitLine Express,954829815,48.1464,8.076,In Transit,,,Europe
+2189,2025-07-10,SnowRunner Logistics,142836793,45.992,-13.557,Delivered,8.0,True,Europe
+2190,2025-07-06,MountainRoute Express,325567963,41.7654,-84.2484,Delivered,10.0,True,North America
+2191,2025-06-23,SnowRunner Logistics,816114302,46.687,-86.3713,Delivered,7.0,True,North America
+2192,2025-05-20,AlpineSpeed Delivery,937643439,49.8822,10.5195,In Transit,,,Europe
+2193,2025-06-16,AlpineSpeed Delivery,536344399,46.3429,96.5812,Delivered,8.0,True,Asia
+2194,2025-07-10,MountainRoute Express,904745462,41.5913,4.4131,Delivered,9.0,True,Europe
+2195,2025-05-23,PeakPath Shipping,354194771,41.7409,-38.0161,Delivered,4.0,False,Europe
+2196,2025-07-04,SnowRunner Logistics,958872154,40.5105,101.4194,Delivered,6.0,True,Asia
+2197,2025-06-30,SummitLine Express,542697755,42.0406,116.4053,Delivered,3.0,False,Asia
+2198,2025-05-15,PeakPath Shipping,890880074,50.402,-89.0497,Processing,,,North America
+2199,2025-07-07,AlpineSpeed Delivery,940081098,48.7849,106.1637,Delivered,9.0,True,Asia
+2200,2025-07-07,PeakPath Shipping,961393416,34.2609,-84.3754,In Transit,,,North America
+2201,2025-06-22,MountainRoute Express,889262019,35.2721,81.9781,Delivered,10.0,True,Asia
+2202,2025-06-30,SummitLine Express,386480450,40.7572,-101.0377,Delivered,9.0,True,North America
+2203,2025-05-23,PeakPath Shipping,852991721,50.2204,41.5946,In Transit,,,Europe
+2204,2025-05-20,PeakPath Shipping,141580226,48.8305,-112.6303,Delivered,5.0,False,North America
+2205,2025-07-03,MountainRoute Express,338836384,46.695,-8.7334,Delivered,2.0,False,Europe
+2206,2025-05-25,PeakPath Shipping,594246837,36.8282,-43.8394,Delivered,6.0,True,North America
+2207,2025-06-03,SwiftWing Logistics,981044229,38.9873,-24.1665,Delivered,9.0,True,Europe
+2208,2025-06-29,PeakPath Shipping,344378798,43.6208,84.8476,Delivered,2.0,False,Asia
+2209,2025-05-27,SnowRunner Logistics,808705238,48.8043,39.7444,Delivered,10.0,True,Europe
+2210,2025-05-25,MountainRoute Express,452468587,37.9472,44.4931,Delivered,1.0,False,Asia
+2211,2025-05-30,PeakPath Shipping,174539964,49.3206,54.8564,Delivered,8.0,True,Asia
+2212,2025-07-10,AlpineSpeed Delivery,399708182,50.7901,-43.9207,Processing,,,North America
+2213,2025-06-03,SummitLine Express,646970178,38.2517,98.6243,Delivered,7.0,True,Asia
+2214,2025-06-06,PeakPath Shipping,675757257,35.8131,-22.4639,Delivered,5.0,False,Europe
+2215,2025-06-02,SummitLine Express,129635852,39.0189,133.2435,In Transit,,,Asia
+2216,2025-05-20,AlpineSpeed Delivery,380477683,34.1377,103.7826,In Transit,,,Asia
+2217,2025-05-24,SwiftWing Logistics,385042337,49.4805,72.4899,In Transit,,,Asia
+2218,2025-05-16,AlpineSpeed Delivery,740563507,47.1876,-61.9391,In Transit,,,North America
+2219,2025-06-08,MountainRoute Express,882269302,44.8225,40.0526,In Transit,,,Europe
+2220,2025-06-29,SummitLine Express,568574364,47.047,55.7032,Delivered,2.0,False,Asia
+2221,2025-06-18,SummitLine Express,649136331,44.9878,-41.3685,Delivered,10.0,True,North America
+2222,2025-05-20,AlpineSpeed Delivery,719106699,46.4501,-98.4752,Delivered,7.0,True,North America
+2223,2025-05-25,MountainRoute Express,147659674,37.4135,83.2798,In Transit,,,Asia
+2224,2025-06-24,AlpineSpeed Delivery,101815992,43.0245,116.4201,In Transit,,,Asia
+2225,2025-06-13,AlpineSpeed Delivery,965984448,49.5388,124.433,Processing,,,Asia
+2226,2025-06-14,AlpineSpeed Delivery,872482077,46.6915,-33.5953,Delivered,2.0,False,Europe
+2227,2025-07-08,MountainRoute Express,891388192,46.8206,-63.1146,In Transit,,,North America
+2228,2025-06-22,SummitLine Express,491079829,50.659,130.4574,In Transit,,,Europe
+2229,2025-06-08,AlpineSpeed Delivery,813219781,35.5351,-19.016,Delivered,2.0,False,Europe
+2230,2025-07-07,PeakPath Shipping,769108025,40.266,73.492,Delivered,7.0,True,Asia
+2231,2025-06-01,SummitLine Express,233815413,49.985,-93.7217,Delivered,1.0,False,North America
+2232,2025-06-25,SnowRunner Logistics,422468580,49.032,24.5273,Processing,,,Europe
+2233,2025-06-12,MountainRoute Express,816070802,45.0101,43.8404,Delivered,5.0,False,Europe
+2234,2025-06-07,SummitLine Express,532074125,40.941,-85.5182,Processing,,,North America
+2235,2025-06-24,AlpineSpeed Delivery,695295870,50.9308,-91.6926,Delivered,9.0,True,North America
+2236,2025-05-21,MountainRoute Express,551450815,40.607,-25.166,Processing,,,Europe
+2237,2025-06-22,SummitLine Express,507104143,50.0816,-12.6079,In Transit,,,Europe
+2238,2025-06-22,MountainRoute Express,286860433,49.052,48.9346,In Transit,,,Asia
+2239,2025-06-19,SnowRunner Logistics,423142470,40.938,126.3471,Delivered,6.0,True,Asia
+2240,2025-06-06,MountainRoute Express,995205588,41.5375,126.0949,In Transit,,,Asia
+2241,2025-05-14,SwiftWing Logistics,408071259,50.6758,-26.1256,Processing,,,Europe
+2242,2025-05-26,SummitLine Express,943702118,40.0975,-18.0856,Delivered,2.0,False,Europe
+2243,2025-06-17,PeakPath Shipping,802984810,35.5584,-66.6404,In Transit,,,North America
+2244,2025-06-02,SwiftWing Logistics,574364121,34.8598,-34.9541,Processing,,,Europe
+2245,2025-06-09,SnowRunner Logistics,329460134,37.4885,94.5825,Delivered,10.0,True,Asia
+2246,2025-06-13,MountainRoute Express,952266893,47.8219,-61.1873,In Transit,,,North America
+2247,2025-07-06,SnowRunner Logistics,954725078,34.0482,102.044,Delivered,3.0,False,Asia
+2248,2025-06-26,SnowRunner Logistics,807435606,38.2611,-76.4563,In Transit,,,North America
+2249,2025-05-19,SwiftWing Logistics,653462378,36.2407,-28.4988,In Transit,,,Europe
+2250,2025-06-22,SnowRunner Logistics,764926227,39.5041,-76.5217,Delivered,7.0,True,North America
+2251,2025-06-02,SnowRunner Logistics,978775497,35.932,-105.4114,Delivered,6.0,True,North America
+2252,2025-07-09,SnowRunner Logistics,352188235,44.0923,-4.0266,Delivered,10.0,True,Europe
+2253,2025-06-22,SwiftWing Logistics,341206079,46.3631,115.1842,In Transit,,,Asia
+2254,2025-06-30,AlpineSpeed Delivery,258220114,41.7867,129.6108,Delivered,8.0,True,Asia
+2255,2025-05-15,PeakPath Shipping,362897676,41.2467,-93.822,In Transit,,,North America
+2256,2025-07-11,PeakPath Shipping,756350429,35.2493,-100.9137,In Transit,,,North America
+2257,2025-07-03,SwiftWing Logistics,178198716,36.1453,40.9469,Delivered,6.0,True,Asia
+2258,2025-06-09,PeakPath Shipping,776205431,50.9087,16.4753,Delivered,10.0,True,Europe
+2259,2025-06-16,PeakPath Shipping,871318048,35.686,61.1644,In Transit,,,Asia
+2260,2025-06-24,SummitLine Express,630833445,48.921,21.8985,In Transit,,,Europe
+2261,2025-06-06,PeakPath Shipping,258453521,41.6764,-62.3632,Delivered,8.0,True,North America
+2262,2025-06-21,PeakPath Shipping,105953697,41.0718,-97.1826,Delivered,5.0,False,North America
+2263,2025-07-05,AlpineSpeed Delivery,926830795,50.2111,57.2603,Delivered,2.0,False,Asia
+2264,2025-07-05,SwiftWing Logistics,935822550,35.5849,-96.7967,In Transit,,,North America
+2265,2025-06-08,MountainRoute Express,288856883,43.4583,31.0674,Delivered,6.0,True,Europe
+2266,2025-06-30,SummitLine Express,847229579,36.0779,-29.7109,In Transit,,,Europe
+2267,2025-06-13,PeakPath Shipping,153921577,48.7576,66.1968,Processing,,,Asia
+2268,2025-06-15,SnowRunner Logistics,230307805,39.3116,-94.9603,Delivered,3.0,False,North America
+2269,2025-06-09,SummitLine Express,960514523,42.1972,99.1387,Delivered,9.0,True,Asia
+2270,2025-06-10,AlpineSpeed Delivery,670298515,35.9531,-49.2937,Delivered,7.0,True,North America
+2271,2025-07-11,SnowRunner Logistics,739362057,50.5673,91.6094,In Transit,,,Asia
+2272,2025-06-01,SummitLine Express,910943524,43.4646,36.9477,In Transit,,,Europe
+2273,2025-07-05,SummitLine Express,757830420,38.5466,-74.9114,In Transit,,,North America
+2274,2025-07-01,AlpineSpeed Delivery,642001424,49.6661,-30.3829,Delivered,3.0,False,Europe
+2275,2025-06-08,SnowRunner Logistics,688273030,45.1749,-103.8382,In Transit,,,North America
+2276,2025-06-09,SwiftWing Logistics,270894498,35.5599,16.456,Delivered,8.0,True,Europe
+2277,2025-06-26,AlpineSpeed Delivery,609677794,36.676,-40.6626,Delivered,10.0,True,Europe
+2278,2025-06-09,SnowRunner Logistics,907214179,35.4443,-108.2691,Delivered,10.0,True,North America
+2279,2025-05-28,SwiftWing Logistics,784683755,45.4575,-50.9812,In Transit,,,North America
+2280,2025-05-30,PeakPath Shipping,935021998,44.3203,-13.898,Delivered,9.0,True,Europe
+2281,2025-06-13,SwiftWing Logistics,772966010,39.8679,-93.0578,In Transit,,,North America
+2282,2025-05-28,SnowRunner Logistics,572309605,42.2728,52.1216,Delivered,7.0,True,Asia
+2283,2025-05-18,SnowRunner Logistics,406798268,34.9313,-68.6456,Processing,,,North America
+2284,2025-05-27,MountainRoute Express,460613550,46.9907,-46.4543,Delivered,8.0,True,North America
+2285,2025-06-01,SummitLine Express,679984033,41.3211,-88.2825,Delivered,4.0,False,North America
+2286,2025-05-18,SnowRunner Logistics,261953189,43.4983,52.3606,Delivered,7.0,True,Asia
+2287,2025-05-27,SummitLine Express,845122940,34.7191,-117.1085,Processing,,,North America
+2288,2025-05-23,AlpineSpeed Delivery,329730155,43.7879,27.6573,In Transit,,,Europe
+2289,2025-05-17,PeakPath Shipping,537656494,38.9218,-16.2866,Processing,,,Europe
+2290,2025-06-02,MountainRoute Express,600282414,47.6225,39.3307,In Transit,,,Europe
+2291,2025-06-07,AlpineSpeed Delivery,322086735,35.4982,98.4104,Delivered,10.0,True,Asia
+2292,2025-07-02,PeakPath Shipping,518197538,42.9074,-18.7049,Delivered,6.0,True,Europe
+2293,2025-07-06,MountainRoute Express,727150493,39.6622,-78.1174,Delivered,2.0,False,North America
+2294,2025-07-08,SnowRunner Logistics,120972273,42.6692,114.4458,Delivered,3.0,False,Asia
+2295,2025-07-03,MountainRoute Express,922050912,35.7477,-55.1923,Delivered,3.0,False,North America
+2296,2025-06-16,SummitLine Express,612153089,35.281,126.2872,In Transit,,,Asia
+2297,2025-05-14,PeakPath Shipping,477698143,46.8256,76.3279,Delivered,10.0,True,Asia
+2298,2025-05-31,SummitLine Express,518744974,44.8001,41.0002,In Transit,,,Europe
+2299,2025-07-03,SummitLine Express,997356828,39.3744,-7.2219,Delivered,5.0,False,Europe
+2300,2025-06-07,AlpineSpeed Delivery,902638839,44.0541,-30.1431,Delivered,8.0,True,Europe
+2301,2025-06-26,PeakPath Shipping,958851904,34.6393,-25.7595,Delivered,2.0,False,Europe
+2302,2025-06-18,SnowRunner Logistics,336801619,44.0994,-21.6501,Delivered,1.0,False,Europe
+2303,2025-06-11,PeakPath Shipping,393062061,49.4538,27.2024,Delivered,10.0,True,Europe
+2304,2025-06-08,PeakPath Shipping,131165166,42.5232,127.9655,Delivered,6.0,True,Asia
+2305,2025-06-05,SummitLine Express,818197581,35.4336,46.6392,Delivered,8.0,True,Asia
+2306,2025-06-23,PeakPath Shipping,534131719,42.9092,37.1592,Delivered,5.0,False,Asia
+2307,2025-06-25,PeakPath Shipping,601856351,40.9491,-33.6862,Delivered,6.0,True,Europe
+2308,2025-07-07,SwiftWing Logistics,768143326,39.6047,23.6284,Delivered,5.0,False,Europe
+2309,2025-06-14,SummitLine Express,523076025,48.4766,129.711,In Transit,,,Asia
+2310,2025-06-17,MountainRoute Express,811890569,39.6672,30.095,Delivered,6.0,True,Asia
+2311,2025-05-15,AlpineSpeed Delivery,790147183,50.4508,60.3033,Delivered,10.0,True,Europe
+2312,2025-06-08,SummitLine Express,595744935,49.946,-41.1991,Delivered,6.0,True,North America
+2313,2025-05-24,MountainRoute Express,379340713,45.392,94.3583,In Transit,,,Asia
+2314,2025-06-05,SummitLine Express,327268503,49.5116,-97.6088,In Transit,,,North America
+2315,2025-06-09,SnowRunner Logistics,462388455,40.1511,-27.362,Delivered,4.0,False,Europe
+2316,2025-06-27,AlpineSpeed Delivery,507083673,50.1104,4.9167,Delivered,3.0,False,Europe
+2317,2025-05-30,MountainRoute Express,993271900,35.3118,98.3958,Delivered,9.0,True,Asia
+2318,2025-06-07,SummitLine Express,996478772,49.0226,-112.1479,Delivered,10.0,True,North America
+2319,2025-05-18,MountainRoute Express,120812641,44.1532,-81.74,Delivered,10.0,True,North America
+2320,2025-06-27,MountainRoute Express,155926488,46.2601,-110.5963,Delivered,4.0,False,North America
+2321,2025-07-11,PeakPath Shipping,475767056,44.3801,74.3741,In Transit,,,Asia
+2322,2025-05-27,MountainRoute Express,173678414,43.0782,-41.2289,In Transit,,,North America
+2323,2025-06-29,PeakPath Shipping,799816232,49.3676,-71.3618,In Transit,,,North America
+2324,2025-05-16,SnowRunner Logistics,133318206,50.7355,-1.5015,Delivered,7.0,True,Europe
+2325,2025-07-09,SnowRunner Logistics,314061901,42.9668,130.196,In Transit,,,Asia
+2326,2025-07-02,SnowRunner Logistics,767154083,36.3528,-56.7492,In Transit,,,North America
+2327,2025-05-22,AlpineSpeed Delivery,235528741,43.4272,-95.2241,In Transit,,,North America
+2328,2025-06-10,SwiftWing Logistics,222824732,38.8461,77.1735,Delivered,9.0,True,Asia
+2329,2025-06-16,MountainRoute Express,334037646,48.1278,-98.0628,Processing,,,North America
+2330,2025-06-10,PeakPath Shipping,375139575,49.0387,120.8532,Delivered,7.0,True,Asia
+2331,2025-06-28,SnowRunner Logistics,280162221,40.3573,-21.2106,Delivered,4.0,False,Europe
+2332,2025-06-18,SwiftWing Logistics,903079055,39.4176,-96.1393,In Transit,,,North America
+2333,2025-06-25,AlpineSpeed Delivery,935147672,47.4535,-86.0865,Delivered,8.0,True,North America
+2334,2025-07-01,SummitLine Express,433975497,48.1289,76.0575,Delivered,10.0,True,Asia
+2335,2025-05-20,SwiftWing Logistics,127571992,49.3996,-117.04,Delivered,3.0,False,North America
+2336,2025-07-07,SnowRunner Logistics,718257024,49.9838,36.9177,Delivered,5.0,False,Europe
+2337,2025-06-22,MountainRoute Express,502982778,39.1196,-109.5374,Delivered,10.0,True,North America
+2338,2025-06-06,PeakPath Shipping,867741192,35.0677,96.3755,Delivered,9.0,True,Asia
+2339,2025-05-25,SwiftWing Logistics,735760237,44.7432,28.0874,In Transit,,,Europe
+2340,2025-06-23,AlpineSpeed Delivery,773496394,41.2971,38.4653,Delivered,7.0,True,Asia
+2341,2025-05-28,MountainRoute Express,848605284,45.2943,-99.6548,Processing,,,North America
+2342,2025-06-28,SwiftWing Logistics,834717549,50.2079,20.0054,In Transit,,,Europe
+2343,2025-06-18,SnowRunner Logistics,229981882,43.4206,-20.0916,Delivered,7.0,True,Europe
+2344,2025-06-29,AlpineSpeed Delivery,707665448,38.3121,-117.7608,In Transit,,,North America
+2345,2025-06-29,AlpineSpeed Delivery,472807202,38.0991,49.5042,Delivered,10.0,True,Asia
+2346,2025-06-14,SummitLine Express,810303128,46.8635,-87.1801,Delivered,6.0,True,North America
+2347,2025-06-04,SummitLine Express,643271261,36.9765,81.3562,Delivered,8.0,True,Asia
+2348,2025-06-21,SummitLine Express,113585139,37.0987,-86.8035,In Transit,,,North America
+2349,2025-07-03,PeakPath Shipping,982971099,34.6287,-69.3848,In Transit,,,North America
+2350,2025-06-11,SwiftWing Logistics,565492204,39.3651,-41.0702,Delivered,9.0,True,Europe
+2351,2025-07-09,PeakPath Shipping,782454310,38.3063,74.6089,Delivered,6.0,True,Asia
+2352,2025-07-05,SwiftWing Logistics,593641365,48.7186,-35.3677,Delivered,6.0,True,Europe
+2353,2025-06-24,PeakPath Shipping,567600762,49.1213,72.0033,In Transit,,,Asia
+2354,2025-05-24,PeakPath Shipping,660221300,39.7636,-73.2407,In Transit,,,North America
+2355,2025-07-09,AlpineSpeed Delivery,389998761,49.7133,13.531,In Transit,,,Europe
+2356,2025-06-19,SummitLine Express,677858758,41.2165,-9.6115,Processing,,,Europe
+2357,2025-06-28,MountainRoute Express,599154414,43.2731,-38.1638,Delivered,5.0,False,Europe
+2358,2025-06-08,AlpineSpeed Delivery,884933416,41.5806,65.31,Delivered,8.0,True,Asia
+2359,2025-06-17,AlpineSpeed Delivery,446071904,41.6012,67.6986,Processing,,,Asia
+2360,2025-07-03,SnowRunner Logistics,991990632,50.9686,-50.3411,Processing,,,North America
+2361,2025-07-08,SwiftWing Logistics,399496923,35.2757,44.3908,Delivered,3.0,False,Asia
+2362,2025-07-05,SwiftWing Logistics,361846370,36.4273,36.5765,In Transit,,,Asia
+2363,2025-06-27,SwiftWing Logistics,711871397,36.1459,-60.4052,In Transit,,,North America
+2364,2025-06-19,AlpineSpeed Delivery,506936666,40.5085,26.0509,In Transit,,,Asia
+2365,2025-06-02,SummitLine Express,630757561,41.6487,-25.1783,Delivered,2.0,False,Europe
+2366,2025-07-03,SnowRunner Logistics,295249057,36.3408,-26.2261,Delivered,5.0,False,Europe
+2367,2025-06-11,MountainRoute Express,480990401,50.3288,-115.2366,Delivered,9.0,True,North America
+2368,2025-06-30,PeakPath Shipping,465436049,49.5302,-91.2644,In Transit,,,North America
+2369,2025-05-30,SummitLine Express,740116562,41.5866,138.0513,Delivered,8.0,True,Asia
+2370,2025-06-24,MountainRoute Express,396641124,36.0848,100.5877,Delivered,8.0,True,Asia
+2371,2025-06-15,SwiftWing Logistics,654724287,47.7787,130.5335,Processing,,,Asia
+2372,2025-07-08,SummitLine Express,191926217,39.9062,-105.0509,Delivered,5.0,False,North America
+2373,2025-05-28,MountainRoute Express,536398872,46.1008,120.0317,In Transit,,,Asia
+2374,2025-06-11,AlpineSpeed Delivery,914073098,42.6488,-90.3244,Delivered,3.0,False,North America
+2375,2025-05-28,MountainRoute Express,611201082,47.4363,-115.1399,Delivered,6.0,True,North America
+2376,2025-06-21,PeakPath Shipping,627015393,47.6622,21.9798,In Transit,,,Europe
+2377,2025-06-09,SwiftWing Logistics,118514813,35.1177,-18.0802,In Transit,,,Europe
+2378,2025-05-19,PeakPath Shipping,337937327,42.9368,78.7519,In Transit,,,Asia
+2379,2025-06-06,SwiftWing Logistics,361246928,36.1306,-39.2558,Delivered,8.0,True,Europe
+2380,2025-06-01,SummitLine Express,724440558,42.7951,-88.5047,In Transit,,,North America
+2381,2025-06-04,SnowRunner Logistics,694287057,44.8765,-74.5076,Processing,,,North America
+2382,2025-06-14,PeakPath Shipping,556881239,42.5487,104.6032,In Transit,,,Asia
+2383,2025-07-11,SnowRunner Logistics,690975123,36.6013,-79.0245,Delivered,4.0,False,North America
+2384,2025-06-02,AlpineSpeed Delivery,854684750,50.1072,13.4323,Delivered,2.0,False,Europe
+2385,2025-06-09,AlpineSpeed Delivery,429233929,37.3371,127.6078,Delivered,5.0,False,Asia
+2386,2025-05-28,SnowRunner Logistics,229553265,43.0691,9.1716,Delivered,10.0,True,Europe
+2387,2025-06-25,MountainRoute Express,438817025,36.9104,40.9891,Processing,,,Asia
+2388,2025-05-21,AlpineSpeed Delivery,675379544,48.323,25.1043,In Transit,,,Europe
+2389,2025-07-09,SwiftWing Logistics,841057474,35.3808,125.5707,In Transit,,,Asia
+2390,2025-05-24,AlpineSpeed Delivery,332341238,45.0692,78.1763,Delivered,1.0,False,Asia
+2391,2025-06-26,PeakPath Shipping,396889215,49.1129,20.3957,In Transit,,,Europe
+2392,2025-06-25,AlpineSpeed Delivery,916267011,42.2101,88.0236,In Transit,,,Asia
+2393,2025-06-13,AlpineSpeed Delivery,403867539,41.7103,57.7281,Delivered,7.0,True,Asia
+2394,2025-07-10,PeakPath Shipping,994027897,41.8955,-33.2097,Delivered,6.0,True,Europe
+2395,2025-05-25,SummitLine Express,344258191,50.7964,-31.8583,Delivered,6.0,True,Europe
+2396,2025-06-04,SnowRunner Logistics,424557359,43.5481,-38.7108,Delivered,5.0,False,Europe
+2397,2025-05-14,PeakPath Shipping,673523188,38.2146,-96.7322,Delivered,7.0,True,North America
+2398,2025-05-21,SnowRunner Logistics,148872110,41.1083,129.261,Processing,,,Asia
+2399,2025-07-10,AlpineSpeed Delivery,694164665,49.8738,66.2145,Delivered,3.0,False,Asia
+2400,2025-05-31,PeakPath Shipping,235591568,50.9315,-0.1613,In Transit,,,Europe
+2401,2025-06-20,PeakPath Shipping,908304440,34.394,124.7058,Delivered,4.0,False,Asia
+2402,2025-06-11,MountainRoute Express,113169872,43.9168,-109.3002,Delivered,10.0,True,North America
+2403,2025-06-16,SummitLine Express,604011128,45.4329,-47.4197,Delivered,2.0,False,North America
+2404,2025-06-11,PeakPath Shipping,465830215,36.2769,-52.9726,Delivered,7.0,True,North America
+2405,2025-05-24,AlpineSpeed Delivery,155165334,34.7691,-108.6478,Delivered,6.0,True,North America
+2406,2025-05-28,SnowRunner Logistics,612957813,38.9062,-21.163,Delivered,9.0,True,Europe
+2407,2025-05-20,AlpineSpeed Delivery,170161976,48.0303,40.6661,In Transit,,,Europe
+2408,2025-06-06,MountainRoute Express,179545125,50.5764,-19.1911,In Transit,,,Europe
+2409,2025-06-17,AlpineSpeed Delivery,837071174,43.4831,-26.5767,Delivered,10.0,True,Europe
+2410,2025-05-17,SnowRunner Logistics,260199682,40.8236,-111.4935,Delivered,6.0,True,North America
+2411,2025-06-30,PeakPath Shipping,426240903,42.8287,-83.1265,In Transit,,,North America
+2412,2025-05-19,MountainRoute Express,366493008,39.5754,38.0108,Delivered,10.0,True,Asia
+2413,2025-05-20,SummitLine Express,920814900,48.3242,32.9621,Delivered,9.0,True,Europe
+2414,2025-06-07,SnowRunner Logistics,740086326,42.3274,24.9232,Delivered,1.0,False,Europe
+2415,2025-06-29,AlpineSpeed Delivery,342329714,39.6311,-93.3932,Delivered,5.0,False,North America
+2416,2025-06-28,SummitLine Express,508427798,48.8257,42.237,Delivered,5.0,False,Europe
+2417,2025-06-09,SummitLine Express,575368059,47.3094,80.5783,Delivered,1.0,False,Asia
+2418,2025-05-31,SnowRunner Logistics,731924051,42.1676,14.8246,In Transit,,,Europe
+2419,2025-07-11,PeakPath Shipping,427899537,36.5122,55.6697,Delivered,2.0,False,Asia
+2420,2025-06-16,MountainRoute Express,164671796,34.3219,-40.1263,Delivered,4.0,False,Europe
+2421,2025-06-18,PeakPath Shipping,894664845,42.5309,37.5958,Delivered,1.0,False,Asia
+2422,2025-05-19,SummitLine Express,918982730,36.3474,-67.8838,Delivered,8.0,True,North America
+2423,2025-05-26,SnowRunner Logistics,326586581,40.406,127.6949,Delivered,9.0,True,Asia
+2424,2025-05-29,AlpineSpeed Delivery,187174381,43.2866,54.4017,In Transit,,,Asia
+2425,2025-05-23,SummitLine Express,286630878,44.9363,58.9548,In Transit,,,Asia
+2426,2025-06-15,MountainRoute Express,268075622,50.2747,-49.1793,Delivered,5.0,False,North America
+2427,2025-05-14,AlpineSpeed Delivery,583724666,45.9833,58.1526,Delivered,8.0,True,Asia
+2428,2025-06-23,AlpineSpeed Delivery,604564682,43.5283,121.9007,In Transit,,,Asia
+2429,2025-05-31,AlpineSpeed Delivery,348545713,36.0719,54.5984,Delivered,7.0,True,Asia
+2430,2025-05-30,AlpineSpeed Delivery,403566540,50.2284,88.0047,Delivered,5.0,False,Europe
+2431,2025-06-24,SummitLine Express,587512424,35.3435,119.1665,In Transit,,,Asia
+2432,2025-05-18,SummitLine Express,350636897,42.1443,-69.2603,Delivered,9.0,True,North America
+2433,2025-07-07,SummitLine Express,945923902,38.6176,-93.4919,In Transit,,,North America
+2434,2025-06-29,MountainRoute Express,733281747,38.1218,52.8267,Delivered,4.0,False,Asia
+2435,2025-06-22,SwiftWing Logistics,312406764,35.7034,-35.7934,Delivered,3.0,False,Europe
+2436,2025-06-08,SwiftWing Logistics,684719405,50.3968,133.2347,Delivered,8.0,True,Europe
+2437,2025-05-27,PeakPath Shipping,259976144,45.0592,75.2928,Delivered,5.0,False,Asia
+2438,2025-07-06,SummitLine Express,987588450,35.0058,78.6372,In Transit,,,Asia
+2439,2025-05-22,MountainRoute Express,164035859,43.0976,66.7337,Processing,,,Asia
+2440,2025-05-23,MountainRoute Express,430295664,41.104,96.6149,Processing,,,Asia
+2441,2025-06-18,SwiftWing Logistics,985021282,50.9519,-18.3844,Delivered,5.0,False,Europe
+2442,2025-06-16,SwiftWing Logistics,409893263,34.1575,26.238,Delivered,6.0,True,Europe
+2443,2025-06-08,AlpineSpeed Delivery,603260608,41.7239,45.3825,Delivered,3.0,False,Asia
+2444,2025-06-23,SnowRunner Logistics,851333320,41.9564,-71.6762,Delivered,3.0,False,North America
+2445,2025-06-06,SummitLine Express,392322121,41.8015,-54.8539,Delivered,6.0,True,North America
+2446,2025-06-12,AlpineSpeed Delivery,630208579,43.6523,75.6508,Delivered,7.0,True,Asia
+2447,2025-06-08,PeakPath Shipping,742136977,42.7598,-99.3614,In Transit,,,North America
+2448,2025-05-16,MountainRoute Express,563887247,50.6886,2.6155,Processing,,,Europe
+2449,2025-06-26,SwiftWing Logistics,748232591,38.4333,-60.529,In Transit,,,North America
+2450,2025-05-28,AlpineSpeed Delivery,198061499,39.1331,66.6723,Delivered,6.0,True,Asia
+2451,2025-05-27,SummitLine Express,824022357,38.0171,52.2922,Delivered,3.0,False,Asia
+2452,2025-07-02,PeakPath Shipping,717615339,45.6633,118.9307,In Transit,,,Asia
+2453,2025-06-17,AlpineSpeed Delivery,122275263,45.7349,44.7037,Processing,,,Europe
+2454,2025-07-11,AlpineSpeed Delivery,821856853,44.4486,-64.8074,Delivered,3.0,False,North America
+2455,2025-07-01,PeakPath Shipping,718740490,46.7115,36.0979,Delivered,9.0,True,Europe
+2456,2025-05-16,PeakPath Shipping,912037475,46.875,87.3207,In Transit,,,Asia
+2457,2025-05-24,MountainRoute Express,657233178,45.5658,33.5076,In Transit,,,Europe
+2458,2025-06-21,SnowRunner Logistics,398668350,41.5947,61.683,Delivered,10.0,True,Asia
+2459,2025-05-24,SwiftWing Logistics,728492896,35.0499,20.9365,Delivered,10.0,True,Europe
+2460,2025-06-08,SnowRunner Logistics,974288855,36.5475,-36.3613,Delivered,2.0,False,Europe
+2461,2025-06-12,SummitLine Express,197970787,37.4918,30.2015,Delivered,9.0,True,Asia
+2462,2025-06-10,PeakPath Shipping,538460431,47.7478,-3.6542,Delivered,8.0,True,Europe
+2463,2025-06-02,SnowRunner Logistics,819550381,34.9815,-1.3193,In Transit,,,Africa
+2464,2025-05-20,SummitLine Express,272684373,34.3701,-55.5867,Delivered,4.0,False,North America
+2465,2025-06-02,SnowRunner Logistics,844826434,35.2415,-11.415,In Transit,,,Europe
+2466,2025-06-12,SnowRunner Logistics,811443654,50.9001,121.9261,Delivered,8.0,True,Asia
+2467,2025-07-08,SwiftWing Logistics,973559879,38.8805,-75.0249,Delivered,7.0,True,North America
+2468,2025-06-27,AlpineSpeed Delivery,139403247,50.8786,-22.1728,In Transit,,,Europe
+2469,2025-06-09,PeakPath Shipping,437710224,40.386,56.1926,In Transit,,,Asia
+2470,2025-05-28,SnowRunner Logistics,224469868,36.2608,102.5348,Delivered,9.0,True,Asia
+2471,2025-07-10,PeakPath Shipping,533979662,42.9903,67.971,Delivered,1.0,False,Asia
+2472,2025-07-04,SwiftWing Logistics,985758835,50.6343,-1.156,In Transit,,,Europe
+2473,2025-07-11,PeakPath Shipping,806157458,43.0429,92.8971,Delivered,6.0,True,Asia
+2474,2025-07-04,MountainRoute Express,596043327,38.686,122.6641,In Transit,,,Asia
+2475,2025-06-07,SwiftWing Logistics,301415220,34.5477,50.3116,In Transit,,,Asia
+2476,2025-06-13,SwiftWing Logistics,768548027,38.0913,-104.4371,Delivered,8.0,True,North America
+2477,2025-06-27,SnowRunner Logistics,771527524,45.4244,105.6474,Delivered,1.0,False,Asia
+2478,2025-06-09,PeakPath Shipping,155417727,41.4624,18.8773,In Transit,,,Europe
+2479,2025-05-26,SwiftWing Logistics,689720101,36.3823,137.2992,Delivered,10.0,True,Asia
+2480,2025-05-21,AlpineSpeed Delivery,409268943,43.8171,79.6325,In Transit,,,Asia
+2481,2025-06-08,MountainRoute Express,849740261,39.13,-84.609,In Transit,,,North America
+2482,2025-06-11,MountainRoute Express,130998324,41.0305,-50.1848,Delivered,10.0,True,North America
+2483,2025-07-10,SummitLine Express,753770973,49.4968,41.3842,Delivered,8.0,True,Europe
+2484,2025-06-30,SwiftWing Logistics,862123506,50.5289,123.7541,In Transit,,,Asia
+2485,2025-05-23,SnowRunner Logistics,691458887,39.4185,-13.3393,Delivered,7.0,True,Europe
+2486,2025-05-14,MountainRoute Express,538076670,46.8251,1.5884,In Transit,,,Europe
+2487,2025-05-19,AlpineSpeed Delivery,221827951,48.5782,-84.3242,Delivered,1.0,False,North America
+2488,2025-06-10,SnowRunner Logistics,226128312,41.0155,-13.2914,Delivered,7.0,True,Europe
+2489,2025-06-21,MountainRoute Express,265325235,38.3349,-35.8014,Delivered,8.0,True,Europe
+2490,2025-06-12,AlpineSpeed Delivery,869446962,35.5719,67.1166,Delivered,5.0,False,Asia
+2491,2025-05-31,PeakPath Shipping,857429971,45.4524,35.3627,In Transit,,,Europe
+2492,2025-05-30,MountainRoute Express,996278008,47.6791,31.3593,In Transit,,,Europe
+2493,2025-06-11,MountainRoute Express,607042130,42.1497,104.9327,Delivered,1.0,False,Asia
+2494,2025-05-28,MountainRoute Express,691916368,49.9317,129.1022,Delivered,8.0,True,Europe
+2495,2025-05-22,MountainRoute Express,304666325,45.8256,61.6836,Delivered,4.0,False,Asia
+2496,2025-07-07,SnowRunner Logistics,645719501,39.4675,-48.1215,Delivered,6.0,True,North America
+2497,2025-06-27,AlpineSpeed Delivery,246574716,38.4465,11.8451,Delivered,2.0,False,Europe
+2498,2025-07-03,SummitLine Express,396618390,41.9813,97.1698,Processing,,,Asia
+2499,2025-06-28,AlpineSpeed Delivery,545541033,39.3197,-110.0683,In Transit,,,North America
+2500,2025-06-03,SummitLine Express,945805127,36.4807,-53.938,Processing,,,North America
+2501,2025-06-12,SnowRunner Logistics,981058292,46.2402,-44.9548,Delivered,4.0,False,North America
+2502,2025-05-14,PeakPath Shipping,879591310,43.6864,-57.8645,Delivered,6.0,True,North America
+2503,2025-05-31,AlpineSpeed Delivery,730219579,46.9771,5.5301,In Transit,,,Europe
+2504,2025-06-17,SummitLine Express,808605988,42.3401,-78.091,In Transit,,,North America
+2505,2025-06-11,MountainRoute Express,259553112,36.3793,20.6486,Delivered,9.0,True,Europe
+2506,2025-06-09,SummitLine Express,620057604,50.273,14.7495,In Transit,,,Europe
+2507,2025-06-03,SwiftWing Logistics,692616814,50.0682,52.4043,In Transit,,,Asia
+2508,2025-06-28,PeakPath Shipping,505026213,36.3374,42.6131,Delivered,3.0,False,Asia
+2509,2025-06-09,SwiftWing Logistics,445505799,37.7182,-2.9815,Delivered,10.0,True,Europe
+2510,2025-07-04,PeakPath Shipping,848933239,45.2078,-117.894,Delivered,7.0,True,North America
+2511,2025-05-28,SwiftWing Logistics,511211819,34.2843,66.4923,Delivered,5.0,False,Asia
+2512,2025-05-27,SwiftWing Logistics,932734539,42.5377,60.1412,Delivered,3.0,False,Asia
+2513,2025-06-07,SwiftWing Logistics,441639230,49.6068,14.8646,Delivered,10.0,True,Europe
+2514,2025-06-26,SnowRunner Logistics,857232668,38.2911,-29.4909,In Transit,,,Europe
+2515,2025-07-06,SwiftWing Logistics,509343829,40.3419,-16.0268,Delivered,4.0,False,Europe
+2516,2025-06-05,AlpineSpeed Delivery,812630453,45.6287,99.2933,In Transit,,,Asia
+2517,2025-06-29,SummitLine Express,800100071,46.913,-97.5964,Delivered,9.0,True,North America
+2518,2025-07-10,PeakPath Shipping,631855083,34.954,-119.5335,Delivered,8.0,True,North America
+2519,2025-07-09,PeakPath Shipping,235555899,44.9634,-35.5384,Processing,,,Europe
+2520,2025-06-12,SwiftWing Logistics,733701411,49.2115,117.8987,Delivered,10.0,True,Asia
+2521,2025-06-02,PeakPath Shipping,207765664,38.6086,119.2056,In Transit,,,Asia
+2522,2025-07-04,AlpineSpeed Delivery,572775194,49.2883,25.0761,Delivered,6.0,True,Europe
+2523,2025-05-19,SwiftWing Logistics,590622789,50.345,31.2164,In Transit,,,Europe
+2524,2025-05-14,SummitLine Express,254785699,47.9553,120.4364,Delivered,10.0,True,Asia
+2525,2025-06-07,MountainRoute Express,803066091,43.6338,99.7045,In Transit,,,Asia
+2526,2025-07-10,SnowRunner Logistics,180346223,39.6394,75.214,Delivered,2.0,False,Asia
+2527,2025-06-10,SnowRunner Logistics,384566044,46.6728,-31.7307,Delivered,4.0,False,Europe
+2528,2025-06-02,SwiftWing Logistics,843785903,39.7901,78.7105,Processing,,,Asia
+2529,2025-06-06,PeakPath Shipping,186237917,50.4716,-36.8157,In Transit,,,North America
+2530,2025-07-03,PeakPath Shipping,824085842,42.3403,-29.1333,Processing,,,Europe
+2531,2025-07-03,PeakPath Shipping,508031980,37.1575,30.9134,Delivered,10.0,True,Asia
+2532,2025-07-09,AlpineSpeed Delivery,773020489,47.5669,64.1213,Delivered,3.0,False,Asia
+2533,2025-06-25,PeakPath Shipping,915401487,46.0985,43.4481,In Transit,,,Europe
+2534,2025-06-11,AlpineSpeed Delivery,680911523,40.1319,-98.1132,Processing,,,North America
+2535,2025-05-16,PeakPath Shipping,173466219,40.1186,-51.591,Delivered,3.0,False,North America
+2536,2025-05-27,PeakPath Shipping,834868441,41.6303,22.7871,Delivered,1.0,False,Europe
+2537,2025-07-07,SwiftWing Logistics,344261532,40.0165,-97.7102,Delivered,6.0,True,North America
+2538,2025-06-27,PeakPath Shipping,565973314,34.2098,-13.9956,In Transit,,,Europe
+2539,2025-07-10,SummitLine Express,916440738,49.3193,114.2592,Processing,,,Asia
+2540,2025-06-20,SnowRunner Logistics,207918827,42.8588,56.8675,Delivered,5.0,False,Asia
+2541,2025-06-09,AlpineSpeed Delivery,845178074,38.5629,-83.911,Delivered,5.0,False,North America
+2542,2025-05-31,PeakPath Shipping,131081879,39.0958,82.276,Delivered,4.0,False,Asia
+2543,2025-05-16,SummitLine Express,954852540,44.6256,32.9835,Delivered,2.0,False,Europe
+2544,2025-05-17,MountainRoute Express,484897084,39.1792,125.6429,Delivered,10.0,True,Asia
+2545,2025-06-05,PeakPath Shipping,256304376,47.6693,-35.9896,Delivered,10.0,True,Europe
+2546,2025-05-28,MountainRoute Express,542437192,39.1074,35.4381,In Transit,,,Asia
+2547,2025-06-16,PeakPath Shipping,950961305,39.3411,129.754,Processing,,,Asia
+2548,2025-05-24,AlpineSpeed Delivery,287979290,46.4929,43.1875,Processing,,,Europe
+2549,2025-05-18,MountainRoute Express,510753814,39.5401,-48.8417,In Transit,,,North America
+2550,2025-06-19,AlpineSpeed Delivery,358589021,35.9361,25.165,Delivered,9.0,True,Europe
+2551,2025-06-12,MountainRoute Express,726160204,45.5891,21.5759,Processing,,,Europe
+2552,2025-05-22,PeakPath Shipping,595155950,50.0306,-67.2818,In Transit,,,North America
+2553,2025-06-20,SummitLine Express,593460064,35.1757,99.2726,In Transit,,,Asia
+2554,2025-05-29,SummitLine Express,110090412,42.4882,43.3007,Delivered,3.0,False,Asia
+2555,2025-07-06,SummitLine Express,599561877,41.1932,-23.6054,Delivered,10.0,True,Europe
+2556,2025-07-06,PeakPath Shipping,827579147,43.8981,17.4699,Processing,,,Europe
+2557,2025-06-15,SummitLine Express,179308612,41.1111,-112.4043,Processing,,,North America
+2558,2025-06-09,SummitLine Express,471048258,49.2235,18.1325,In Transit,,,Europe
+2559,2025-07-11,SwiftWing Logistics,421214426,35.8593,-57.2117,In Transit,,,North America
+2560,2025-06-20,MountainRoute Express,555598254,44.999,-110.4386,Processing,,,North America
+2561,2025-06-23,SummitLine Express,590523712,44.9946,130.3377,Delivered,7.0,True,Asia
+2562,2025-07-02,SwiftWing Logistics,313907621,34.1793,-54.4693,Delivered,9.0,True,North America
+2563,2025-07-11,SnowRunner Logistics,618840705,43.8688,28.1364,Delivered,7.0,True,Europe
+2564,2025-05-20,PeakPath Shipping,509486794,47.1298,31.622,Delivered,6.0,True,Europe
+2565,2025-06-16,SwiftWing Logistics,717199615,42.2071,-44.8922,Processing,,,North America
+2566,2025-05-31,SwiftWing Logistics,850845198,35.9732,123.5165,Delivered,5.0,False,Asia
+2567,2025-05-31,AlpineSpeed Delivery,991246046,41.7407,-68.0076,Delivered,8.0,True,North America
+2568,2025-06-21,SwiftWing Logistics,394721069,41.4488,59.8552,Delivered,5.0,False,Asia
+2569,2025-05-14,SwiftWing Logistics,836371599,47.7732,-91.9627,In Transit,,,North America
+2570,2025-06-28,SummitLine Express,152660856,35.8592,86.8131,Processing,,,Asia
+2571,2025-07-06,SummitLine Express,900122509,38.1465,-76.4677,Delivered,9.0,True,North America
+2572,2025-06-12,PeakPath Shipping,407298630,50.2939,-61.4857,Delivered,3.0,False,North America
+2573,2025-06-28,MountainRoute Express,347087743,44.8881,-9.2129,Delivered,10.0,True,Europe
+2574,2025-06-18,MountainRoute Express,478301747,41.6428,-9.8867,Delivered,4.0,False,Europe
+2575,2025-05-26,MountainRoute Express,304152670,38.7319,61.6813,In Transit,,,Asia
+2576,2025-06-19,SnowRunner Logistics,827744047,35.7298,105.5866,Delivered,6.0,True,Asia
+2577,2025-06-27,MountainRoute Express,924065468,41.7784,-53.5258,In Transit,,,North America
+2578,2025-06-21,SnowRunner Logistics,246865585,50.4206,-40.2015,Delivered,7.0,True,North America
+2579,2025-06-20,SnowRunner Logistics,773728014,35.9419,-30.1319,Delivered,3.0,False,Europe
+2580,2025-06-21,SummitLine Express,431714152,46.0018,-44.3669,In Transit,,,North America
+2581,2025-06-29,SwiftWing Logistics,135824891,45.4259,-40.2585,Delivered,2.0,False,North America
+2582,2025-06-17,MountainRoute Express,886365312,40.3462,-85.1054,Delivered,10.0,True,North America
+2583,2025-05-21,MountainRoute Express,416872439,43.7717,-11.5869,Delivered,9.0,True,Europe
+2584,2025-06-02,SummitLine Express,546143048,49.6257,120.9114,Delivered,3.0,False,Asia
+2585,2025-05-24,PeakPath Shipping,241905500,38.9102,-73.1673,In Transit,,,North America
+2586,2025-06-29,SnowRunner Logistics,492836532,34.9114,-28.2908,Delivered,3.0,False,Europe
+2587,2025-06-14,MountainRoute Express,392624015,47.8587,129.5594,Delivered,8.0,True,Asia
+2588,2025-07-01,PeakPath Shipping,375919523,45.6398,-13.5205,In Transit,,,Europe
+2589,2025-07-06,PeakPath Shipping,617380166,36.8433,25.5688,In Transit,,,Europe
+2590,2025-07-10,MountainRoute Express,416905717,38.9655,-50.2634,Delivered,3.0,False,North America
+2591,2025-06-27,PeakPath Shipping,463692735,43.6161,79.6349,Delivered,9.0,True,Asia
+2592,2025-06-30,SwiftWing Logistics,602866993,43.7361,-52.081,Delivered,6.0,True,North America
+2593,2025-07-09,SnowRunner Logistics,251136695,47.9844,-111.1397,In Transit,,,North America
+2594,2025-06-27,SnowRunner Logistics,342251928,37.7152,-11.0346,In Transit,,,Europe
+2595,2025-07-03,SummitLine Express,877621770,46.7729,-44.298,Processing,,,North America
+2596,2025-06-22,PeakPath Shipping,526717340,38.4679,103.0341,Delivered,2.0,False,Asia
+2597,2025-07-10,MountainRoute Express,963919401,37.5679,70.517,In Transit,,,Asia
+2598,2025-06-15,SummitLine Express,196961971,44.3745,-10.2484,In Transit,,,Europe
+2599,2025-06-29,MountainRoute Express,114945047,47.83,88.22,Delivered,9.0,True,Asia
+2600,2025-05-29,AlpineSpeed Delivery,232702394,44.1466,-78.0535,Processing,,,North America
+2601,2025-06-09,AlpineSpeed Delivery,822443971,38.9187,-52.2235,In Transit,,,North America
+2602,2025-06-27,SummitLine Express,381493671,47.8581,-86.6113,In Transit,,,North America
+2603,2025-06-17,PeakPath Shipping,983063850,49.6191,137.0389,In Transit,,,Europe
+2604,2025-06-20,MountainRoute Express,498866784,45.9243,-87.3677,Delivered,6.0,True,North America
+2605,2025-05-20,MountainRoute Express,351064359,46.9451,54.4972,Delivered,10.0,True,Asia
+2606,2025-06-10,SummitLine Express,765233376,38.5682,-13.8873,Delivered,2.0,False,Europe
+2607,2025-07-05,PeakPath Shipping,702806585,42.7654,-49.3831,Processing,,,North America
+2608,2025-06-02,AlpineSpeed Delivery,755070775,41.7298,5.3796,Delivered,2.0,False,Europe
+2609,2025-05-27,SummitLine Express,167878777,50.5266,43.6934,In Transit,,,Europe
+2610,2025-06-20,SwiftWing Logistics,598503464,47.5265,-18.1962,Processing,,,Europe
+2611,2025-07-06,MountainRoute Express,424474225,42.4102,-37.7322,Delivered,9.0,True,Europe
+2612,2025-06-21,SnowRunner Logistics,225279834,36.2201,100.4823,In Transit,,,Asia
+2613,2025-05-22,SummitLine Express,139956218,46.9583,-110.0089,In Transit,,,North America
+2614,2025-05-31,PeakPath Shipping,628951656,34.2768,120.582,Delivered,8.0,True,Asia
+2615,2025-05-20,SwiftWing Logistics,352114611,50.8613,-10.3444,Processing,,,Europe
+2616,2025-07-05,MountainRoute Express,245668163,48.9965,-43.2131,In Transit,,,North America
+2617,2025-06-05,AlpineSpeed Delivery,498370582,35.5868,-27.9264,Delivered,3.0,False,Europe
+2618,2025-06-22,SwiftWing Logistics,897940629,40.7378,-42.2621,In Transit,,,North America
+2619,2025-06-24,MountainRoute Express,680027275,41.2969,-98.197,Delivered,4.0,False,North America
+2620,2025-06-07,PeakPath Shipping,897005281,35.325,32.9503,Delivered,8.0,True,Asia
+2621,2025-06-25,SwiftWing Logistics,545478870,34.1371,-32.3271,Delivered,7.0,True,Europe
+2622,2025-06-21,SummitLine Express,995171130,36.247,-103.5138,Delivered,2.0,False,North America
+2623,2025-06-11,SwiftWing Logistics,538211092,39.327,107.9381,Delivered,3.0,False,Asia
+2624,2025-07-08,SummitLine Express,400368694,50.88,-84.7153,Delivered,1.0,False,North America
+2625,2025-05-15,SnowRunner Logistics,497853519,45.0503,-7.1341,In Transit,,,Europe
+2626,2025-05-26,SummitLine Express,577488537,46.7206,118.0924,In Transit,,,Asia
+2627,2025-07-09,PeakPath Shipping,489431174,48.6194,-99.3744,Delivered,2.0,False,North America
+2628,2025-05-19,SnowRunner Logistics,836243579,46.4102,-30.2492,Delivered,3.0,False,Europe
+2629,2025-06-04,MountainRoute Express,792377512,38.7085,-100.0111,Delivered,10.0,True,North America
+2630,2025-06-04,SummitLine Express,527499187,44.3291,81.3111,In Transit,,,Asia
+2631,2025-05-30,SummitLine Express,231167999,48.8891,-68.3787,In Transit,,,North America
+2632,2025-07-08,MountainRoute Express,984968439,46.7133,-44.8635,Delivered,4.0,False,North America
+2633,2025-06-09,PeakPath Shipping,811642514,40.5601,-59.0777,In Transit,,,North America
+2634,2025-05-26,SwiftWing Logistics,786650291,42.9809,133.1789,Processing,,,Europe
+2635,2025-06-18,AlpineSpeed Delivery,122932394,36.2437,102.6725,Delivered,6.0,True,Asia
+2636,2025-05-16,SnowRunner Logistics,458102728,45.61,77.0715,Processing,,,Asia
+2637,2025-05-28,SwiftWing Logistics,235209737,34.2837,-104.374,Delivered,1.0,False,North America
+2638,2025-06-29,SwiftWing Logistics,320337809,50.1276,-18.1285,Delivered,9.0,True,Europe
+2639,2025-05-18,PeakPath Shipping,921581473,41.2008,-17.0056,In Transit,,,Europe
+2640,2025-06-15,SnowRunner Logistics,729624046,44.4728,-49.5809,Delivered,9.0,True,North America
+2641,2025-05-26,MountainRoute Express,350180427,50.5633,-81.4466,Delivered,10.0,True,North America
+2642,2025-06-02,SummitLine Express,258435089,46.9748,47.6081,In Transit,,,Europe
+2643,2025-06-29,AlpineSpeed Delivery,739930411,45.8775,68.5191,In Transit,,,Asia
+2644,2025-05-14,SwiftWing Logistics,255357534,38.1562,119.3278,Delivered,10.0,True,Asia
+2645,2025-07-11,SnowRunner Logistics,680051935,34.9355,51.8468,In Transit,,,Asia
+2646,2025-05-28,MountainRoute Express,287364857,36.0305,62.7621,In Transit,,,Asia
+2647,2025-05-20,MountainRoute Express,127681228,42.439,-31.51,Delivered,5.0,False,Europe
+2648,2025-05-21,MountainRoute Express,484659715,40.3218,73.6916,In Transit,,,Asia
+2649,2025-06-29,SummitLine Express,355477113,49.0691,79.3433,Delivered,7.0,True,Asia
+2650,2025-06-17,AlpineSpeed Delivery,116944811,42.9055,-53.3701,Processing,,,North America
+2651,2025-05-24,SummitLine Express,156263020,35.3102,-3.1934,Delivered,8.0,True,Europe
+2652,2025-05-21,SnowRunner Logistics,552002959,36.837,-80.9421,In Transit,,,North America
+2653,2025-06-14,SnowRunner Logistics,900651998,45.46,-91.8979,In Transit,,,North America
+2654,2025-05-17,SwiftWing Logistics,581331845,34.7486,103.2243,Delivered,8.0,True,Asia
+2655,2025-06-28,AlpineSpeed Delivery,651085057,40.5107,-82.8279,Processing,,,North America
+2656,2025-06-18,SwiftWing Logistics,585337126,43.3987,116.5403,In Transit,,,Asia
+2657,2025-06-12,PeakPath Shipping,760465943,37.8168,-57.2033,Processing,,,North America
+2658,2025-05-16,AlpineSpeed Delivery,940983577,38.6114,-101.6715,Delivered,9.0,True,North America
+2659,2025-07-06,SummitLine Express,807491789,49.333,-75.1911,In Transit,,,North America
+2660,2025-06-13,SwiftWing Logistics,591819409,50.2193,-104.0102,Delivered,5.0,False,North America
+2661,2025-06-20,AlpineSpeed Delivery,133447745,39.5641,22.3569,Delivered,4.0,False,Europe
+2662,2025-05-17,AlpineSpeed Delivery,614302907,43.5847,-42.6797,In Transit,,,North America
+2663,2025-07-02,PeakPath Shipping,557707813,40.2607,131.6549,Processing,,,Asia
+2664,2025-06-23,MountainRoute Express,626422169,46.4519,20.652,In Transit,,,Europe
+2665,2025-06-25,MountainRoute Express,576271425,34.1084,-14.9806,Delivered,6.0,True,Europe
+2666,2025-05-18,SummitLine Express,186748119,48.2728,106.9488,Processing,,,Asia
+2667,2025-06-02,SwiftWing Logistics,259272239,46.9018,-23.7923,In Transit,,,Europe
+2668,2025-05-17,AlpineSpeed Delivery,395296179,35.7671,16.2816,Delivered,8.0,True,Europe
+2669,2025-06-19,SwiftWing Logistics,728530544,50.5335,-84.8405,Delivered,1.0,False,North America
+2670,2025-06-15,MountainRoute Express,449165212,49.2539,13.6572,In Transit,,,Europe
+2671,2025-06-05,AlpineSpeed Delivery,741444618,41.7938,73.2017,Delivered,9.0,True,Asia
+2672,2025-06-14,MountainRoute Express,587173220,44.8327,-19.0743,Delivered,1.0,False,Europe
+2673,2025-06-12,PeakPath Shipping,561923010,45.2615,-87.8851,Delivered,6.0,True,North America
+2674,2025-05-19,PeakPath Shipping,853529912,45.9123,69.9271,Delivered,5.0,False,Asia
+2675,2025-05-20,MountainRoute Express,802992685,35.2697,-69.092,In Transit,,,North America
+2676,2025-06-21,SnowRunner Logistics,925667446,35.8525,-94.4233,Delivered,6.0,True,North America
+2677,2025-06-15,PeakPath Shipping,330879256,36.0525,-28.487,In Transit,,,Europe
+2678,2025-06-08,PeakPath Shipping,345343109,39.2412,-52.8329,Delivered,3.0,False,North America
+2679,2025-06-07,SummitLine Express,988434627,39.1717,61.928,In Transit,,,Asia
+2680,2025-06-09,MountainRoute Express,546665485,48.2107,-36.4459,Delivered,4.0,False,Europe
+2681,2025-06-26,AlpineSpeed Delivery,435596237,40.7362,-109.2239,Delivered,3.0,False,North America
+2682,2025-06-08,SwiftWing Logistics,814154134,50.1856,101.0509,Delivered,9.0,True,Asia
+2683,2025-05-29,MountainRoute Express,263894795,35.6103,-95.4022,In Transit,,,North America
+2684,2025-06-23,SwiftWing Logistics,609241268,34.2033,94.7272,Processing,,,Asia
+2685,2025-05-17,MountainRoute Express,993108266,37.3683,-17.4481,In Transit,,,Europe
+2686,2025-05-19,SummitLine Express,563723880,35.4287,30.977,Processing,,,Asia
+2687,2025-05-19,SwiftWing Logistics,893276164,34.3706,-105.1728,Processing,,,North America
+2688,2025-06-04,PeakPath Shipping,239710404,47.7581,-97.9936,In Transit,,,North America
+2689,2025-06-15,AlpineSpeed Delivery,729712082,36.083,123.9353,Delivered,10.0,True,Asia
+2690,2025-07-09,PeakPath Shipping,703102938,47.9687,-18.9053,Delivered,7.0,True,Europe
+2691,2025-06-02,MountainRoute Express,231244840,40.017,115.0674,Delivered,8.0,True,Asia
+2692,2025-06-07,MountainRoute Express,814403943,34.589,39.6051,Delivered,5.0,False,Asia
+2693,2025-07-08,PeakPath Shipping,554124989,41.0039,21.7297,Delivered,5.0,False,Europe
+2694,2025-07-04,PeakPath Shipping,874233009,36.333,-69.9415,In Transit,,,North America
+2695,2025-05-17,SnowRunner Logistics,408839723,38.2355,137.4568,Delivered,1.0,False,Asia
+2696,2025-06-18,PeakPath Shipping,477577220,47.2926,-28.2717,Delivered,8.0,True,Europe
+2697,2025-05-20,AlpineSpeed Delivery,644830077,49.5155,9.1246,Delivered,3.0,False,Europe
+2698,2025-05-26,SwiftWing Logistics,805165232,39.4209,-64.8357,In Transit,,,North America
+2699,2025-06-11,AlpineSpeed Delivery,216198604,34.9961,136.7897,Delivered,10.0,True,Asia
+2700,2025-06-03,MountainRoute Express,697285504,50.5577,-95.8649,In Transit,,,North America
+2701,2025-06-04,AlpineSpeed Delivery,918841563,43.0727,84.5129,In Transit,,,Asia
+2702,2025-05-30,MountainRoute Express,342836476,43.7868,134.4755,Delivered,3.0,False,Europe
+2703,2025-06-30,MountainRoute Express,702332331,38.0214,-39.0009,In Transit,,,Europe
+2704,2025-07-10,AlpineSpeed Delivery,978779150,49.5377,-114.6381,In Transit,,,North America
+2705,2025-06-19,SnowRunner Logistics,824750726,43.5813,24.9714,Delivered,8.0,True,Europe
+2706,2025-06-20,SnowRunner Logistics,128189836,39.2539,6.0039,Delivered,4.0,False,Europe
+2707,2025-06-18,SnowRunner Logistics,806340901,37.7198,15.4031,Delivered,10.0,True,Europe
+2708,2025-07-01,MountainRoute Express,387169808,47.7096,-33.0619,Delivered,6.0,True,Europe
+2709,2025-05-15,SwiftWing Logistics,393421844,34.3725,31.105,Processing,,,Asia
+2710,2025-06-24,SwiftWing Logistics,431769776,48.3902,102.6347,Processing,,,Asia
+2711,2025-07-07,AlpineSpeed Delivery,476908532,45.9771,50.8184,Delivered,6.0,True,Asia
+2712,2025-05-14,AlpineSpeed Delivery,253815116,39.4843,132.6996,In Transit,,,Europe
+2713,2025-06-16,PeakPath Shipping,530338918,47.4613,128.7328,In Transit,,,Asia
+2714,2025-05-18,MountainRoute Express,895609471,46.0221,24.6761,In Transit,,,Europe
+2715,2025-06-20,SnowRunner Logistics,132917811,47.3789,-63.7351,Delivered,3.0,False,North America
+2716,2025-05-19,PeakPath Shipping,669601448,39.216,57.6981,Delivered,1.0,False,Asia
+2717,2025-05-26,SummitLine Express,550791704,50.1279,-19.792,Processing,,,Europe
+2718,2025-06-09,SnowRunner Logistics,269016920,34.5505,35.2234,Processing,,,Asia
+2719,2025-06-04,SnowRunner Logistics,874807770,37.7552,25.6086,Processing,,,Europe
+2720,2025-06-02,MountainRoute Express,709448939,39.6299,-101.6925,Delivered,6.0,True,North America
+2721,2025-06-18,MountainRoute Express,156488296,44.8152,129.3638,In Transit,,,Asia
+2722,2025-05-23,SummitLine Express,910069356,44.8647,109.4166,Delivered,5.0,False,Asia
+2723,2025-06-19,MountainRoute Express,823668399,38.2422,-104.3056,Delivered,2.0,False,North America
+2724,2025-05-18,SummitLine Express,575788930,34.0218,-21.2704,In Transit,,,Europe
+2725,2025-06-22,MountainRoute Express,621475287,49.0374,6.6944,Delivered,9.0,True,Europe
+2726,2025-06-18,PeakPath Shipping,544726404,35.7243,3.1467,In Transit,,,Africa
+2727,2025-05-30,SummitLine Express,910614025,46.8901,-63.1229,Delivered,1.0,False,North America
+2728,2025-06-13,AlpineSpeed Delivery,470626529,34.3413,-53.8457,Delivered,6.0,True,North America
+2729,2025-06-08,MountainRoute Express,404133583,49.0948,-80.0039,Delivered,2.0,False,North America
+2730,2025-06-23,AlpineSpeed Delivery,736873048,44.0985,38.1613,Delivered,1.0,False,Europe
+2731,2025-06-11,PeakPath Shipping,816328133,50.0215,-78.9357,In Transit,,,North America
+2732,2025-06-01,MountainRoute Express,336779871,34.9104,-35.5843,Processing,,,Europe
+2733,2025-06-06,PeakPath Shipping,743520276,45.8523,66.4519,In Transit,,,Asia
+2734,2025-05-17,AlpineSpeed Delivery,319497661,45.2302,-44.3784,Delivered,7.0,True,North America
+2735,2025-05-31,SnowRunner Logistics,326810757,43.3443,6.1375,Delivered,1.0,False,Europe
+2736,2025-06-28,PeakPath Shipping,920511515,35.4897,93.0372,In Transit,,,Asia
+2737,2025-05-29,PeakPath Shipping,452318696,37.3945,-115.283,Delivered,5.0,False,North America
+2738,2025-05-21,SwiftWing Logistics,634063428,42.0507,-91.8522,In Transit,,,North America
+2739,2025-06-27,PeakPath Shipping,288650860,42.3146,50.5315,Delivered,9.0,True,Asia
+2740,2025-05-21,PeakPath Shipping,671855941,37.143,109.1136,Delivered,8.0,True,Asia
+2741,2025-06-24,SwiftWing Logistics,637152602,38.476,-0.6199,Delivered,5.0,False,Europe
+2742,2025-06-15,SnowRunner Logistics,817311263,35.0479,74.3334,In Transit,,,Asia
+2743,2025-06-30,SwiftWing Logistics,177390472,45.3584,88.935,Delivered,10.0,True,Asia
+2744,2025-06-06,MountainRoute Express,896760809,43.4112,97.4481,In Transit,,,Asia
+2745,2025-05-16,PeakPath Shipping,120123575,50.4157,57.3247,Processing,,,Asia
+2746,2025-06-10,SnowRunner Logistics,183604337,48.9881,2.3045,Delivered,1.0,False,Europe
+2747,2025-07-03,SnowRunner Logistics,718216692,43.7107,12.8893,Delivered,10.0,True,Europe
+2748,2025-06-08,MountainRoute Express,534245762,36.0448,75.6263,Delivered,3.0,False,Asia
+2749,2025-06-24,MountainRoute Express,548495473,47.7438,-89.0655,Delivered,7.0,True,North America
+2750,2025-05-31,MountainRoute Express,534900128,50.9536,41.706,In Transit,,,Europe
+2751,2025-05-15,AlpineSpeed Delivery,448717183,39.4357,67.7739,In Transit,,,Asia
+2752,2025-05-24,SwiftWing Logistics,763706947,40.5977,-18.2903,Delivered,5.0,False,Europe
+2753,2025-06-10,SnowRunner Logistics,840463141,41.7887,105.9747,In Transit,,,Asia
+2754,2025-07-07,SnowRunner Logistics,194628740,43.9888,82.02,Delivered,3.0,False,Asia
+2755,2025-06-08,MountainRoute Express,213669678,43.6321,30.0787,Processing,,,Europe
+2756,2025-05-28,SwiftWing Logistics,732295732,49.7238,24.8605,Delivered,5.0,False,Europe
+2757,2025-06-06,SnowRunner Logistics,184446671,48.9623,107.1302,Delivered,8.0,True,Asia
+2758,2025-06-06,SnowRunner Logistics,433154770,44.3524,-112.2215,Delivered,3.0,False,North America
+2759,2025-06-27,SnowRunner Logistics,337911187,44.3471,59.0456,Delivered,6.0,True,Asia
+2760,2025-06-02,SummitLine Express,280531127,38.0388,72.6407,Processing,,,Asia
+2761,2025-05-18,AlpineSpeed Delivery,779919809,34.344,91.3377,Delivered,5.0,False,Asia
+2762,2025-05-20,PeakPath Shipping,647556857,48.59,56.7464,Processing,,,Asia
+2763,2025-05-25,MountainRoute Express,933468715,36.2846,132.2713,Delivered,6.0,True,Asia
+2764,2025-06-03,AlpineSpeed Delivery,881017363,46.3896,35.8996,Delivered,8.0,True,Europe
+2765,2025-07-09,MountainRoute Express,793039113,49.5284,-15.7285,Delivered,9.0,True,Europe
+2766,2025-07-01,AlpineSpeed Delivery,353691745,47.9573,12.4854,Delivered,5.0,False,Europe
+2767,2025-05-20,SummitLine Express,374843786,42.6155,-86.5954,In Transit,,,North America
+2768,2025-05-25,SnowRunner Logistics,746820987,34.4921,-71.6887,In Transit,,,North America
+2769,2025-05-23,SwiftWing Logistics,915133660,38.2413,-2.8669,Processing,,,Europe
+2770,2025-06-21,SummitLine Express,290209201,37.3849,-25.8601,Delivered,7.0,True,Europe
+2771,2025-07-09,SummitLine Express,774254861,49.6923,55.7865,Delivered,8.0,True,Asia
+2772,2025-06-12,SnowRunner Logistics,910080036,41.5838,128.6958,Delivered,9.0,True,Asia
+2773,2025-06-16,AlpineSpeed Delivery,722199123,39.8522,96.6276,Delivered,2.0,False,Asia
+2774,2025-06-09,AlpineSpeed Delivery,706118438,34.4667,-109.0411,In Transit,,,North America
+2775,2025-06-20,MountainRoute Express,770575153,48.5709,46.9662,In Transit,,,Asia
+2776,2025-06-02,AlpineSpeed Delivery,773469560,45.077,11.9664,In Transit,,,Europe
+2777,2025-06-01,SummitLine Express,572191734,34.1513,115.9055,In Transit,,,Asia
+2778,2025-05-18,SnowRunner Logistics,574817290,47.6147,-63.596,In Transit,,,North America
+2779,2025-06-20,AlpineSpeed Delivery,955052486,46.1166,63.1451,Delivered,7.0,True,Asia
+2780,2025-05-30,AlpineSpeed Delivery,160314355,41.803,-65.0474,Delivered,9.0,True,North America
+2781,2025-06-03,SnowRunner Logistics,179661615,40.7516,-95.2965,Delivered,6.0,True,North America
+2782,2025-06-01,SnowRunner Logistics,585238820,45.0048,36.9621,Delivered,2.0,False,Europe
+2783,2025-05-16,PeakPath Shipping,495928981,35.0852,135.9622,In Transit,,,Asia
+2784,2025-07-02,AlpineSpeed Delivery,182389284,38.4395,63.5955,In Transit,,,Asia
+2785,2025-06-21,AlpineSpeed Delivery,196955134,37.2021,13.0136,Delivered,1.0,False,Europe
+2786,2025-06-19,SnowRunner Logistics,644459924,40.8697,-38.5881,Delivered,1.0,False,Europe
+2787,2025-06-05,SummitLine Express,723123952,42.4553,-44.8472,Processing,,,North America
+2788,2025-06-15,PeakPath Shipping,950207886,40.6007,-112.7817,In Transit,,,North America
+2789,2025-06-26,SnowRunner Logistics,144047803,47.8722,-32.4334,In Transit,,,Europe
+2790,2025-06-09,SummitLine Express,969533218,43.0888,82.8581,Processing,,,Asia
+2791,2025-06-16,SummitLine Express,302120588,40.0945,-43.6491,Delivered,9.0,True,North America
+2792,2025-06-01,MountainRoute Express,610702777,38.9943,0.8738,In Transit,,,Europe
+2793,2025-06-12,SummitLine Express,166436383,47.7418,77.1217,Delivered,6.0,True,Asia
+2794,2025-06-09,SummitLine Express,970768982,35.5181,-29.271,In Transit,,,Europe
+2795,2025-07-06,AlpineSpeed Delivery,468763500,41.148,109.4662,Delivered,10.0,True,Asia
+2796,2025-07-10,AlpineSpeed Delivery,190547712,41.8839,-91.259,Delivered,10.0,True,North America
+2797,2025-06-12,SnowRunner Logistics,285283722,50.0531,-103.4127,In Transit,,,North America
+2798,2025-05-16,SnowRunner Logistics,859803019,36.0369,55.6621,Delivered,7.0,True,Asia
+2799,2025-06-08,SwiftWing Logistics,571825556,48.8044,-82.6468,Processing,,,North America
+2800,2025-06-13,AlpineSpeed Delivery,754773573,40.9563,26.6143,Processing,,,Asia
+2801,2025-05-23,PeakPath Shipping,500346767,36.4348,103.0848,Delivered,2.0,False,Asia
+2802,2025-07-07,PeakPath Shipping,515985367,39.6547,135.5131,Delivered,1.0,False,Asia
+2803,2025-06-07,SwiftWing Logistics,463318956,41.6849,-67.3512,In Transit,,,North America
+2804,2025-06-23,SnowRunner Logistics,156227043,46.9962,5.7796,In Transit,,,Europe
+2805,2025-06-29,SwiftWing Logistics,795038832,36.1999,-8.8013,Delivered,7.0,True,Europe
+2806,2025-06-02,PeakPath Shipping,454002758,40.5164,-112.1537,Delivered,6.0,True,North America
+2807,2025-05-19,SwiftWing Logistics,828404274,49.1641,75.5373,Delivered,1.0,False,Asia
+2808,2025-06-05,SummitLine Express,370578414,34.0701,69.4704,Delivered,6.0,True,Asia
+2809,2025-06-25,AlpineSpeed Delivery,804980312,36.1918,-21.8933,Delivered,3.0,False,Europe
+2810,2025-07-09,SwiftWing Logistics,747145068,48.0053,-44.1692,Delivered,9.0,True,North America
+2811,2025-07-04,SnowRunner Logistics,457944766,42.91,-8.8134,In Transit,,,Europe
+2812,2025-05-18,MountainRoute Express,812548074,39.8265,113.2612,Delivered,4.0,False,Asia
+2813,2025-05-22,MountainRoute Express,475617211,50.1174,117.6516,Delivered,4.0,False,Europe
+2814,2025-06-01,MountainRoute Express,804433388,46.3619,-87.7553,In Transit,,,North America
+2815,2025-06-24,SnowRunner Logistics,520861681,42.5788,-89.8547,In Transit,,,North America
+2816,2025-05-21,SwiftWing Logistics,861104727,40.3783,45.1238,In Transit,,,Asia
+2817,2025-07-08,SnowRunner Logistics,432411019,34.826,137.6115,In Transit,,,Asia
+2818,2025-06-15,SummitLine Express,790945624,48.214,-109.4107,Delivered,8.0,True,North America
+2819,2025-06-29,PeakPath Shipping,973150512,36.1011,-56.0353,In Transit,,,North America
+2820,2025-05-21,MountainRoute Express,854658900,45.8183,42.5113,Delivered,2.0,False,Europe
+2821,2025-07-01,SummitLine Express,893253262,42.8453,40.5502,In Transit,,,Asia
+2822,2025-07-11,PeakPath Shipping,665210546,48.1211,-94.6174,In Transit,,,North America
+2823,2025-05-19,SwiftWing Logistics,819896690,38.806,82.8224,Delivered,10.0,True,Asia
+2824,2025-06-07,MountainRoute Express,488509962,47.2253,95.0212,Processing,,,Asia
+2825,2025-05-15,AlpineSpeed Delivery,431642423,45.9584,-44.9133,Delivered,8.0,True,North America
+2826,2025-05-24,MountainRoute Express,329987621,45.6995,3.4533,Delivered,1.0,False,Europe
+2827,2025-06-03,SummitLine Express,922653967,35.513,-93.1775,Delivered,8.0,True,North America
+2828,2025-06-11,MountainRoute Express,343248743,50.1406,81.4563,Delivered,2.0,False,Asia
+2829,2025-07-11,AlpineSpeed Delivery,266371119,44.9537,-2.7879,Processing,,,Europe
+2830,2025-05-18,AlpineSpeed Delivery,946237594,41.8927,-95.9499,Delivered,1.0,False,North America
+2831,2025-05-19,AlpineSpeed Delivery,927720428,40.1236,54.6361,Delivered,2.0,False,Asia
+2832,2025-06-14,SwiftWing Logistics,893112954,48.4712,110.3662,Delivered,3.0,False,Asia
+2833,2025-07-05,SummitLine Express,140531056,45.0024,-36.2195,In Transit,,,Europe
+2834,2025-06-22,SnowRunner Logistics,922816526,38.5613,69.3307,Delivered,6.0,True,Asia
+2835,2025-06-19,MountainRoute Express,741288486,35.9351,-17.5347,Delivered,7.0,True,Europe
+2836,2025-06-05,SummitLine Express,274211616,48.4614,86.7737,In Transit,,,Asia
+2837,2025-05-24,MountainRoute Express,843937341,35.922,59.7003,Delivered,3.0,False,Asia
+2838,2025-06-28,SwiftWing Logistics,968704078,41.0725,32.1858,In Transit,,,Asia
+2839,2025-07-06,SummitLine Express,874364348,41.4488,37.5553,In Transit,,,Asia
+2840,2025-06-08,SnowRunner Logistics,541156077,34.4899,56.6451,In Transit,,,Asia
+2841,2025-06-04,MountainRoute Express,872649234,42.2124,5.4,In Transit,,,Europe
+2842,2025-05-28,PeakPath Shipping,576954730,34.7815,-53.719,Delivered,9.0,True,North America
+2843,2025-06-19,SummitLine Express,907873857,43.803,25.4682,Processing,,,Europe
+2844,2025-06-27,SummitLine Express,582032731,48.8434,13.485,In Transit,,,Europe
+2845,2025-05-27,SnowRunner Logistics,356805216,35.6191,50.7072,Delivered,6.0,True,Asia
+2846,2025-06-01,SummitLine Express,968253265,45.497,-21.5472,In Transit,,,Europe
+2847,2025-06-29,SnowRunner Logistics,996696177,49.1651,37.9706,Delivered,3.0,False,Europe
+2848,2025-05-25,SnowRunner Logistics,828326405,48.4304,100.3384,In Transit,,,Asia
+2849,2025-07-08,SwiftWing Logistics,573087862,46.7743,-38.3146,Delivered,5.0,False,Europe
+2850,2025-06-10,SwiftWing Logistics,402550088,42.6178,21.6793,Delivered,4.0,False,Europe
+2851,2025-06-28,SwiftWing Logistics,639991949,41.8046,87.1292,Delivered,8.0,True,Asia
+2852,2025-06-14,PeakPath Shipping,274008639,39.373,133.9551,In Transit,,,Europe
+2853,2025-07-01,SwiftWing Logistics,960345542,35.7449,-14.3796,Delivered,1.0,False,Europe
+2854,2025-06-18,SwiftWing Logistics,368438908,47.4603,129.3877,In Transit,,,Asia
+2855,2025-05-17,SnowRunner Logistics,616030284,43.5597,48.8496,Delivered,6.0,True,Europe
+2856,2025-07-04,AlpineSpeed Delivery,695433590,48.0303,91.1296,In Transit,,,Asia
+2857,2025-07-08,AlpineSpeed Delivery,863860982,43.5226,39.7568,Delivered,6.0,True,Europe
+2858,2025-07-02,SummitLine Express,233871736,41.6931,-96.5689,In Transit,,,North America
+2859,2025-05-30,SwiftWing Logistics,919390458,39.8031,94.5997,Processing,,,Asia
+2860,2025-05-23,AlpineSpeed Delivery,582452834,43.3107,-24.4146,Delivered,3.0,False,Europe
+2861,2025-07-06,PeakPath Shipping,258214411,36.3876,65.0994,In Transit,,,Asia
+2862,2025-07-02,SwiftWing Logistics,198476695,38.3229,-70.8645,Delivered,7.0,True,North America
+2863,2025-07-08,MountainRoute Express,338411494,41.7698,81.9507,In Transit,,,Asia
+2864,2025-07-01,SwiftWing Logistics,475364113,46.8715,-109.8634,In Transit,,,North America
+2865,2025-07-07,SummitLine Express,545492166,44.0098,79.5299,Delivered,10.0,True,Asia
+2866,2025-05-17,SnowRunner Logistics,639026034,36.2888,8.1943,Delivered,1.0,False,Africa
+2867,2025-06-05,SnowRunner Logistics,514642708,49.9002,96.931,Delivered,9.0,True,Asia
+2868,2025-07-11,MountainRoute Express,502559419,45.7609,-76.6773,In Transit,,,North America
+2869,2025-05-27,SwiftWing Logistics,442185272,40.5859,34.7425,In Transit,,,Asia
+2870,2025-07-07,SnowRunner Logistics,867407868,48.9836,-12.7285,In Transit,,,Europe
+2871,2025-06-21,SummitLine Express,949738493,46.9604,-50.5915,Processing,,,North America
+2872,2025-05-22,AlpineSpeed Delivery,141127742,41.6984,-87.19,Delivered,9.0,True,North America
+2873,2025-05-30,AlpineSpeed Delivery,990949719,48.3323,20.9774,Delivered,9.0,True,Europe
+2874,2025-06-10,SummitLine Express,992398092,37.6948,-67.265,In Transit,,,North America
+2875,2025-05-22,SummitLine Express,857563699,39.87,53.4895,Processing,,,Asia
+2876,2025-06-10,SummitLine Express,760725160,50.5781,-75.5909,Delivered,6.0,True,North America
+2877,2025-05-14,SummitLine Express,185068029,35.9619,-30.0659,Delivered,10.0,True,Europe
+2878,2025-05-15,SummitLine Express,331557515,46.0721,53.9775,In Transit,,,Asia
+2879,2025-07-02,SnowRunner Logistics,689274064,38.8608,99.1456,In Transit,,,Asia
+2880,2025-07-08,SnowRunner Logistics,753780028,35.81,-22.5928,Delivered,1.0,False,Europe
+2881,2025-06-14,MountainRoute Express,219385981,38.5386,83.0239,Processing,,,Asia
+2882,2025-06-28,SummitLine Express,355164255,38.2595,97.0787,In Transit,,,Asia
+2883,2025-05-31,AlpineSpeed Delivery,151270577,37.468,19.2459,Delivered,8.0,True,Europe
+2884,2025-05-28,SwiftWing Logistics,786069196,44.4739,54.3123,Delivered,4.0,False,Asia
+2885,2025-06-29,SummitLine Express,590822013,45.001,-20.5006,Delivered,5.0,False,Europe
+2886,2025-05-17,SummitLine Express,998386592,45.2964,119.8125,Delivered,6.0,True,Asia
+2887,2025-07-06,SnowRunner Logistics,740743666,34.9146,72.0979,Delivered,8.0,True,Asia
+2888,2025-06-14,MountainRoute Express,778556450,49.4953,61.9082,In Transit,,,Asia
+2889,2025-06-13,SnowRunner Logistics,359779090,43.2925,35.484,In Transit,,,Asia
+2890,2025-06-25,MountainRoute Express,412750915,39.001,-75.6918,In Transit,,,North America
+2891,2025-06-08,MountainRoute Express,760146764,50.3621,69.8557,Delivered,1.0,False,Asia
+2892,2025-06-03,PeakPath Shipping,712745501,38.7449,-53.0335,Delivered,5.0,False,North America
+2893,2025-06-07,SwiftWing Logistics,813363254,39.6196,63.2289,Delivered,3.0,False,Asia
+2894,2025-06-22,AlpineSpeed Delivery,662087258,44.147,79.9255,In Transit,,,Asia
+2895,2025-07-10,SummitLine Express,172670118,39.1196,84.166,Delivered,2.0,False,Asia
+2896,2025-07-09,SummitLine Express,684203557,39.4036,-64.5899,Delivered,2.0,False,North America
+2897,2025-06-12,SnowRunner Logistics,645055605,36.7093,19.7439,Delivered,6.0,True,Europe
+2898,2025-06-15,MountainRoute Express,519246503,49.0177,51.1303,Delivered,5.0,False,Asia
+2899,2025-07-04,MountainRoute Express,146744734,50.1552,39.3712,Delivered,9.0,True,Europe
+2900,2025-06-20,SummitLine Express,500830389,34.1497,52.5929,Delivered,10.0,True,Asia
+2901,2025-05-28,SnowRunner Logistics,117439966,38.1451,-111.592,In Transit,,,North America
+2902,2025-06-04,PeakPath Shipping,172541521,49.5709,124.6418,Delivered,9.0,True,Asia
+2903,2025-06-03,SummitLine Express,886989426,38.8081,115.8587,In Transit,,,Asia
+2904,2025-06-21,AlpineSpeed Delivery,211308231,42.7433,10.78,Delivered,5.0,False,Europe
+2905,2025-06-28,SummitLine Express,889401015,37.2727,12.1265,Processing,,,Europe
+2906,2025-06-27,MountainRoute Express,243247463,50.5177,79.8361,Delivered,2.0,False,Asia
+2907,2025-05-16,MountainRoute Express,686277792,45.3957,79.905,In Transit,,,Asia
+2908,2025-06-02,PeakPath Shipping,790196540,48.2063,-68.3437,In Transit,,,North America
+2909,2025-05-24,SummitLine Express,936597989,47.1785,46.7525,Processing,,,Europe
+2910,2025-06-23,SummitLine Express,846668526,45.6627,-115.8005,In Transit,,,North America
+2911,2025-06-11,SwiftWing Logistics,295719504,35.4879,-107.836,In Transit,,,North America
+2912,2025-06-30,SnowRunner Logistics,167753684,35.1975,92.4426,Processing,,,Asia
+2913,2025-06-25,PeakPath Shipping,591429705,40.5966,42.4867,Delivered,1.0,False,Asia
+2914,2025-05-16,PeakPath Shipping,316456682,45.4461,17.5918,In Transit,,,Europe
+2915,2025-05-16,SnowRunner Logistics,314179101,35.075,72.6932,Delivered,2.0,False,Asia
+2916,2025-07-05,AlpineSpeed Delivery,438868427,49.7768,-94.2986,In Transit,,,North America
+2917,2025-07-08,AlpineSpeed Delivery,653388913,44.3116,-48.5239,Processing,,,North America
+2918,2025-06-06,PeakPath Shipping,975535611,40.7169,50.4487,Delivered,9.0,True,Asia
+2919,2025-06-15,MountainRoute Express,371993587,36.3185,-19.9509,In Transit,,,Europe
+2920,2025-05-16,SnowRunner Logistics,794604127,39.0146,43.4859,Delivered,6.0,True,Asia
+2921,2025-05-25,SwiftWing Logistics,483298103,43.4099,22.8732,Delivered,1.0,False,Europe
+2922,2025-07-03,SnowRunner Logistics,151329185,44.1431,18.1967,Processing,,,Europe
+2923,2025-07-04,AlpineSpeed Delivery,456401418,37.5709,71.5134,In Transit,,,Asia
+2924,2025-05-30,MountainRoute Express,958287383,41.0151,46.5881,Delivered,3.0,False,Asia
+2925,2025-06-04,MountainRoute Express,529520110,37.7534,95.8693,Delivered,3.0,False,Asia
+2926,2025-06-26,SummitLine Express,515156661,47.5942,100.4375,In Transit,,,Asia
+2927,2025-06-03,SnowRunner Logistics,300593456,41.8415,21.4625,Delivered,2.0,False,Europe
+2928,2025-06-12,AlpineSpeed Delivery,634211672,35.6694,67.3788,Delivered,6.0,True,Asia
+2929,2025-06-04,AlpineSpeed Delivery,956084565,36.1797,49.0784,Delivered,10.0,True,Asia
+2930,2025-06-13,SwiftWing Logistics,960226208,49.302,-39.0579,Delivered,10.0,True,North America
+2931,2025-05-18,SummitLine Express,555803043,39.1965,30.4684,Delivered,6.0,True,Asia
+2932,2025-05-18,AlpineSpeed Delivery,746879296,50.2972,-77.9851,Delivered,4.0,False,North America
+2933,2025-07-11,SummitLine Express,293763673,46.5769,-8.1716,In Transit,,,Europe
+2934,2025-06-15,MountainRoute Express,444898148,45.5529,-35.4621,Delivered,8.0,True,Europe
+2935,2025-05-20,AlpineSpeed Delivery,452101316,47.171,5.0995,Delivered,10.0,True,Europe
+2936,2025-06-21,SwiftWing Logistics,429097422,48.3105,102.1243,Delivered,9.0,True,Asia
+2937,2025-06-09,MountainRoute Express,870584681,38.475,109.3337,Delivered,2.0,False,Asia
+2938,2025-06-08,SwiftWing Logistics,840629322,48.443,42.8545,In Transit,,,Europe
+2939,2025-06-09,SnowRunner Logistics,580101819,40.8873,31.9995,Processing,,,Asia
+2940,2025-05-16,SnowRunner Logistics,478557676,38.4305,111.3303,Delivered,3.0,False,Asia
+2941,2025-06-19,AlpineSpeed Delivery,567013808,40.6725,110.6652,Delivered,5.0,False,Asia
+2942,2025-05-30,MountainRoute Express,949842840,41.8999,11.2175,Delivered,9.0,True,Europe
+2943,2025-07-08,SwiftWing Logistics,180574838,45.2655,99.3233,In Transit,,,Asia
+2944,2025-06-22,SnowRunner Logistics,536164913,45.6307,75.6308,Delivered,3.0,False,Asia
+2945,2025-06-04,MountainRoute Express,960170255,43.6281,25.6771,In Transit,,,Europe
+2946,2025-06-27,MountainRoute Express,271784435,46.5106,4.1944,Delivered,4.0,False,Europe
+2947,2025-07-09,PeakPath Shipping,253308283,37.9397,-53.0028,Delivered,4.0,False,North America
+2948,2025-07-03,SnowRunner Logistics,828092377,49.4313,-27.7134,Delivered,8.0,True,Europe
+2949,2025-06-29,SwiftWing Logistics,137365109,34.6784,47.265,Delivered,9.0,True,Asia
+2950,2025-05-21,SummitLine Express,353398109,48.104,95.9017,Delivered,9.0,True,Asia
+2951,2025-06-28,SnowRunner Logistics,493342201,36.9554,48.6093,Delivered,2.0,False,Asia
+2952,2025-06-04,SnowRunner Logistics,709074302,38.277,131.8679,Delivered,7.0,True,Asia
+2953,2025-05-15,AlpineSpeed Delivery,264752975,47.893,-31.9466,In Transit,,,Europe
+2954,2025-06-23,SnowRunner Logistics,498320110,34.1122,108.2109,Delivered,4.0,False,Asia
+2955,2025-06-04,SwiftWing Logistics,919355714,42.7472,-48.7087,Delivered,3.0,False,North America
+2956,2025-05-18,AlpineSpeed Delivery,247848992,44.2343,91.2253,In Transit,,,Asia
+2957,2025-06-14,PeakPath Shipping,527385805,47.7899,65.9867,Delivered,8.0,True,Asia
+2958,2025-06-01,PeakPath Shipping,399240862,37.582,-79.9147,In Transit,,,North America
+2959,2025-05-28,SwiftWing Logistics,221814525,38.1424,-88.622,Delivered,3.0,False,North America
+2960,2025-05-15,SummitLine Express,299767568,42.7149,110.4982,Delivered,3.0,False,Asia
+2961,2025-06-12,AlpineSpeed Delivery,515524530,49.6816,12.8432,Delivered,10.0,True,Europe
+2962,2025-07-06,SummitLine Express,226444910,34.3165,65.8018,In Transit,,,Asia
+2963,2025-05-29,AlpineSpeed Delivery,379484009,50.1033,-65.4691,In Transit,,,North America
+2964,2025-06-24,PeakPath Shipping,330393232,48.7441,-77.4821,In Transit,,,North America
+2965,2025-07-11,SnowRunner Logistics,406635834,36.4261,30.0706,In Transit,,,Asia
+2966,2025-06-23,SnowRunner Logistics,627422192,45.214,-52.9601,In Transit,,,North America
+2967,2025-05-25,AlpineSpeed Delivery,245737277,49.68,33.6952,Delivered,7.0,True,Europe
+2968,2025-07-03,PeakPath Shipping,585377142,36.2476,-117.6772,Delivered,9.0,True,North America
+2969,2025-05-24,SummitLine Express,865975088,41.1365,-82.9645,Delivered,8.0,True,North America
+2970,2025-06-09,SnowRunner Logistics,194264587,44.1968,107.0934,Delivered,2.0,False,Asia
+2971,2025-06-30,SwiftWing Logistics,443154754,42.1981,-87.9842,In Transit,,,North America
+2972,2025-06-22,SwiftWing Logistics,861863296,49.2485,80.2412,In Transit,,,Asia
+2973,2025-05-17,SnowRunner Logistics,682152066,41.1516,106.3291,In Transit,,,Asia
+2974,2025-05-31,PeakPath Shipping,422076028,37.9013,87.4004,In Transit,,,Asia
+2975,2025-07-03,PeakPath Shipping,864299201,39.9588,88.0061,Processing,,,Asia
+2976,2025-06-24,SummitLine Express,851854702,43.7941,-10.9473,Delivered,4.0,False,Europe
+2977,2025-06-20,SwiftWing Logistics,952225000,38.8155,106.836,Delivered,4.0,False,Asia
+2978,2025-06-04,SwiftWing Logistics,340777602,46.0555,84.0393,Delivered,2.0,False,Asia
+2979,2025-05-21,SnowRunner Logistics,315801027,34.1223,48.8365,In Transit,,,Asia
+2980,2025-06-29,AlpineSpeed Delivery,354193540,40.9504,-94.1818,Delivered,10.0,True,North America
+2981,2025-06-29,AlpineSpeed Delivery,128222260,38.4421,17.9234,Delivered,10.0,True,Europe
+2982,2025-06-04,AlpineSpeed Delivery,714478186,50.8606,-18.2645,Delivered,9.0,True,Europe
+2983,2025-06-04,SnowRunner Logistics,962925204,42.202,-25.3744,Delivered,5.0,False,Europe
+2984,2025-07-10,AlpineSpeed Delivery,239340792,43.8201,80.0648,Delivered,3.0,False,Asia
+2985,2025-06-19,SummitLine Express,192573170,36.0245,-62.0297,In Transit,,,North America
+2986,2025-05-17,MountainRoute Express,527521016,35.7047,10.6777,In Transit,,,Africa
+2987,2025-07-11,SnowRunner Logistics,871880418,44.4384,56.6713,Delivered,7.0,True,Asia
+2988,2025-06-11,SummitLine Express,541087900,34.0899,-98.2259,Delivered,10.0,True,North America
+2989,2025-06-28,PeakPath Shipping,984053945,35.4984,-53.333,Delivered,10.0,True,North America
+2990,2025-06-16,SwiftWing Logistics,234568604,46.3164,120.9088,Delivered,9.0,True,Asia
+2991,2025-07-10,AlpineSpeed Delivery,789705810,46.0973,33.9403,Processing,,,Europe
+2992,2025-05-18,MountainRoute Express,600184588,44.885,-7.4283,Delivered,9.0,True,Europe
+2993,2025-06-23,AlpineSpeed Delivery,469919929,37.3107,82.6134,Delivered,4.0,False,Asia
+2994,2025-05-21,SnowRunner Logistics,990189659,36.8812,-112.588,Delivered,1.0,False,North America
+2995,2025-06-29,MountainRoute Express,786973497,35.4763,-49.9805,Delivered,7.0,True,North America
+2996,2025-06-17,PeakPath Shipping,924399252,43.9634,13.1308,In Transit,,,Europe
+2997,2025-07-10,SwiftWing Logistics,564520346,49.626,21.4437,In Transit,,,Europe
+2998,2025-06-12,SnowRunner Logistics,159499094,49.5552,-31.1471,Processing,,,Europe
+2999,2025-07-02,AlpineSpeed Delivery,656307931,37.847,129.3579,Delivered,7.0,True,Asia

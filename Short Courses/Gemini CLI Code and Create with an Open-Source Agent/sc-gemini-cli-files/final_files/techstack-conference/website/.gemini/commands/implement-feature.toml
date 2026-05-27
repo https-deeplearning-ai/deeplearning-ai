@@ -1,0 +1,20 @@
+description = "Analyzes a GitHub Issue and implements a feature/bug fix."
+prompt = """
+Help me implement the feature or fix the bug described in GitHub Issue {{args}}
+as a senior engineer would.
+
+Here are the details from GitHub:
+
+!{gh issue view {{args}}}
+
+**Goal:** Implement the requested feature or fix the bug safely and correctly.
+
+Follow best practices and coding standards.
+
+**Process:**
+
+1.  **Explore:** Read the issue description above. Then, examine the relevant parts of the codebase. Do NOT start coding yet.
+2.  **Plan:** Propose a detailed step-by-step implementation plan. List exactly which files you will create or modify.
+3.  **Confirm:** You MUST stop and ask me for confirmation to proceed with the plan before writing code or calling the edit or write tools.
+4.  **Execute:** Only after I explicitly approve the plan, proceed to write the code and tests.
+"""

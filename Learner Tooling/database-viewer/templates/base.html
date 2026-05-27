@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ChromaDB Code Search{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!-- Fallback: ensure code blocks are visible even if CDN CSS fails to load -->
+    <style>pre code { color: #c9d1d9; background: #161b22; display: block; }</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('collections.index') }}">
+                <i class="bi bi-database me-2"></i>
+                <span>ChromaDB Code Search</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'dashboard' %}active{% endif %}" href="{{ url_for('collections.index') }}">
+                            <i class="bi bi-grid-1x2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="border-top mt-4 py-3 text-center text-muted small">
+        ChromaDB Code Search &mdash; Context Engineering with Chroma
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <!-- Base URL for API calls (supports reverse proxy prefix) -->
+    <script>const BASE_URL = {{ request.script_root|tojson }};</script>
+    <!-- Tutorial Engine -->
+    <script>
+    const TutorialEngine = (function() {
+        let _data = null;
+        let _currentStep = -1;
+        let _backdropEl = null;
+        let _spotlightEl = null;
+        let _tooltipEl = null;
+
+        /**
+         * Start a tutorial for the given page if it hasn't been seen.
+         * @param {string} pageName - The page identifier.
+         * @param {boolean} force - If true, show even if already seen.
+         */
+        async function start(pageName, force) {
+            const storageKey = `tutorial_seen_${pageName}`;
+            if (!force && localStorage.getItem(storageKey)) return;
+
+            try {
+                const resp = await fetch(`${BASE_URL}/api/tutorial/${pageName}`);
+                if (!resp.ok) return;
+                _data = await resp.json();
+            } catch { return; }
+
+            if (!_data || !_data.steps || _data.steps.length === 0) return;
+            _currentStep = -1;
+            _showWelcome(storageKey);
+        }
+
+        /** Show the welcome card before the first step. */
+        function _showWelcome(storageKey) {
+            const overlay = document.createElement('div');
+            overlay.className = 'tutorial-welcome-overlay';
+            overlay.innerHTML = `
+                <div class="tutorial-welcome-card">
+                    <div class="welcome-icon"><i class="bi bi-mortarboard"></i></div>
+                    <h3>${_data.title}</h3>
+                    <p>${_data.welcome_message}</p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button class="btn btn-outline-secondary btn-sm" id="tutorialSkipAll">Skip</button>
+                        <button class="btn btn-primary btn-sm" id="tutorialBegin">
+                            <i class="bi bi-play-fill me-1"></i>Start Tour
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            document.getElementById('tutorialBegin').onclick = () => {
+                overlay.remove();
+                _createOverlayElements();
+                _goToStep(0);
+                localStorage.setItem(storageKey, '1');
+            };
+            document.getElementById('tutorialSkipAll').onclick = () => {
+                overlay.remove();
+                localStorage.setItem(storageKey, '1');
+            };
+        }
+
+        /** Create persistent backdrop, spotlight, and tooltip elements. */
+        function _createOverlayElements() {
+            // Backdrop with SVG mask
+            _backdropEl = document.createElement('div');
+            _backdropEl.className = 'tutorial-backdrop';
+            document.body.appendChild(_backdropEl);
+
+            // Spotlight ring
+            _spotlightEl = document.createElement('div');
+            _spotlightEl.className = 'tutorial-spotlight';
+            document.body.appendChild(_spotlightEl);
+
+            // Tooltip
+            _tooltipEl = document.createElement('div');
+            _tooltipEl.className = 'tutorial-tooltip';
+            document.body.appendChild(_tooltipEl);
+
+            // Close on backdrop click
+            _backdropEl.addEventListener('click', _cleanup);
+        }
+
+        /** Navigate to a specific step index. */
+        function _goToStep(index) {
+            if (!_data || index < 0 || index >= _data.steps.length) return;
+            _currentStep = index;
+            const step = _data.steps[_currentStep];
+
+            // Find target element
+            const target = document.querySelector(step.selector);
+            if (!target) {
+                // Skip missing elements
+                if (_currentStep < _data.steps.length - 1) {
+                    _goToStep(_currentStep + 1);
+                } else {
+                    _showCompletion();
+                }
+                return;
+            }
+
+            // Scroll target into view
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Wait for scroll, then position
+            setTimeout(() => {
+                _positionSpotlight(target, step);
+                _renderTooltip(target, step);
+                _renderBackdropMask(target);
+            }, 350);
+        }
+
+        /** Position the spotlight ring around the target element. */
+        function _positionSpotlight(target, step) {
+            const rect = target.getBoundingClientRect();
+            const pad = 8;
+            _spotlightEl.style.left = `${rect.left - pad}px`;
+            _spotlightEl.style.top = `${rect.top - pad}px`;
+            _spotlightEl.style.width = `${rect.width + pad * 2}px`;
+            _spotlightEl.style.height = `${rect.height + pad * 2}px`;
+            _spotlightEl.classList.toggle('pulse', !!step.pulse);
+        }
+
+        /** Render the dark mask with a cutout for the target. */
+        function _renderBackdropMask(target) {
+            const rect = target.getBoundingClientRect();
+            const pad = 8;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const cx = rect.left - pad;
+            const cy = rect.top - pad;
+            const cw = rect.width + pad * 2;
+            const ch = rect.height + pad * 2;
+
+            _backdropEl.innerHTML = `
+                <svg width="${w}" height="${h}">
+                    <defs>
+                        <mask id="tutorialMask">
+                            <rect width="100%" height="100%" fill="white"/>
+                            <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="8" fill="black"/>
+                        </mask>
+                    </defs>
+                    <rect width="100%" height="100%" fill="rgba(13,17,23,0.75)" mask="url(#tutorialMask)"/>
+                </svg>
+            `;
+        }
+
+        /** Render the tooltip with step content and navigation. */
+        function _renderTooltip(target, step) {
+            const iconHtml = step.icon ? `<i class="bi ${step.icon} step-icon"></i>` : '';
+
+            // Step dots
+            let dotsHtml = '';
+            for (let i = 0; i < _data.steps.length; i++) {
+                let cls = 'tutorial-step-dot';
+                if (i < _currentStep) cls += ' completed';
+                else if (i === _currentStep) cls += ' active';
+                dotsHtml += `<span class="${cls}"></span>`;
+            }
+
+            const isFirst = _currentStep === 0;
+            const isLast = _currentStep === _data.steps.length - 1;
+
+            _tooltipEl.setAttribute('data-category', step.category);
+            _tooltipEl.innerHTML = `
+                <div class="tutorial-tooltip-header">
+                    ${iconHtml}
+                    <span class="step-title">${step.title}</span>
+                </div>
+                <div class="tutorial-tooltip-body">${step.description}</div>
+                <div class="tutorial-tooltip-footer">
+                    <div>
+                        <div class="tutorial-step-counter">${_currentStep + 1} / ${_data.steps.length}</div>
+                        <div class="tutorial-step-dots">${dotsHtml}</div>
+                    </div>
+                    <div class="tutorial-nav-buttons">
+                        ${!isFirst ? '<button class="btn btn-outline-secondary" id="tutorialPrev"><i class="bi bi-chevron-left"></i></button>' : ''}
+                        <button class="btn btn-outline-secondary btn-sm" id="tutorialSkip">Skip</button>
+                        <button class="btn btn-primary" id="tutorialNext">
+                            ${isLast ? '<i class="bi bi-check-lg me-1"></i>Finish' : 'Next <i class="bi bi-chevron-right"></i>'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Position tooltip relative to target
+            _positionTooltip(target, step.position);
+
+            // Bind buttons
+            const prevBtn = document.getElementById('tutorialPrev');
+            const nextBtn = document.getElementById('tutorialNext');
+            const skipBtn = document.getElementById('tutorialSkip');
+            if (prevBtn) prevBtn.onclick = () => _goToStep(_currentStep - 1);
+            if (skipBtn) skipBtn.onclick = _cleanup;
+            if (nextBtn) nextBtn.onclick = () => {
+                if (isLast) _showCompletion();
+                else _goToStep(_currentStep + 1);
+            };
+        }
+
+        /** Position the tooltip relative to the target based on preferred position. */
+        function _positionTooltip(target, position) {
+            const rect = target.getBoundingClientRect();
+            const tw = 340; // tooltip width
+            const pad = 16;
+
+            // Temporarily show to measure height
+            _tooltipEl.style.visibility = 'hidden';
+            _tooltipEl.style.display = 'block';
+            const th = _tooltipEl.offsetHeight;
+            _tooltipEl.style.visibility = '';
+
+            let left, top;
+
+            switch (position) {
+                case 'top':
+                    left = rect.left + rect.width / 2 - tw / 2;
+                    top = rect.top - th - pad;
+                    break;
+                case 'bottom':
+                    left = rect.left + rect.width / 2 - tw / 2;
+                    top = rect.bottom + pad;
+                    break;
+                case 'left':
+                    left = rect.left - tw - pad;
+                    top = rect.top + rect.height / 2 - th / 2;
+                    break;
+                case 'right':
+                    left = rect.right + pad;
+                    top = rect.top + rect.height / 2 - th / 2;
+                    break;
+                default: // center
+                    left = window.innerWidth / 2 - tw / 2;
+                    top = window.innerHeight / 2 - th / 2;
+            }
+
+            // Clamp within viewport
+            left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+            top = Math.max(8, Math.min(top, window.innerHeight - th - 8));
+
+            _tooltipEl.style.left = `${left}px`;
+            _tooltipEl.style.top = `${top}px`;
+        }
+
+        /** Show the completion card after the last step. */
+        function _showCompletion() {
+            _removeOverlayElements();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'tutorial-complete-overlay';
+            overlay.innerHTML = `
+                <div class="tutorial-complete-card">
+                    <div class="complete-icon"><i class="bi ${_data.completion_icon}"></i></div>
+                    <h3>Tour Complete!</h3>
+                    <p>${_data.completion_message}</p>
+                    <button class="btn btn-success btn-sm" id="tutorialDone">
+                        <i class="bi bi-check-lg me-1"></i>Got it!
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            document.getElementById('tutorialDone').onclick = () => overlay.remove();
+        }
+
+        /** Remove overlay elements from the DOM. */
+        function _removeOverlayElements() {
+            if (_backdropEl) { _backdropEl.remove(); _backdropEl = null; }
+            if (_spotlightEl) { _spotlightEl.remove(); _spotlightEl = null; }
+            if (_tooltipEl) { _tooltipEl.remove(); _tooltipEl = null; }
+        }
+
+        /** Clean up all tutorial UI. */
+        function _cleanup() {
+            _removeOverlayElements();
+            _data = null;
+            _currentStep = -1;
+        }
+
+        /** Restart a tutorial (force show). */
+        function restart(pageName) {
+            _cleanup();
+            start(pageName, true);
+        }
+
+        return { start, restart };
+    })();
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

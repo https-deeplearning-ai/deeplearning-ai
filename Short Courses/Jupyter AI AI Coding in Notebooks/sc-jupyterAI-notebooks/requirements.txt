@@ -1,0 +1,21 @@
+# JupyterAI V3 Educational Notebooks - Combined Requirements
+# All dependencies for Lessons 1, 2, and 3
+
+# Core JupyterAI (V3 beta - use specific version)
+# Latest stable: 2.31.6 | Latest beta: 3.0.0b7
+jupyter-ai>=3.0.0b7
+openai>=1.0.0
+python-dotenv>=1.0.0
+
+# Lesson 2
+aisuite>=0.1.0
+
+# Data Science & Visualization (Lessons 1 & 3)
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# API Integration (Lessons 2 & 3)
+requests>=2.31.0
+
+# Financial Data (Lesson 3)
+yfinance>=0.2.0

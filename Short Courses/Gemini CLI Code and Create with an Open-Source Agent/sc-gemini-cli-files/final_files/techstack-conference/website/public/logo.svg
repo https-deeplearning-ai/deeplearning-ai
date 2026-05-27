@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="topLayer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <linearGradient id="midLayer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="botLayer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(256, 256)">
+
+    <!-- Bottom layer (largest) - Data/Infrastructure -->
+    <g transform="translate(0, 100)">
+      <polygon points="0,-90 200,0 0,90 -200,0" fill="url(#botLayer)"/>
+      <polygon points="-200,0 0,90 0,140 -200,50" fill="#312e81"/>
+      <polygon points="200,0 0,90 0,140 200,50" fill="#3730a3"/>
+
+      <!-- Detailed circuitry - bottom layer -->
+      <!-- Main grid lines -->
+      <line x1="0" y1="-90" x2="0" y2="90" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+      <line x1="-100" y1="-45" x2="100" y2="45" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+      <line x1="100" y1="-45" x2="-100" y2="45" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+
+      <!-- Horizontal circuit traces -->
+      <path d="M-150,-22 L-80,-22 L-60,-35 L-30,-35" stroke="#6366f1" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M150,22 L80,22 L60,35 L30,35" stroke="#6366f1" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M-150,22 L-60,22 L-40,10 L0,10" stroke="#6366f1" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M150,-22 L60,-22 L40,-10 L0,-10" stroke="#6366f1" stroke-width="2" fill="none" opacity="0.7"/>
+
+      <!-- Corner circuit paths -->
+      <path d="M0,-90 L0,-60 L-30,-45 L-30,-20" stroke="#818cf8" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M0,-90 L0,-60 L30,-45 L30,-20" stroke="#818cf8" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M0,90 L0,60 L-30,45 L-30,20" stroke="#818cf8" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M0,90 L0,60 L30,45 L30,20" stroke="#818cf8" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+      <!-- Data nodes -->
+      <circle cx="0" cy="-90" r="5" fill="#818cf8"/>
+      <circle cx="0" cy="90" r="5" fill="#818cf8"/>
+      <circle cx="-200" cy="0" r="5" fill="#6366f1"/>
+      <circle cx="200" cy="0" r="5" fill="#6366f1"/>
+      <circle cx="-100" cy="-45" r="4" fill="#a5b4fc"/>
+      <circle cx="100" cy="-45" r="4" fill="#a5b4fc"/>
+      <circle cx="-100" cy="45" r="4" fill="#a5b4fc"/>
+      <circle cx="100" cy="45" r="4" fill="#a5b4fc"/>
+      <circle cx="0" cy="0" r="6" fill="#c7d2fe"/>
+      <circle cx="-30" cy="-20" r="3" fill="#a5b4fc"/>
+      <circle cx="30" cy="-20" r="3" fill="#a5b4fc"/>
+      <circle cx="-30" cy="20" r="3" fill="#a5b4fc"/>
+      <circle cx="30" cy="20" r="3" fill="#a5b4fc"/>
+    </g>
+
+    <!-- Middle layer - Processing/Logic -->
+    <g transform="translate(0, 0)">
+      <polygon points="0,-75 170,0 0,75 -170,0" fill="url(#midLayer)"/>
+      <polygon points="-170,0 0,75 0,120 -170,45" fill="#4338ca"/>
+      <polygon points="170,0 0,75 0,120 170,45" fill="#4f46e5"/>
+
+      <!-- Detailed circuitry - middle layer -->
+      <!-- Main grid -->
+      <line x1="0" y1="-75" x2="0" y2="75" stroke="#a5b4fc" stroke-width="1.5" opacity="0.5"/>
+      <line x1="-170" y1="0" x2="170" y2="0" stroke="#a5b4fc" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- Circuit traces - zigzag patterns -->
+      <path d="M-85,-37 L-55,-22 L-55,-37 L-25,-22 L0,-37" stroke="#c7d2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M85,-37 L55,-22 L55,-37 L25,-22 L0,-37" stroke="#c7d2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M-85,37 L-55,22 L-55,37 L-25,22 L0,37" stroke="#c7d2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M85,37 L55,22 L55,37 L25,22 L0,37" stroke="#c7d2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Diagonal traces -->
+      <path d="M-120,-18 L-80,-18 L-60,0 L-60,18" stroke="#e0e7ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M120,18 L80,18 L60,0 L60,-18" stroke="#e0e7ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+      <!-- Processing nodes -->
+      <circle cx="0" cy="-75" r="4" fill="#e0e7ff"/>
+      <circle cx="0" cy="75" r="4" fill="#e0e7ff"/>
+      <circle cx="-170" cy="0" r="4" fill="#c7d2fe"/>
+      <circle cx="170" cy="0" r="4" fill="#c7d2fe"/>
+      <circle cx="-85" cy="-37" r="5" fill="#e0e7ff"/>
+      <circle cx="85" cy="-37" r="5" fill="#e0e7ff"/>
+      <circle cx="-85" cy="37" r="5" fill="#e0e7ff"/>
+      <circle cx="85" cy="37" r="5" fill="#e0e7ff"/>
+      <circle cx="0" cy="-37" r="4" fill="#c7d2fe"/>
+      <circle cx="0" cy="37" r="4" fill="#c7d2fe"/>
+      <circle cx="-55" cy="-22" r="3" fill="#a5b4fc"/>
+      <circle cx="55" cy="-22" r="3" fill="#a5b4fc"/>
+      <circle cx="-55" cy="22" r="3" fill="#a5b4fc"/>
+      <circle cx="55" cy="22" r="3" fill="#a5b4fc"/>
+
+      <!-- Central chip -->
+      <rect x="-18" y="-18" width="36" height="36" rx="3" fill="#4338ca" opacity="0.7"/>
+      <rect x="-10" y="-10" width="20" height="20" rx="2" fill="#818cf8"/>
+      <circle cx="0" cy="0" r="4" fill="#e0e7ff"/>
+    </g>
+
+    <!-- Top layer - AI/Intelligence -->
+    <g transform="translate(0, -100)">
+      <polygon points="0,-60 140,0 0,60 -140,0" fill="url(#topLayer)"/>
+      <polygon points="-140,0 0,60 0,100 -140,40" fill="#be123c"/>
+      <polygon points="140,0 0,60 0,100 140,40" fill="#e11d48"/>
+
+      <!-- Detailed circuitry - top layer (rose/pink tones) -->
+      <!-- Main grid -->
+      <line x1="0" y1="-60" x2="0" y2="60" stroke="#fda4af" stroke-width="1.5" opacity="0.6"/>
+      <line x1="-140" y1="0" x2="140" y2="0" stroke="#fda4af" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Circuit traces - neural network style -->
+      <path d="M0,-60 L-35,-30 L-70,-30 L-100,-15" stroke="#fecdd3" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M0,-60 L35,-30 L70,-30 L100,-15" stroke="#fecdd3" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M0,60 L-35,30 L-70,30 L-100,15" stroke="#fecdd3" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M0,60 L35,30 L70,30 L100,15" stroke="#fecdd3" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+      <!-- Cross connections -->
+      <path d="M-35,-30 L0,0 L35,-30" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M-35,30 L0,0 L35,30" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M-70,-30 L-35,0 L-70,30" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M70,-30 L35,0 L70,30" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+      <!-- AI/Neural nodes -->
+      <circle cx="0" cy="-60" r="5" fill="#ffffff"/>
+      <circle cx="0" cy="60" r="5" fill="#ffffff"/>
+      <circle cx="-140" cy="0" r="5" fill="#fecdd3"/>
+      <circle cx="140" cy="0" r="5" fill="#fecdd3"/>
+      <circle cx="-35" cy="-30" r="5" fill="#ffffff" opacity="0.9"/>
+      <circle cx="35" cy="-30" r="5" fill="#ffffff" opacity="0.9"/>
+      <circle cx="-35" cy="30" r="5" fill="#ffffff" opacity="0.9"/>
+      <circle cx="35" cy="30" r="5" fill="#ffffff" opacity="0.9"/>
+      <circle cx="-70" cy="-30" r="4" fill="#fecdd3"/>
+      <circle cx="70" cy="-30" r="4" fill="#fecdd3"/>
+      <circle cx="-70" cy="30" r="4" fill="#fecdd3"/>
+      <circle cx="70" cy="30" r="4" fill="#fecdd3"/>
+      <circle cx="-35" cy="0" r="3" fill="#ffffff" opacity="0.7"/>
+      <circle cx="35" cy="0" r="3" fill="#ffffff" opacity="0.7"/>
+
+      <!-- Central core -->
+      <circle cx="0" cy="0" r="12" fill="#ffffff" opacity="0.9"/>
+      <circle cx="0" cy="0" r="6" fill="#f43f5e"/>
+    </g>
+
+    <!-- Vertical data flow connections between layers -->
+    <line x1="0" y1="-40" x2="0" y2="60" stroke="#818cf8" stroke-width="3" opacity="0.6"/>
+    <line x1="0" y1="80" x2="0" y2="190" stroke="#4f46e5" stroke-width="3" opacity="0.6"/>
+
+    <!-- Side data connections -->
+    <line x1="-140" y1="-100" x2="-170" y2="0" stroke="#a5b4fc" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+    <line x1="140" y1="-100" x2="170" y2="0" stroke="#a5b4fc" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+    <line x1="-170" y1="0" x2="-200" y2="100" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+    <line x1="170" y1="0" x2="200" y2="100" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+
+  </g>
+</svg>

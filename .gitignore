@@ -107,3 +107,6 @@ yarn-error.log*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Large media assets — fetch from upstream course repos instead (see each course's README)
+*.mp4

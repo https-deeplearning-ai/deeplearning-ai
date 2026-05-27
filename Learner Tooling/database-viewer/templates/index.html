@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - ChromaDB Code Search{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h2><i class="bi bi-grid-1x2 me-2"></i>Dashboard</h2>
+        <p class="text-muted">Manage your ChromaDB collections and explore vectorized code.</p>
+    </div>
+    <div class="col-auto d-flex gap-2 align-items-center">
+        <button class="btn-tutorial" onclick="TutorialEngine.restart('dashboard')" title="Take a guided tour">
+            <i class="bi bi-mortarboard me-1"></i>Tour
+        </button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+            <i class="bi bi-plus-lg me-1"></i>New Collection
+        </button>
+    </div>
+</div>
+
+{% if collections %}
+<div class="row g-3">
+    {% for coll in collections %}
+    <div class="col-md-4 col-lg-3">
+        <div class="card h-100 collection-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="bi bi-collection me-1"></i>{{ coll.name }}
+                </h5>
+                <p class="card-text">
+                    <span class="badge bg-info">{{ coll.count }} chunks</span>
+                </p>
+            </div>
+            <div class="card-footer d-flex gap-2">
+                <a href="{{ url_for('collections.collection_detail', name=coll.name) }}" class="btn btn-sm btn-success flex-fill">
+                    <i class="bi bi-search me-1"></i>Search
+                </a>
+                <a href="{{ url_for('explorer.explorer_page', name=coll.name) }}" class="btn btn-sm btn-outline-info flex-fill">
+                    <i class="bi bi-code-square me-1"></i>Browse
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5">
+    <i class="bi bi-inbox display-1 text-muted"></i>
+    <h4 class="mt-3 text-muted">No collections yet</h4>
+    <p class="text-muted">Create a collection and ingest some code to get started.</p>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+        <i class="bi bi-plus-lg me-1"></i>Create Your First Collection
+    </button>
+</div>
+{% endif %}
+
+<!-- Create Collection Modal -->
+<div class="modal fade" id="createModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="collectionName" class="form-label">Collection Name</label>
+                    <input type="text" class="form-control" id="collectionName"
+                           placeholder="e.g., my_code_collection" minlength="3" maxlength="63">
+                    <div class="form-text">3-63 characters, letters, numbers, hyphens, underscores.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="ingestDir" class="form-label">Directory to Ingest (optional)</label>
+                    <input type="text" class="form-control" id="ingestDir"
+                           placeholder="e.g., /home/jovyan/work/app">
+                    <div class="form-text">Leave empty to create an empty collection.</div>
+                </div>
+                <div id="createError" class="alert alert-danger d-none"></div>
+                <div id="createSuccess" class="alert alert-success d-none"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnCreate" onclick="createCollection()">
+                    <span class="spinner-border spinner-border-sm d-none" id="createSpinner"></span>
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function createCollection() {
+    const name = document.getElementById('collectionName').value.trim();
+    const dir = document.getElementById('ingestDir').value.trim();
+    const errorEl = document.getElementById('createError');
+    const successEl = document.getElementById('createSuccess');
+    const spinner = document.getElementById('createSpinner');
+    const btn = document.getElementById('btnCreate');
+
+    errorEl.classList.add('d-none');
+    successEl.classList.add('d-none');
+
+    if (!name) {
+        errorEl.textContent = 'Collection name is required';
+        errorEl.classList.remove('d-none');
+        return;
+    }
+
+    spinner.classList.remove('d-none');
+    btn.disabled = true;
+
+    try {
+        // Create collection
+        const createResp = await fetch(`${BASE_URL}/api/collections`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name: name})
+        });
+        const createData = await createResp.json();
+
+        if (!createResp.ok) {
+            throw new Error(createData.error || 'Failed to create collection');
+        }
+
+        // Ingest if directory provided
+        if (dir) {
+            successEl.textContent = 'Collection created. Ingesting files...';
+            successEl.classList.remove('d-none');
+
+            const ingestResp = await fetch(`${BASE_URL}/api/collections/${name}/ingest`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({directory: dir})
+            });
+            const ingestData = await ingestResp.json();
+
+            if (!ingestResp.ok) {
+                throw new Error(ingestData.error || 'Ingestion failed');
+            }
+
+            const p = ingestData.progress;
+            successEl.textContent = `Done! Ingested ${p.total_chunks} chunks from ${p.processed_files} files.`;
+        } else {
+            successEl.textContent = 'Collection created successfully!';
+            successEl.classList.remove('d-none');
+        }
+
+        setTimeout(() => location.reload(), 1500);
+
+    } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.classList.remove('d-none');
+    } finally {
+        spinner.classList.add('d-none');
+        btn.disabled = false;
+    }
+}
+
+// Auto-start tutorial on first visit
+document.addEventListener('DOMContentLoaded', () => {
+    TutorialEngine.start('dashboard');
+});
+</script>
+{% endblock %}
