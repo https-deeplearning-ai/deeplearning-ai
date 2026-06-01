@@ -4,8 +4,8 @@
 
 # DeepLearning.AI Course Code &amp; Hands-On Materials
 
-**Free, open-source companion code for [DeepLearning.AI](https://www.deeplearning.ai) courses.**
-Notebooks, labs, starter projects, and reading materials — everything you need to build alongside the videos.
+**Your index to the open-source companion repositories for [DeepLearning.AI](https://www.deeplearning.ai) courses.**
+Each course's notebooks, labs, starter projects, and reading materials live in their own GitHub repo — this page links you to all of them.
 
 [Browse courses on DeepLearning.AI →](https://www.deeplearning.ai/courses/)
 
@@ -24,7 +24,7 @@ What you'll find on the platform:
 - **Professional Certificates** — career-oriented programs (e.g., the upcoming PyTorch Professional Certificate).
 - **The Batch** — DeepLearning.AI's [weekly newsletter](https://www.deeplearning.ai/the-batch/) covering AI news and analysis.
 
-This repository contains the **code and materials** for the courses listed below. Course videos and instruction live on [deeplearning.ai](https://www.deeplearning.ai); this repo is what you clone to follow along.
+This page is a **directory of the companion repositories** for the courses listed below — each course's code and materials live in its own GitHub repo, linked from the catalog. Course videos and instruction live on [deeplearning.ai](https://www.deeplearning.ai).
 
 ---
 
@@ -32,11 +32,9 @@ This repository contains the **code and materials** for the courses listed below
 
 | Folder | What's inside |
 |---|---|
-| **[`Short Courses/`](Short%20Courses/)** | 1–2 hour focused short courses on tools and techniques |
-| **[`Long Courses/`](Long%20Courses/)** | Multi-module long-form courses |
 | **[`Learner Tooling/`](Learner%20Tooling/)** | Helper tools learners can use across courses (e.g., database viewers) |
 
-Every course folder contains a companion repo cloned from GitHub. Open any course's `README.md` for setup instructions specific to that course.
+Course code lives in **separate GitHub repositories** — one per course. Browse the [Course Catalog](#course-catalog-with-github-artifacts) below and use each course's **GitHub** link to open its companion repo, then follow that repo's `README.md` for setup instructions specific to that course.
 
 ---
 
@@ -46,40 +44,42 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
 >
 > Click any course title to visit the course page on DeepLearning.AI. Use the **GitHub** link to jump to the companion code in this repo.
 
+> **Not sure what course to start with?** Chat with (virtual) Andrew Ng to learn where your skills are at and where you should go next → **[Skill Builder](https://skillbuilder.deeplearning.ai/)**
+
 ### Short Courses
 
 <table>
   <tr>
     <td width="120" align="center"><img src="assets/img/courses/thumbnails/spec-driven%20development.png" alt="Spec-Driven Development course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents">Spec-Driven Development with Agentic Coding Assistants</a></strong><br>Learn the workflow for building software with AI coding agents using formal specifications.<br><sub><a href="Short%20Courses/Spec-Driven%20Development%20with%20Agentic%20Coding%20Assistants/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents">Spec-Driven Development with Agentic Coding Assistants</a></strong><br>Learn the workflow for building software with AI coding agents using formal specifications.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-spec-driven-development-files">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/gemini-cli.jpg" alt="Gemini CLI course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/gemini-cli-code-and-create-with-an-open-source-agent">Gemini CLI: Code and Create with an Open-Source Agent</a></strong><br>Build and customize an AI coding agent with Google's open-source Gemini CLI.<br><sub><a href="Short%20Courses/Gemini%20CLI%20Code%20and%20Create%20with%20an%20Open-Source%20Agent/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/gemini-cli-code-and-create-with-an-open-source-agent">Gemini CLI: Code and Create with an Open-Source Agent</a></strong><br>Build and customize an AI coding agent with Google's open-source Gemini CLI.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-gemini-cli-files">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/governing-ai.png" alt="Governing AI Agents course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/governing-ai-agents">Governing AI Agents</a></strong><br>Hands-on labs for deploying AI agents responsibly with governance, evaluation, and oversight.<br><sub><a href="Short%20Courses/Governing%20AI%20Agents/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/governing-ai-agents">Governing AI Agents</a></strong><br>Hands-on labs for deploying AI agents responsibly with governance, evaluation, and oversight.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-agent-governance">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/document-ai-from-ocr.png" alt="Document AI course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/document-ai-from-ocr-to-agentic-doc-extraction">Document AI: From OCR to Agentic Doc Extraction</a></strong><br>Modern document processing with LandingAI — from OCR to agentic extraction pipelines on AWS.<br><sub><a href="Short%20Courses/Document%20AI%20From%20OCR%20to%20Agentic%20Doc%20Extraction/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/document-ai-from-ocr-to-agentic-doc-extraction">Document AI: From OCR to Agentic Doc Extraction</a></strong><br>Modern document processing with LandingAI — from OCR to agentic extraction pipelines on AWS.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-landingai">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/fast-prototyping-of-gen-ai-apps.png" alt="Streamlit course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/fast-prototyping-of-genai-apps-with-streamlit">Fast Prototyping of Gen AI Apps with Streamlit</a></strong><br>Build interactive generative AI apps fast using Streamlit on Snowflake.<br><sub><a href="Short%20Courses/Fast%20Prototyping%20of%20Gen%20AI%20Apps%20with%20Streamlit/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/fast-prototyping-of-genai-apps-with-streamlit">Fast Prototyping of Gen AI Apps with Streamlit</a></strong><br>Build interactive generative AI apps fast using Streamlit on Snowflake.<br><sub><a href="https://github.com/https-deeplearning-ai/fast-prototyping-of-genai-apps-with-streamlit">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/jupyter-ai.png" alt="Jupyter AI course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/jupyter-ai-coding-in-notebooks">Jupyter AI: AI Coding in Notebooks</a></strong><br>AI-assisted coding inside JupyterLab using the Jupyter AI extension.<br><sub><a href="Short%20Courses/Jupyter%20AI%20AI%20Coding%20in%20Notebooks/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/jupyter-ai-coding-in-notebooks">Jupyter AI: AI Coding in Notebooks</a></strong><br>AI-assisted coding inside JupyterLab using the Jupyter AI extension.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-jupyterAI-notebooks">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/claude-code-a-highly-agentic-coding-assistant.jpg" alt="Claude Code course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/claude-code-a-highly-agentic-coding-assistant">Claude Code: A Highly Agentic Coding Assistant</a></strong><br>Build, debug, and ship software with Claude Code, Anthropic's agentic coding CLI.<br><sub><a href="Short%20Courses/Claude%20Code%20A%20Highly%20Agentic%20Coding%20Assistant/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/claude-code-a-highly-agentic-coding-assistant">Claude Code: A Highly Agentic Coding Assistant</a></strong><br>Build, debug, and ship software with Claude Code, Anthropic's agentic coding CLI.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-claude-code-files">GitHub</a></sub></td>
   </tr>
   <tr>
     <td align="center"><img src="assets/img/courses/thumbnails/agent-skills.png" alt="Agent Skills course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/agent-skills-with-anthropic">Agent Skills with Anthropic</a></strong><br>Build reusable, composable agent skills using Anthropic's skill framework.<br><sub><a href="Short%20Courses/Agent%20Skills%20with%20Anthropic/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/agent-skills-with-anthropic">Agent Skills with Anthropic</a></strong><br>Build reusable, composable agent skills using Anthropic's skill framework.<br><sub><a href="https://github.com/https-deeplearning-ai/sc-agent-skills-files">GitHub</a></sub></td>
   </tr>
 </table>
 
@@ -88,7 +88,7 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
 <table>
   <tr>
     <td width="120" align="center"><img src="assets/img/courses/thumbnails/build-with-andrew.png" alt="Build with Andrew course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/build-with-andrew">Build with Andrew</a></strong><br>Beginner-friendly, no-code course — learn to build AI-powered web apps using structured prompts. No coding experience required.<br><sub><a href="Long%20Courses/Build%20with%20Andrew/">GitHub</a></sub></td>
+    <td><strong><a href="https://www.deeplearning.ai/courses/build-with-andrew">Build with Andrew</a></strong><br>Beginner-friendly, no-code course — learn to build AI-powered web apps using structured prompts. No coding experience required.<br><sub><a href="https://github.com/https-deeplearning-ai/lc-build-with-andrew-platform">GitHub</a></sub></td>
   </tr>
 </table>
 
@@ -96,24 +96,22 @@ Every course folder contains a companion repo cloned from GitHub. Open any cours
 
 ## Getting Started
 
-### 1. Clone this repository
+### 1. Find your course
+
+Browse the **[Course Catalog](#course-catalog-with-github-artifacts)** above and click the **GitHub** link for the course you want. Each course has its own companion repository.
+
+### 2. Clone the course repository
 
 ```bash
-git clone https://github.com/https-deeplearning-ai/<this-repo>.git
-cd <this-repo>
+git clone https://github.com/https-deeplearning-ai/<course-repo>.git
+cd <course-repo>
 ```
-
-### 2. Pick a course
-
-Browse the **[Course Catalog](#course-catalog)** above, click into a course folder, and open its `README.md`.
 
 ### 3. Follow the course's setup
 
 Each course has its own setup instructions, dependencies, and environment variables. Most use Python (Jupyter notebooks) or Node.js (TypeScript projects). Common steps:
 
 ```bash
-cd "Short Courses/<your chosen course>/<repo>"
-
 # Python courses:
 pip install -r requirements.txt
 jupyter lab
@@ -127,7 +125,7 @@ If a course requires API keys, copy `.env.example` to `.env` and fill in your cr
 
 ### 4. Watch the videos on DeepLearning.AI
 
-This repo is the **companion code** — the videos and structured instruction live on [DeepLearning.AI](https://www.deeplearning.ai/courses/). Find your course there to follow along.
+These repos hold the **companion code** — the videos and structured instruction live on [DeepLearning.AI](https://www.deeplearning.ai/courses/). Find your course there to follow along.
 
 ---
 
@@ -136,28 +134,19 @@ This repo is the **companion code** — the videos and structured instruction li
 ```
 DeepLearningRepo/
 ├── README.md                     ← you are here
-├── Short Courses/                ← 1–2 hour focused courses
-│   ├── Agent Skills with Anthropic/
-│   ├── Claude Code A Highly Agentic Coding Assistant/
-│   ├── Document AI From OCR to Agentic Doc Extraction/
-│   ├── Fast Prototyping of Gen AI Apps with Streamlit/
-│   ├── Gemini CLI Code and Create.../
-│   ├── Governing AI Agents/
-│   ├── Jupyter AI AI Coding in Notebooks/
-│   └── Spec-Driven Development.../
-├── Long Courses/
-│   └── Build with Andrew/
 ├── Learner Tooling/              ← reusable tools across courses
 │   └── database-viewer/
 └── assets/                       ← images and shared assets for this README
 ```
+
+Course code is no longer stored in this repo — each course lives in its own GitHub repository, linked from the [Course Catalog](#course-catalog-with-github-artifacts) above.
 
 ---
 
 ## Frequently Asked Questions
 
 **Do I need to pay to take these courses?**
-Most DeepLearning.AI **short courses are free**. Longer specializations on Coursera may have associated fees but typically offer financial aid. Check each course's page on [deeplearning.ai/courses](https://www.deeplearning.ai/courses/) for details.
+All course videos are **free**. The **[Pro membership](https://learn.deeplearning.ai/membership)** ($25/mo billed annually) adds hands-on labs, Professional Certificates, portfolio projects, exclusive courses from Andrew Ng, and personalized feedback.
 
 **Do I need prior experience?**
 It depends on the course. Beginner-friendly options like *Build with Andrew* require no coding background. Most short courses assume basic Python or familiarity with LLMs.

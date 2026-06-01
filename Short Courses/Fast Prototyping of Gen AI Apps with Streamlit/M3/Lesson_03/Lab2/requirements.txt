@@ -1,4 +1,0 @@
-streamlit[snowflake]
-snowflake
-snowflake-snowpark-python
-matplotlib
