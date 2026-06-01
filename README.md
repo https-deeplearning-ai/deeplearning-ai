@@ -164,7 +164,8 @@ Open an issue in the relevant course's GitHub repository, or use the contact for
 - **Website:** [deeplearning.ai](https://www.deeplearning.ai)
 - **The Batch newsletter:** [Subscribe](https://www.deeplearning.ai/the-batch/) — weekly AI news, curated by Andrew Ng
 - **Courses:** [Browse all courses](https://www.deeplearning.ai/courses/)
-- **Community:** [DeepLearning.AI Community](https://community.deeplearning.ai/)
+- **Forum Community:** [DeepLearning.AI Community](https://community.deeplearning.ai/)
+- **Discord Community:** [Join our Discord](https://discord.com/invite/z4FNBCFXz3)
 - **LinkedIn:** [DeepLearning.AI on LinkedIn](https://www.linkedin.com/school/deeplearningai/)
 - **YouTube:** [DeepLearning.AI on YouTube](https://www.youtube.com/deeplearningai)
 - **X / Twitter:** [@DeepLearningAI](https://twitter.com/DeepLearningAI)
