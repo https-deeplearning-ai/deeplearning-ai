@@ -32,7 +32,7 @@ This page is a **directory of the companion repositories** for the courses liste
 
 | Folder | What's inside |
 |---|---|
-| **[`Learner Tooling/`](Learner%20Tooling/)** | Helper tools learners can use across courses (e.g., database viewers) |
+| **[`Tools/`](Tools/)** | Cookbooks and tools created for learning and/or using tools, organized by company (e.g., [`Tools/Chroma/database-viewer`](Tools/Chroma/database-viewer/)). More to come soon. |
 
 Course code lives in **separate GitHub repositories** — one per course. Browse the [Course Catalog](#course-catalog-with-github-artifacts) below and use each course's **GitHub** link to open its companion repo, then follow that repo's `README.md` for setup instructions specific to that course.
 
@@ -134,8 +134,9 @@ These repos hold the **companion code** — the videos and structured instructio
 ```
 DeepLearningRepo/
 ├── README.md                     ← you are here
-├── Learner Tooling/              ← reusable tools across courses
-│   └── database-viewer/
+├── Tools/                        ← cookbooks and tools for learning and/or using tools, organized by company
+│   └── Chroma/
+│       └── database-viewer/
 └── assets/                       ← images and shared assets for this README
 ```
 
