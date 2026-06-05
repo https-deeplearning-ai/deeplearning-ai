@@ -23,9 +23,3 @@ A tracking record of who owns each course's companion repository linked from the
 | [Jupyter AI: AI Coding in Notebooks](https://www.deeplearning.ai/courses/jupyter-ai-coding-in-notebooks?utm_source=github&utm_campaign=github-repo) | [sc-jupyterAI-notebooks](https://github.com/https-deeplearning-ai/sc-jupyterAI-notebooks) | @hsalami, @karenacai408 |
 | [Claude Code: A Highly Agentic Coding Assistant](https://www.deeplearning.ai/courses/claude-code-a-highly-agentic-coding-assistant?utm_source=github&utm_campaign=github-repo) | [sc-claude-code-files](https://github.com/https-deeplearning-ai/sc-claude-code-files) | @hsalami, @karenacai408 |
 | [Agent Skills with Anthropic](https://www.deeplearning.ai/courses/agent-skills-with-anthropic?utm_source=github&utm_campaign=github-repo) | [sc-agent-skills-files](https://github.com/https-deeplearning-ai/sc-agent-skills-files) | @hsalami, @karenacai408 |
-
-## Long Courses
-
-| Course | Repo | Owner(s) |
-|---|---|---|
-| [Build with Andrew](https://www.deeplearning.ai/courses/build-with-andrew?utm_source=github&utm_campaign=github-repo) | [lc-build-with-andrew-platform](https://github.com/https-deeplearning-ai/lc-build-with-andrew-platform) | @sumrae412, @karenacai408 |

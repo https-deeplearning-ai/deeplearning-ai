@@ -83,15 +83,6 @@ Course code lives in **separate GitHub repositories** — one per course. Browse
   </tr>
 </table>
 
-### Long Courses
-
-<table>
-  <tr>
-    <td width="120" align="center"><img src="assets/img/courses/thumbnails/build-with-andrew.png" alt="Build with Andrew course thumbnail" width="100"></td>
-    <td><strong><a href="https://www.deeplearning.ai/courses/build-with-andrew?utm_source=github&utm_campaign=github-repo">Build with Andrew</a></strong><br>Beginner-friendly, no-code course — learn to build AI-powered web apps using structured prompts. No coding experience required.<br><sub><a href="https://github.com/https-deeplearning-ai/lc-build-with-andrew-platform">GitHub</a></sub></td>
-  </tr>
-</table>
-
 ---
 
 ## Getting Started
@@ -150,7 +141,7 @@ Course code is no longer stored in this repo — each course lives in its own Gi
 All course videos are **free**. The **[Pro membership](https://learn.deeplearning.ai/membership?utm_source=github&utm_campaign=github-repo)** ($25/mo billed annually) adds hands-on labs, Professional Certificates, portfolio projects, exclusive courses from Andrew Ng, and personalized feedback.
 
 **Do I need prior experience?**
-It depends on the course. Beginner-friendly options like *Build with Andrew* require no coding background. Most short courses assume basic Python or familiarity with LLMs.
+It depends on the course. Some beginner-friendly options require no coding background, while most short courses assume basic Python or familiarity with LLMs.
 
 **Can I use this code in my own projects?**
 Yes — code is provided for educational use. Check the LICENSE file in each course's repo for specifics.
