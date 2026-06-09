@@ -91,6 +91,11 @@ The codebase intentionally demonstrates several software design patterns, making
    ```bash
    pip install -r requirements.txt
    ```
+   Or, with [uv](https://docs.astral.sh/uv/) (a faster drop-in alternative to pip):
+   ```bash
+   uv venv && source .venv/bin/activate
+   uv pip install -r requirements.txt
+   ```
 
 2. Configure environment variables (copy `.env.example` to `.env`):
    ```

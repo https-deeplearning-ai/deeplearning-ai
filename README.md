@@ -32,7 +32,7 @@ This page is a **directory of the companion repositories** for the courses liste
 
 | Folder | What's inside |
 |---|---|
-| **[`Tools/`](Tools/)** | Cookbooks and tools created for learning and/or using tools, organized by company (e.g., [`Tools/Chroma/database-viewer`](Tools/Chroma/database-viewer/)). More to come soon. |
+| **[`Tools/`](Tools/)** | Cookbooks and tools created for learning and/or using tools, often grouped by company (e.g., [`Tools/Chroma/database-viewer`](Tools/Chroma/database-viewer/)). More to come soon. |
 
 Course code lives in **separate GitHub repositories** — one per course. Browse the [Course Catalog](#course-catalog-with-github-artifacts) below and use each course's **GitHub** link to open its companion repo, then follow that repo's `README.md` for setup instructions specific to that course.
 
@@ -103,14 +103,21 @@ cd <course-repo>
 Each course has its own setup instructions, dependencies, and environment variables. Most use Python (Jupyter notebooks) or Node.js (TypeScript projects). Common steps:
 
 ```bash
-# Python courses:
+# Python courses (pip):
 pip install -r requirements.txt
+jupyter lab
+
+# Python courses (uv — a faster, drop-in alternative to pip):
+uv venv && source .venv/bin/activate
+uv pip install -r requirements.txt
 jupyter lab
 
 # Node/TypeScript courses:
 npm install
 npm run dev
 ```
+
+Prefer [uv](https://docs.astral.sh/uv/)? It's a fast Python package manager that works as a drop-in replacement for `pip` — `uv pip install -r requirements.txt` handles the same `requirements.txt`, and `uv venv` creates the virtual environment for you. If you don't have it yet, install it with `pip install uv` (or see the [install guide](https://docs.astral.sh/uv/getting-started/installation/)).
 
 If a course requires API keys, copy `.env.example` to `.env` and fill in your credentials.
 
@@ -125,7 +132,8 @@ These repos hold the **companion code** — the videos and structured instructio
 ```
 DeepLearningRepo/
 ├── README.md                     ← you are here
-├── Tools/                        ← cookbooks and tools for learning and/or using tools, organized by company
+├── Tools/                        ← cookbooks and tools for learning and/or using tools, often grouped by company
+│   ├── Agent Visualizer/         ← agent viz (rich)
 │   └── Chroma/
 │       └── database-viewer/
 └── assets/                       ← images and shared assets for this README
