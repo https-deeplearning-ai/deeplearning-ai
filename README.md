@@ -20,11 +20,11 @@ Each course's notebooks, labs, starter projects, and reading materials live in t
 What you'll find on the platform:
 
 - **Short Courses** — focused 1–2 hour sessions on a single technique or tool, built with industry partners like Anthropic, NVIDIA, Google, and LandingAI.
-- **Specializations** — multi-course tracks covering foundational topics like the [Deep Learning Specialization](https://www.deeplearning.ai/courses/deep-learning-specialization/?utm_source=github&utm_campaign=github-repo) and [Generative AI for Everyone](https://www.deeplearning.ai/courses/generative-ai-for-everyone/?utm_source=github&utm_campaign=github-repo).
+- **Long Courses and Specializations** — multi-course tracks covering foundational topics like [AI Prompting for Everyone](https://www.deeplearning.ai/courses/ai-prompting-for-everyone?utm_source=github&utm_campaign=github-repo), [Agentic AI](https://www.deeplearning.ai/courses/agentic-ai?utm_source=github&utm_campaign=github-repo), and the [Deep Learning Specialization](https://www.deeplearning.ai/courses/deep-learning-specialization/?utm_source=github&utm_campaign=github-repo).
 - **Professional Certificates** — career-oriented programs (e.g., the PyTorch Professional Certificate).
 - **The Batch** — DeepLearning.AI's [weekly newsletter](https://www.deeplearning.ai/the-batch/?utm_source=github&utm_campaign=github-repo) covering AI news and analysis.
 
-This page is a **directory of the companion repositories** for the courses listed below — each course's code and materials live in its own GitHub repo, linked from the catalog. Course videos, instruction, and course labs live on [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
+This page is a **directory of the companion repositories** for the courses listed below. Course videos, instruction, and course labs live on [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
 
 ---
 
