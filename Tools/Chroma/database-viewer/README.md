@@ -1,6 +1,6 @@
 # ChromaDB Code Search UI
 
-A Flask web application for searching, browsing, and visualizing Python code using semantic embeddings and ChromaDB. Built as a companion app for the **Context Engineering with Chroma** course.
+A Flask web application for searching, browsing, and visualizing Python code using semantic embeddings and ChromaDB.
 
 ## Purpose
 

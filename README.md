@@ -21,10 +21,10 @@ What you'll find on the platform:
 
 - **Short Courses** — focused 1–2 hour sessions on a single technique or tool, built with industry partners like Anthropic, NVIDIA, Google, and LandingAI.
 - **Specializations** — multi-course tracks covering foundational topics like the [Deep Learning Specialization](https://www.deeplearning.ai/courses/deep-learning-specialization/?utm_source=github&utm_campaign=github-repo) and [Generative AI for Everyone](https://www.deeplearning.ai/courses/generative-ai-for-everyone/?utm_source=github&utm_campaign=github-repo).
-- **Professional Certificates** — career-oriented programs (e.g., the upcoming PyTorch Professional Certificate).
+- **Professional Certificates** — career-oriented programs (e.g., the PyTorch Professional Certificate).
 - **The Batch** — DeepLearning.AI's [weekly newsletter](https://www.deeplearning.ai/the-batch/?utm_source=github&utm_campaign=github-repo) covering AI news and analysis.
 
-This page is a **directory of the companion repositories** for the courses listed below — each course's code and materials live in its own GitHub repo, linked from the catalog. Course videos and instruction live on [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
+This page is a **directory of the companion repositories** for the courses listed below — each course's code and materials live in its own GitHub repo, linked from the catalog. Course videos, instruction, and course labs live on [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
 
 ---
 
@@ -40,9 +40,9 @@ Course code lives in **separate GitHub repositories** — one per course. Browse
 
 ## Course Catalog with GitHub Artifacts
 
-> This is not an exhaustive list of courses — browse our full catalog at [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
->
-> Click any course title to visit the course page on DeepLearning.AI. Use the **GitHub** link to jump to the companion code in this repo.
+This is NOT an exhaustive list of courses — browse our full catalog at [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
+
+Click any course title to visit the course page on DeepLearning.AI. Use the **GitHub** link to jump to the companion code in this repo.
 
 > **Not sure what course to start with?** Chat with (virtual) Andrew Ng to learn where your skills are at and where you should go next → **[Skill Builder](https://skillbuilder.deeplearning.ai/?utm_source=github&utm_campaign=github-repo)**
 
