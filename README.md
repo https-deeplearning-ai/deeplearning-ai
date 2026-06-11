@@ -26,6 +26,32 @@ What you'll find on the platform:
 
 This page is a **directory of the companion repositories** for the courses listed below. Course videos, instruction, and course labs live on [deeplearning.ai](https://www.deeplearning.ai/?utm_source=github&utm_campaign=github-repo).
 
+## Quick Start Guide for Learners
+
+If you're new to DeepLearning.AI courses, here’s a simple way to navigate this repository effectively:
+
+### Step 1: Identify your learning goal
+Choose a path based on your interest:
+- Beginners → Start with short, hands-on courses  
+- Developers → Focus on GenAI apps, tools, and agent-based courses  
+- Career growth → Explore specializations and professional certificates  
+
+### Step 2: Select a course from the catalog
+Each course listed below includes:
+- A course page (learning content)
+- A GitHub repository (code, notebooks, labs)
+
+Click the **GitHub link** inside a course entry to access its code.
+
+### Step 3: Follow the learning flow
+Recommended workflow:
+1. Open course page on DeepLearning.AI  
+2. Watch the course videos  
+3. Follow along with the learning materials  
+4. Use the repository for hands-on practice  
+
+Tip: Focus on one course at a time for best learning results.
+
 ---
 
 ## What's in this repository
